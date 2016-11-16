@@ -21,8 +21,17 @@ body{
 
 #todo_liste {
     width: 340px;
+    height: 590px;
     background-color: "#ffc2e1";
+    position: relative;
+    top:105px;
+    left: 340px;
+    right: 310px;
     
+}
+
+#todo_liste{
+    text-align: center;
 }
 
 #rechte_seite{
@@ -30,7 +39,7 @@ body{
     height: 590px;
     background-color: "#ffc2e1";
     position: relative;
-    top: 105px;
+    top: -485px;
     left: 680px;
 }
 
@@ -39,7 +48,7 @@ body{
     height: 590px;
     background-color: "#ffc2e1";
     position: relative;
-    top: -490;
+    top: -1075;
     left: 0px;
 }
 
