@@ -1,0 +1,46 @@
+body{
+    margin:0px;}
+
+#fenster {
+    width: 1080px;
+    margin-left: auto; 
+    margin-right: auto; 
+    position: static;
+    
+}
+
+#menuleiste_oben{
+    text-align: center;
+    background-color: #020245; 
+    height: 60px}
+
+#todo_liste {}
+
+#rechte_seite{
+    width: 310px;
+    height: 590px;
+    background-color: "#ffc2e1";
+    position: relative;
+    top: 105px;
+    left: 680px;
+}
+
+#linke_seite{
+    width: 340px;
+    height: 590px;
+    background-color: "#ffc2e1";
+    position: relative;
+    top: -490;
+    left: 0px;
+}
+
+#menuleiste_unten{
+    background-color: #020245; 
+    height: 50px; 
+    margin: auto;
+}
+
+#todo_liste{
+    width: 340px;
+    
+}
