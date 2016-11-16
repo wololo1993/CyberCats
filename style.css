@@ -2,19 +2,21 @@ body{
     margin:0px;}
 
 #fenster {
-    width: 1080px;
-    margin-left: auto; 
-    margin-right: auto; 
-    position: static;
-    
+    width:990px;
+    margin:0px auto;
 }
 
 #menuleiste_oben{
-    text-align: center;
     background-color: #020245; 
-    height: 60px}
+    height: 60px;
+    width: auto;
+}
 
-#todo_liste {}
+#todo_liste {
+    width: 340px;
+    background-color: "#ffc2e1";
+    
+}
 
 #rechte_seite{
     width: 310px;
