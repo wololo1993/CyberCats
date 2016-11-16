@@ -1,15 +1,22 @@
 body{
-    margin:0px;}
+    margin:0px;
+    width: auto;
+    height: 830;
+}
 
 #fenster {
     width:990px;
+    height: 700;
     margin:0px auto;
+    position: relative;
+    top: -100
 }
 
 #menuleiste_oben{
     background-color: #020245; 
     height: 60px;
     width: auto;
+    position: relative;
 }
 
 #todo_liste {
@@ -39,7 +46,9 @@ body{
 #menuleiste_unten{
     background-color: #020245; 
     height: 50px; 
-    margin: auto;
+    position: relative;
+    top: 720px;
+    margin: 0px;
 }
 
 #todo_liste{
