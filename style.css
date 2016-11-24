@@ -1,30 +1,77 @@
+#logo{
+    position: relative;
+    top: 12px;
+    margin: auto;    
+    width: 173px;
+    height: 42px;
+}
+
+#button1{
+    position: relative;
+    top: -30px;
+    width: 40px;
+    height: 40px;
+}
+
+#button2{
+    position: relative;
+    top: -70px;
+    width: 40px;
+    height: 40px;
+    left: 50px;
+}
+
+#button3{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    top: -110px;
+    left: 100px;
+}
+
+#button4{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    top: -150px;
+    left: 950px;
+}
+
+#button5{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    top: -190px;
+    left: 900px;
+}
 body{
     margin:0px;
     width: auto;
-    height: 830;
+    height: 100%;
 }
 
 #fenster {
-    width:990px;
-    height: 700;
-    margin:0px auto;
     position: relative;
-    top: -100
+    width:990px;
+    margin: auto;
+    height: 800px;
 }
 
 #menuleiste_oben{
     background-color: #020245; 
     height: 60px;
-    width: auto;
-    position: relative;
+    width: 100%;
+    position: absolute;
+    
 }
+
 
 #todo_liste {
     width: 340px;
     height: 590px;
-    background-color: "#ffc2e1";
+    background-color: #ffc2e1;
     position: relative;
-    top:105px;
+    top:-165px;
     left: 340px;
     right: 310px;
     
@@ -37,28 +84,28 @@ body{
 #rechte_seite{
     width: 310px;
     height: 590px;
-    background-color: "#ffc2e1";
+    background-color: #ffc2e1;
     position: relative;
-    top: -485px;
+    top: -735px;
     left: 680px;
 }
 
 #linke_seite{
     width: 340px;
     height: 590px;
-    background-color: "#ffc2e1";
+    background-color: #ffc2e1;
     position: relative;
-    top: -1075;
+    top: -1320px;
     left: 0px;
 }
 
 #menuleiste_unten{
     background-color: #020245; 
     height: 50px; 
-    position: relative;
-    top: 720px;
-    margin: 0px;
-}
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    }
 
 #todo_liste{
     width: 340px;
