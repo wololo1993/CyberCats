@@ -1,31 +1,44 @@
-.navbar{
+.navbar {
     background-color: #020245;
     border: none;
     margin: 0px;
     width: 100%;
 }
 
+.dropdown-menu li a {
+    color: white;
+}
 
+@media only screen and (min-width: 768px) {
 
+    #body1{
+        background-color: #f7bed2;
+    }
 
-@media only screen and (min-width:768px) {
-
-    .navbar{
+    .navbar {
         height: 60px;
     }
 
-    .container-fluid{
+    .container-fluid {
         height: 60px;
     }
 
-    #menu-logo{
+    #menu-logo {
         position: absolute;
         right: 40%;
     }
 
-    .nav-buttons{
+    .nav-buttons {
         padding: 0px 3px 0px 3px;
         margin-top: 12px;
+    }
+
+    .divider {
+        content: '';
+        width: 1px;
+        margin-top: 5px;
+        height: 30px;
+        background-color: #8da6d6;
     }
 
     .dropdown-menu {
@@ -38,230 +51,273 @@
         height: auto;
     }
 
-    .dropdown-menu.left:before{
+    .dropdown-menu.left:before {
         z-index: 3002;
         content: ' ';
         position: absolute;
         width: 0;
         height: 0;
-        left: 15px;
+        left: 7px;
         top: -38px;
         border: 20px solid;
         border-color: transparent transparent white;
         box-shadow: #020245;
     }
 
-
-    .dropdown-menu.right:before{
+    .dropdown-menu.right:before {
         z-index: 3002;
         content: ' ';
         position: absolute;
         width: 0;
         height: 0;
-        left: 30px;
+        left: 205px;
         top: -38px;
         border: 20px solid;
         border-color: transparent transparent white;
         box-shadow: #020245;
     }
 
-    .dropdown-menu li{
+    .dropdown-menu li {
 
         background-color: #79ab2e;
         padding: 0px;
-        margin: 5px;
+        margin: 2px;
     }
 
-    .dropdown-menu li a{
-        font-size: 18px;
+    .dropdown-menu li a {
+        font-size: 13px;
         padding: 5px;
     }
 
-
-    .dropdown-menu li:first-of-type{
+    .dropdown-menu li:first-of-type {
         -webkit-border-top-left-radius: 4px;
         -webkit-border-top-right-radius: 4px;
     }
 
-    .dropdown-menu li:last-of-type{
+    .dropdown-menu li:last-of-type {
         -webkit-border-bottom-left-radius: 4px;
         -webkit-border-bottom-right-radius: 4px;
     }
 
-
-    #dropdown-overview{
+    #dropdown-overview {
         left: 11px;
     }
 
-    #dropdown-plan{
-        left: 75px;
+    #dropdown-plan {
+        left: 55px;
     }
 
-    #dropdown-competences{
-        left: 139px;
+    #dropdown-competences {
+        left: 104px;
     }
 
-    #dropdown-help{
-
+    #dropdown-student{
+        margin-right: 190px;
     }
 
-    #dropdown-logout{
-
+    #dropdown-school{
+        margin-right: 145px;
     }
 
+    #dropdown-class{
+        margin-right: 98px;
+    }
 
-    #fenster{
+    #dropdown-help {
+        right: 45px;
+    }
+
+    #dropdown-logout {
+    }
+
+    #fenster {
         background-color: #f7bed2;
         width: 100%;
         position: absolute;
         top: 60px;
-        bottom: 60px;
+        bottom: 50px;
     }
 
-    navbar-fixed-bottom{
-        height: 60px;
-        width: 100px;
+    .navbar-fixed-bottom {
+        height: 50px;
+        width: 100%;
+    }
+
+    .container-fluid.bottom{
+        height: 50px;
+    }
+
+    #todo_liste{
+        z-index: 20;
+    }
+
+    #rechte_seite{
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 1;
     }
 
 
 }
 
-@media only screen and (max-width:767px) {
 
-    .navbar{
+@media only screen and (max-width: 767px) {
+
+    .navbar {
         height: 100%;
         width: 100%;
     }
 
-    #menu-logo{
-        display: none ;
+    #menu-logo {
+        display: none;
     }
 
-    .container-fluid{
+    .container-fluid {
         padding: 0px;
     }
 
-    .nav-buttons{
+    .nav-buttons {
         margin: 0px;
         padding-left: 20px;
         border: 2px solid white;
     }
 
+    .navbar-fixed-bottom {
+        display: none;
+    }
+
 }
 
-.dropdown-menu left{
+.dropdown-menu left {
     color: white;
 }
 
-#dasBinIch{
+#dasBinIch {
     background-color: #79ab2e
 }
-#dasbinich a:hover{
+
+#dasbinich a:hover {
     background-color: #a1c153
 }
 
-#ichUndDieAnderen{
+#ichUndDieAnderen {
     background-color: #c6d54f
 }
-#ichUndDieAnderen a:hover{
+
+#ichUndDieAnderen a:hover {
     background-color: #dbe283
 }
 
-#dieWeltUmMich{
+#dieWeltUmMich {
     background-color: #94c122
 }
-#dieWeltUmMich a:hover{
+
+#dieWeltUmMich a:hover {
     background-color: #bad151
 }
 
-#ichWerdeSelbstständig{
+#ichWerdeSelbstständig {
     background-color: #44b284
 }
-#ichWerdeSelbstständig a:hover{
+
+#ichWerdeSelbstständig a:hover {
     background-color: #7cc3a3
 }
 
-#sichBewegen{
+#sichBewegen {
     background-color: #ffdd00
 }
-#sichBewegen a:hover{
+
+#sichBewegen a:hover {
     background-color: #ffea64
 }
 
-#lernen{
+#lernen {
     background-color: #ffed98
 }
-#lernen a:hover{
+
+#lernen a:hover {
     background-color: #fff3d8
 }
 
-#arbeiten{
+#arbeiten {
     background-color: #fbb900
 }
-#arbeiten a:hover{
+
+#arbeiten a:hover {
     background-color: #ffcf53
 }
 
-#gestaltenUndErschaffen{
+#gestaltenUndErschaffen {
     background-color: #ef7d25
 }
-#gestaltenUndErschaffen a:hover{
+
+#gestaltenUndErschaffen a:hover {
     background-color: #f5a04c
 }
 
-#sprechen{
+#sprechen {
     background-color: #d60d66
 }
-#sprechen a:hover{
+
+#sprechen a:hover {
     background-color: #e35154
 }
 
-#fremdsprache{
+#fremdsprache {
     background-color: #ea518d
 }
-#fremdsprache a:hover{
+
+#fremdsprache a:hover {
     background-color: #ee7ba9
 }
 
-#lesen{
+#lesen {
     background-color: #f29db7
 }
-#lesen a:hover{
+
+#lesen a:hover {
     background-color: #f7bed2
 }
 
-#schreiben{
+#schreiben {
     background-color: #a62068
 }
-#schreiben a:hover{
+
+#schreiben a:hover {
     background-color: #c9457e
 }
 
-#messen{
+#messen {
     background-color: #008fc8
 }
-#messen a:hover{
+
+#messen a:hover {
     background-color: #4fa8da
 }
 
-#loesungenFinden{
+#loesungenFinden {
     background-color: #62c2d0
 }
-#loesungenFinden a:hover{
+
+#loesungenFinden a:hover {
     background-color: #94d3e5
 }
 
-#zaehlenUndRechnen{
+#zaehlenUndRechnen {
     background-color: #004077
 }
-#zaehlenUndRechnen a:hover{
+
+#zaehlenUndRechnen a:hover {
     background-color: #005daa
 }
 
-#formUndRaumh{
+#formUndRaumh {
     background-color: #3873b9
 }
-#formUndRaum a:hover{
+
+#formUndRaum a:hover {
     background-color: #658bc8
 }
 
