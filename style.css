@@ -1,113 +1,154 @@
-#logo{
-    position: relative;
-    top: 12px;
-    margin: auto;    
-    width: 173px;
-    height: 42px;
-}
-
-#button1{
-    position: relative;
-    top: -30px;
-    width: 40px;
-    height: 40px;
-}
-
-#button2{
-    position: relative;
-    top: -70px;
-    width: 40px;
-    height: 40px;
-    left: 50px;
-}
-
-#button3{
-    position: relative;
-    width: 40px;
-    height: 40px;
-    top: -110px;
-    left: 100px;
-}
-
-#button4{
-    position: relative;
-    width: 40px;
-    height: 40px;
-    top: -150px;
-    left: 950px;
-}
-
-#button5{
-    position: relative;
-    width: 40px;
-    height: 40px;
-    top: -190px;
-    left: 900px;
-}
-body{
-    margin:0px;
-    width: auto;
-    height: 100%;
-}
-
-#fenster {
-    position: relative;
-    width:990px;
-    margin: auto;
-    height: 800px;
-}
-
-#menuleiste_oben{
-    background-color: #020245; 
-    height: 60px;
+.navbar{
+    background-color: #020245;
+    border: none;
+    margin: 0px;
     width: 100%;
-    position: absolute;
-    
 }
 
 
-#todo_liste {
-    width: 340px;
-    height: 590px;
-    background-color: #ffc2e1;
-    position: relative;
-    top:-165px;
-    left: 340px;
-    right: 310px;
-    
-}
 
-#todo_liste{
-    text-align: center;
-}
 
-#rechte_seite{
-    width: 310px;
-    height: 590px;
-    background-color: #ffc2e1;
-    position: relative;
-    top: -735px;
-    left: 680px;
-}
+@media only screen and (min-width:768px) {
 
-#linke_seite{
-    width: 340px;
-    height: 590px;
-    background-color: #ffc2e1;
-    position: relative;
-    top: -1320px;
-    left: 0px;
-}
-
-#menuleiste_unten{
-    background-color: #020245; 
-    height: 50px; 
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
+    .navbar{
+        height: 60px;
     }
 
-#todo_liste{
-    width: 340px;
-    
+    .container-fluid{
+        height: 60px;
+    }
+
+    #menu-logo{
+        position: absolute;
+        right: 40%;
+    }
+
+    .nav-buttons{
+        padding: 0px 3px 0px 3px;
+        margin-top: 12px;
+    }
+
+    .dropdown-menu {
+        border-radius: 5px;
+        border-color: white;
+        background-color: white;
+        top: 70px;
+        padding: 0px;
+        width: 250px;
+        height: auto;
+    }
+
+    .dropdown-menu.left:before{
+        z-index: 3002;
+        content: ' ';
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 15px;
+        top: -38px;
+        border: 20px solid;
+        border-color: transparent transparent white;
+        box-shadow: #020245;
+    }
+
+
+    .dropdown-menu.right:before{
+        z-index: 3002;
+        content: ' ';
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 30px;
+        top: -38px;
+        border: 20px solid;
+        border-color: transparent transparent white;
+        box-shadow: #020245;
+    }
+
+    .dropdown-menu li{
+
+        background-color: #79ab2e;
+        padding: 0px;
+        margin: 5px;
+    }
+
+    .dropdown-menu li a{
+        font-size: 18px;
+        padding: 5px;
+    }
+
+
+    .dropdown-menu li:first-of-type{
+        -webkit-border-top-left-radius: 4px;
+        -webkit-border-top-right-radius: 4px;
+    }
+
+    .dropdown-menu li:last-of-type{
+        -webkit-border-bottom-left-radius: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+    }
+
+
+    #dropdown-overview{
+        left: 11px;
+    }
+
+    #dropdown-plan{
+        left: 75px;
+    }
+
+    #dropdown-competences{
+        left: 139px;
+    }
+
+    #dropdown-help{
+
+    }
+
+    #dropdown-logout{
+
+    }
+
+
+    #fenster{
+        background-color: #f7bed2;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        bottom: 60px;
+    }
+
+    navbar-fixed-bottom{
+        height: 60px;
+        width: 100px;
+    }
+
+
 }
+
+@media only screen and (max-width:767px) {
+
+    .navbar{
+        height: 100%;
+        width: 100%;
+    }
+
+    #menu-logo{
+        display: none ;
+    }
+
+    .container-fluid{
+        padding: 0px;
+    }
+
+    .nav-buttons{
+        margin: 0px;
+        padding-left: 20px;
+        border: 2px solid white;
+    }
+
+}
+
+
+
+

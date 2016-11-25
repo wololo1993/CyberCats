@@ -11,7 +11,6 @@
     <!-- Bootstrap -->
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" media="(max-width: 1080px)" href="stylemobile.css" >
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,77 +21,124 @@
 
 
 </head>
-      
-<body bgcolor="#ffc2e1">
-    
 
-    
-    
-    
-    <div id="menuleiste_oben">
-    </div> 
-    
-    <div id="menuleiste_unten" >
+<body bgcolor="#ffc2e1">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        </button>
+
+        <ul class="nav navbar-nav navbar-left nav-buttons" id="button-overview">
+            <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="menu-image" src="images/chapterOverview-inactive.png">
+                <span class=""></span>
+            </div>
+            <ul class="dropdown-menu left" id="dropdown-overview">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-left nav-buttons" id="button-plan">
+            <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="images/educationalPlan-inactive.png">
+                <span class=""></span>
+            </div>
+            <ul class="dropdown-menu left" id="dropdown-plan">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-left nav-buttons" id="button-competences">
+            <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="images/achievedCompetences-inactive.png">
+                <span class=""></span>
+            </div>
+            <ul class="dropdown-menu left" id="dropdown-competences">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </ul>
+
+        <ul class="nav navbar-nav nav-buttons" id="menu-logo">
+            <img src="images/logo.png">
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right nav-buttons" id="button-help">
+            <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="images/help-inactive.png">
+                <span class=""></span>
+            </div>
+            <ul class="dropdown-menu right" id="dropdown-help">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right nav-buttons" id="button-logout">
+            <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="images/logout-iactive.png">
+                <span class=""></span>
+            </div>
+            <ul class="dropdown-menu right" id="dropdown-logout">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </ul>
+
+
     </div>
-    
-    
-    <div id="fenster">
-        
-        <div id="logo">
-        <img src="images/logo.png">
-        </div>
-        
-        <div id="button1">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="images/chapterOverview-inactive.png">
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>            
-        </div>
-        
-        <div id="button2">
-        <img src="images/educationalPlan-inactive.png">
-        </div>
-        
-        <div id="button3">
-        <img src="images/achievedCompetences-inactive.png"> 
-        </div>
-        
-        <div id="button4">
-        <img src="images/logout-iactive.png">
-        </div>
-        
-        <div id="button5">
-        <img src="images/help-inactive.png">
-        </div>
-        
-        <div id="todo_liste">
-            <img src="images/contentTextBubble.png";>
-            <img src="images/contentTextBubble.png";>
-            <img src="images/contentTextBubble.png";>
-            <img src="images/contentTextBubble.png";>
-            <img src="images/contentTextBubble.png";>
-        </div>
-        
-        <div id=rechte_seite>
-            <img src="images/illustrations/illustrationRight.png">
-        </div>
-        
-        <div id=linke_seite>
-            <img src="images/illustrations/illustrationLeft.png">
-        </div>
-    
+</nav>
+
+<div id="fenster">
+
+
+    <div id=linke_seite class=" col-md-4 col-lg-4 col-lg-4">
+        <img src="images/illustrations/illustrationLeft.png">
     </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <div id="todo_liste" class=" col-md-4 col-lg-4 col-lg-4">
+        <img src="images/contentTextBubble.png" ;>
+        <img src="images/contentTextBubble.png" ;>
+        <img src="images/contentTextBubble.png" ;>
+        <img src="images/contentTextBubble.png" ;>
+        <img src="images/contentTextBubble.png" ;>
+    </div>
+
+    <div id=rechte_seite class=" col-md-4 col-lg-4 col-lg-4">
+        <img src="images/illustrations/illustrationRight.png">
+    </div>
+
+
+</div>
+
+
+<nav class="nav navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p>
+            Blubb
+        </p>
+    </div>
+</nav>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 
 
