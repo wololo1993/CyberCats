@@ -149,6 +149,120 @@
 
 }
 
+.dropdown-menu left{
+    color: white;
+}
 
+#dasBinIch{
+    background-color: #79ab2e
+}
+#dasbinich a:hover{
+    background-color: #a1c153
+}
+
+#ichUndDieAnderen{
+    background-color: #c6d54f
+}
+#ichUndDieAnderen a:hover{
+    background-color: #dbe283
+}
+
+#dieWeltUmMich{
+    background-color: #94c122
+}
+#dieWeltUmMich a:hover{
+    background-color: #bad151
+}
+
+#ichWerdeSelbstständig{
+    background-color: #44b284
+}
+#ichWerdeSelbstständig a:hover{
+    background-color: #7cc3a3
+}
+
+#sichBewegen{
+    background-color: #ffdd00
+}
+#sichBewegen a:hover{
+    background-color: #ffea64
+}
+
+#lernen{
+    background-color: #ffed98
+}
+#lernen a:hover{
+    background-color: #fff3d8
+}
+
+#arbeiten{
+    background-color: #fbb900
+}
+#arbeiten a:hover{
+    background-color: #ffcf53
+}
+
+#gestaltenUndErschaffen{
+    background-color: #ef7d25
+}
+#gestaltenUndErschaffen a:hover{
+    background-color: #f5a04c
+}
+
+#sprechen{
+    background-color: #d60d66
+}
+#sprechen a:hover{
+    background-color: #e35154
+}
+
+#fremdsprache{
+    background-color: #ea518d
+}
+#fremdsprache a:hover{
+    background-color: #ee7ba9
+}
+
+#lesen{
+    background-color: #f29db7
+}
+#lesen a:hover{
+    background-color: #f7bed2
+}
+
+#schreiben{
+    background-color: #a62068
+}
+#schreiben a:hover{
+    background-color: #c9457e
+}
+
+#messen{
+    background-color: #008fc8
+}
+#messen a:hover{
+    background-color: #4fa8da
+}
+
+#loesungenFinden{
+    background-color: #62c2d0
+}
+#loesungenFinden a:hover{
+    background-color: #94d3e5
+}
+
+#zaehlenUndRechnen{
+    background-color: #004077
+}
+#zaehlenUndRechnen a:hover{
+    background-color: #005daa
+}
+
+#formUndRaumh{
+    background-color: #3873b9
+}
+#formUndRaum a:hover{
+    background-color: #658bc8
+}
 
 
