@@ -25,7 +25,8 @@
 
     #menu-logo {
         position: absolute;
-        right: 40%;
+        right: 45%;
+        
     }
 
     .nav-buttons {
@@ -148,14 +149,23 @@
     }
 
     #todo_liste{
+        position: absolute;
         z-index: 20;
+        right: 430px;
+        margin-top: 15px;
     }
 
     #rechte_seite{
         position: absolute;
-        right: 0px;
-        top: 0px;
+        right: 85px;
+        top: 43px;
         z-index: 1;
+    }
+    
+    #linke_seite{
+        position: absolute;
+        left:190px;
+        top: 43px;
     }
 
 
