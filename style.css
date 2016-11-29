@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #020245;
+    background-color: #001a3a5; /*CHECK!NACHT*/
     border: none;
     margin: 0px;
     width: 100%;
@@ -54,7 +54,7 @@
         width: 1px;
         margin-top: 5px;
         height: 30px;
-        background-color: #8da6d6; /*CHECK!Flieder*/
+        background-color: #8da6d6;  /*CHECK!Flieder*/
     }
 
     .dropdown-menu {
@@ -95,7 +95,7 @@
 
     .dropdown-menu li {
 
-        background-color: #001a3a;/*CHECK!Nacht*/
+        background-color: #001a3a;  /*CHECK!Nacht*/
         padding: 0px;
         margin: 2px;
     }
@@ -107,7 +107,7 @@
 
     .dropdown-menu li a:hover {
         color: white;
-        background-color: #4565ad;/*CHECK!Violett*/
+        background-color: #4565ad;  /*CHECK!Violett*/
     }
 
     .dropdown-menu li:first-of-type {
@@ -196,7 +196,7 @@
     }
 
     #fenster {
-        background-color: #f29db7;/*CHECK!Pink*/
+        background-color: #f29db7;  /*CHECK!Pink*/
         width: 100%;
         position: absolute;
         top: 60px;
@@ -284,63 +284,63 @@
 }
 
 .dropdown-menu li.dasBinIch a {
-    background-color: #79ab2e
+    background-color: #79ab2e;
 }
 
 .dropdown-menu li.dasbinich a:hover, .dropdown-menu li.dasbinich a:active {
-    background-color: #a1c153
+    background-color: #a1c153;
 }
 
 .dropdown-menu li.ichUndDieAnderen a {
-    background-color: #c6d54f
+    background-color: #c6d54f;
 }
 
 .dropdown-menu li.ichUndDieAnderen a:hover, .dropdown-menu li.ichUndDieAnderen a:active {
-    background-color: #dbe283
+    background-color: #dbe283;
 }
 
 .dropdown-menu li.dieWeltUmMich a {
-    background-color: #94c122
+    background-color: #94c122;
 }
 
 .dropdown-menu li.dieWeltUmMich a:hover, .dropdown-menu li.dieWeltUmMich a:active {
-    background-color: #bad151
+    background-color: #bad151;
 }
 
 .dropdown-menu li.ichWerdeSelbstständig {
-    background-color: #44b284
+    background-color: #44b284;
 }
 
 .dropdown-menu li.ichWerdeSelbstständig a:hover, .dropdown-menu li.ichWerdeSelbstständig a:active {
-    background-color: #7cc3a3
+    background-color: #7cc3a3;
 }
 
 .dropdown-menu li.sichBewegen {
-    background-color: #ffdd00
+    background-color: #ffdd00;
 }
 
 .dropdown-menu li.sichBewegen a:hover, .dropdown-menu li.sichBewegen a:active {
-    background-color: #ffea64
+    background-color: #ffea64;
 }
 
 .dropdown-menu li.lernen {
-    background-color: #ffed98
+    background-color: #ffed98;
 }
 
 .dropdown-menu li.lernen a:hover, .dropdown-menu li.lernen a:active {
-    background-color: #fff3d8
+    background-color: #fff3d8;
 }
 
 .dropdown-menu li.arbeiten {
-    background-color: #fbb900
+    background-color: #fbb900;
 }
 
 .dropdown-menu li.arbeiten a:hover, .dropdown-menu li.arbeiten a:active {
-    background-color: #ffcf53
+    background-color: #ffcf53;
 }
 
 .dropdown-menu li.gestaltenUndErschaffen {
-    background-color: #ef7d25
+    background-color: #ef7d25;
 }
 
 .dropdown-menu li.gestaltenUndErschaffen a:hover, .dropdown-menu li.gestaltenUndErschaffen a:active {
@@ -348,67 +348,67 @@
 }
 
 .dropdown-menu li.sprechen {
-    background-color: #d60d66
+    background-color: #d60d66;
 }
 
 .dropdown-menu li.sprechen a:hover, .dropdown-menu li.sprechen a:active {
-    background-color: #e35154
+    background-color: #e35154;
 }
 
 .dropdown-menu li.fremdsprache {
-    background-color: #ea518d
+    background-color: #ea518d;
 }
 
 .dropdown-menu li.fremdsprache a:hover, .dropdown-menu li.fremdsprache a:active {
-    background-color: #ee7ba9
+    background-color: #ee7ba9;
 }
 
 .dropdown-menu li.lesen {
-    background-color: #f29db7
+    background-color: #f29db7;
 }
 
 .dropdown-menu li.lesen a:hover, .dropdown-menu li.lesen a:active {
-    background-color: #f7bed2
+    background-color: #f7bed2;
 }
 
 .dropdown-menu li.schreiben {
-    background-color: #a62068
+    background-color: #a62068;
 }
 
 .dropdown-menu li.schreiben a:hover, .dropdown-menu li.schreiben a:active {
-    background-color: #c9457e
+    background-color: #c9457e;
 }
 
 .dropdown-menu li.messen a {
-    background-color: #008fc8
+    background-color: #008fc8;
 }
 
 .dropdown-menu li.messen a:hover, .dropdown-menu li.messen a:active {
-    background-color: #4fa8da
+    background-color: #4fa8da;
 }
 
 .dropdown-menu li.loesungenFinden a {
-    background-color: #62c2d0
+    background-color: #62c2d0;
 }
 
 .dropdown-menu li.loesungenFinden a:hover, .dropdown-menu li.loesungenFinden a:active {
-    background-color: #94d3e5
+    background-color: #94d3e5;
 }
 
 .dropdown-menu li.zaehlenUndRechnen a {
-    background-color: #004077
+    background-color: #004077;
 }
 
 .dropdown-menu li.zaehlenUndRechnen a:hover, .dropdown-menu li.zaehlenUndRechnen a:active {
-    background-color: #005daa
+    background-color: #005daa;
 }
 
 .dropdown-menu li.formUndRaumh a {
-    background-color: #3873b9
+    background-color: #3873b9;
 }
 
 .dropdown-menu li.formUndRaum a:hover, .dropdown-menu li.formUndRaum a:active {
-    background-color: #658bc8
+    background-color: #658bc8;
 }
 
 
