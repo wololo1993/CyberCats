@@ -16,7 +16,7 @@
 @media only screen and (min-width: 768px) {
 
     #body1 {
-        background-color: #f7bed2;
+        background-color: #f29db7; /*CHECK!Pink*/
     }
 
     .navbar {
@@ -31,6 +31,18 @@
         position: absolute;
         right: 45%;
     }
+    
+    #logo_unten{
+        position: absolute;
+        right: 45%;
+        top: 5px;
+    }
+    
+    #text_unten{
+        position: absolute;
+        right: 30%;
+        top: 3px;
+    }
 
     .nav-buttons {
         padding: 0px 3px 0px 3px;
@@ -42,7 +54,7 @@
         width: 1px;
         margin-top: 5px;
         height: 30px;
-        background-color: #8da6d6;
+        background-color: #8da6d6; /*CHECK!Flieder*/
     }
 
     .dropdown-menu {
@@ -83,7 +95,7 @@
 
     .dropdown-menu li {
 
-        background-color: #001a3a;
+        background-color: #001a3a;/*CHECK!Nacht*/
         padding: 0px;
         margin: 2px;
     }
@@ -95,7 +107,7 @@
 
     .dropdown-menu li a:hover {
         color: white;
-        background-color: #4565ad;
+        background-color: #4565ad;/*CHECK!Violett*/
     }
 
     .dropdown-menu li:first-of-type {
@@ -110,30 +122,37 @@
 
     #dropdown-overview {
         left: 11px;
+        width: 250px;
     }
 
     #dropdown-plan {
         left: 55px;
+        width: 250px;
     }
 
     #dropdown-competences {
         left: 104px;
+        width: 250px;
     }
 
     #dropdown-student {
         margin-right: 190px;
+        width: 250px;
     }
 
     #dropdown-school {
         margin-right: 145px;
+        width: 250px;
     }
 
     #dropdown-class {
         margin-right: 98px;
+        width: 250px;
     }
 
     #dropdown-help {
         right: 45px;
+        width: 250px;
     }
 
     #dropdown-logout {
@@ -141,14 +160,14 @@
 
     .big-first {
         min-height: 125px;
-        background-color: #001a3a;
+        background-color: #001a3a; /*CHECK!Nacht*/
     }
 
     .big-first div div p {
         margin-top: 17px;
         margin-bottom: 0px;
         height: 74px;
-        color: #4565ad;
+        color: #4565ad; /*CHECK!Violett*/
         font-family: RobotoThin;
         font-size: 13px;
     }
@@ -177,7 +196,7 @@
     }
 
     #fenster {
-        background-color: #f7bed2;
+        background-color: #f29db7;/*CHECK!Pink*/
         width: 100%;
         position: absolute;
         top: 60px;
@@ -227,7 +246,7 @@
 
     .navbar-fixed-bottom div div p {
 
-        color: red;
+        color: #4565ad;
 
     }
 
