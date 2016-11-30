@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #001a3a5; /*CHECK!NACHT*/
+    background-color: #001a3a; /*CHECK!NACHT*/
     border: none;
     margin: 0px;
     width: 100%;
@@ -14,6 +14,11 @@
 }
 
 @media only screen and (min-width: 768px) {
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+        width: 250px;
+    }
 
     #body1 {
         background-color: #f7bed2; /*CHECK!Pink*/
@@ -65,7 +70,7 @@
         content: url("images/educationalPlan-active.png")
     }
     
-    .achiCoButton:achtive, .open .achiCoButton{
+    .achiCoButton:active, .open .achiCoButton{
         content: url("images/achievedCompetences-active.png")
     }
     
@@ -82,7 +87,7 @@
         border-radius: 5px;
         border-color: white;
         background-color: white;
-        top: 70px;
+        top: 55px;
         padding: 0px;
         width: 250px;
         height: auto;
@@ -141,40 +146,6 @@
         -webkit-border-bottom-right-radius: 4px;
     }
 
-    #dropdown-overview {
-        left: 11px;
-        width: 250px;
-    }
-
-    #dropdown-plan {
-        left: 55px;
-        width: 250px;
-    }
-
-    #dropdown-competences {
-        left: 104px;
-        width: 250px;
-    }
-
-    #dropdown-student {
-        margin-right: 190px;
-        width: 250px;
-    }
-
-    #dropdown-school {
-        margin-right: 145px;
-        width: 250px;
-    }
-
-    #dropdown-class {
-        margin-right: 98px;
-        width: 250px;
-    }
-
-    #dropdown-help {
-        right: 45px;
-        width: 250px;
-    }
 
     .big-first {
         min-height: 125px;
