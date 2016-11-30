@@ -15,11 +15,6 @@
 
 @media only screen and (min-width: 768px) {
 
-    .dropdown:hover .dropdown-content {
-        display: block;
-        width: 250px;
-    }
-
     #body1 {
         background-color: #f7bed2; /*CHECK!Pink*/
     }
@@ -138,7 +133,7 @@
     }
 
     .dropdown-menu li a {
-        font-size: 13t;
+        font-size: 13px;
         font-weight: bold;
         padding: 5px;
     }
