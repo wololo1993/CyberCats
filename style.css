@@ -62,26 +62,37 @@
         background-color: #8da6d6;  /*CHECK!Flieder*/
     }
 
-    .menu-image:active,.open .menu-image{
-    content: url("images/chapterOverview-active.png") 
+    .menu-image:hover, :active, .open .menu-image{
+    content: url("images/chapterOverview-active.png");
     }
     
-    .eduPlanButton:active,.open .eduPlanButton{
-        content: url("images/educationalPlan-active.png")
+    .eduPlanButton:hover, :active, .open .eduPlanButton{
+        content: url("images/educationalPlan-active.png");
     }
     
-    .achiCoButton:active, .open .achiCoButton{
-        content: url("images/achievedCompetences-active.png")
+    .achiCoButton:hover, :active, .open .achiCoButton{
+        content: url("images/achievedCompetences-active.png");
     }
     
-    .logoutButton:active, .open.logoutButton{
-        content: url("images/logout-active.png")
+     .studentButton:hover, :active, .open .studentButton{
+        content: url(images/student/superhero-gandalf-active.png);
     }
     
-    .helpButton:active, .open.helpButton{
-        content: url("images/help-active.png")
+    .schoolButton:hover, :active, .open .schoolButton{
+        content: url(images/school/school-red-active.png);
     }
     
+    .classesButton:hover, :active, .open .classesButton{
+        content: url(images/studyGroup/studyGroup_2b_active.png);
+    }
+
+     .helpButton:hover, :active, .open .helpButton{
+        content: url("images/help-active.png");
+    }
+
+    .logoutButton:hover, :active, .open .logoutButton{
+        content: url(images/logout-active.png);
+    }
     
     .dropdown-menu {
         border-radius: 5px;
@@ -127,7 +138,8 @@
     }
 
     .dropdown-menu li a {
-        font-size: 13px;
+        font-size: 13t;
+        font-weight: bold;
         padding: 5px;
     }
 
@@ -179,6 +191,7 @@
         margin-bottom: 0px;
         margin-right: 5px;
         padding-top:  85px;
+        font-weight: bolder;
     }
 
     .big-first div p {
