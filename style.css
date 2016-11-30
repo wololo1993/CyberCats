@@ -16,7 +16,7 @@
 @media only screen and (min-width: 768px) {
 
     #body1 {
-        background-color: #f29db7; /*CHECK!Pink*/
+        background-color: #f7bed2; /*CHECK!Pink*/
     }
 
     .navbar {
@@ -186,8 +186,9 @@
         margin-bottom: 0px;
         height: 74px;
         color: #4565ad; /*CHECK!Violett*/
-        font-family: RobotoThin;
+        font-family: RobotoThin, sans-serif;
         font-size: 13px;
+        font-weight: 900;
     }
 
     .big-first div img {
@@ -206,6 +207,7 @@
         text-align: right;
         margin-bottom: 0px;
         margin-right: 5px;
+        padding-top:  85px;
     }
 
     .big-first div p {
@@ -214,7 +216,7 @@
     }
 
     #fenster {
-        background-color: #f29db7;  /*CHECK!Pink*/
+        background-color: #f7bed2;  /*CHECK!Pink*/
         width: 100%;
         position: absolute;
         top: 60px;
@@ -263,9 +265,7 @@
     }
 
     .navbar-fixed-bottom div div p {
-
         color: #4565ad;
-
     }
 
 }
@@ -299,6 +299,15 @@
 
 .dropdown-menu left {
     color: white;
+}
+
+
+.dropdown-menu li.alleKompetenzen a {
+    background-color: #001a3a; /*CHECK!Nacht*/
+}
+
+.dropdown-menu li.alleKompetenzen a:hover, .dropdown-menu li.alleKompetenzen a:active {
+    background-color: #607389;
 }
 
 .dropdown-menu li.dasBinIch a {
@@ -421,12 +430,10 @@
     background-color: #005daa;
 }
 
-.dropdown-menu li.formUndRaumh a {
+.dropdown-menu li.formUndRaum a {
     background-color: #3873b9;
 }
 
 .dropdown-menu li.formUndRaum a:hover, .dropdown-menu li.formUndRaum a:active {
     background-color: #658bc8;
 }
-
-
