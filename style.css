@@ -57,6 +57,27 @@
         background-color: #8da6d6;  /*CHECK!Flieder*/
     }
 
+    .menu-image:active,.open .menu-image{
+    content: url("images/chapterOverview-active.png") 
+    }
+    
+    .eduPlanButton:active,.open .eduPlanButton{
+        content: url("images/educationalPlan-active.png")
+    }
+    
+    .achiCoButton:achtive, .open .achiCoButton{
+        content: url("images/achievedCompetences-active.png")
+    }
+    
+    .logoutButton:active, .open.logoutButton{
+        content: url("images/logout-active.png")
+    }
+    
+    .helpButton:active, .open.helpButton{
+        content: url("images/help-active.png")
+    }
+    
+    
     .dropdown-menu {
         border-radius: 5px;
         border-color: white;
@@ -153,9 +174,6 @@
     #dropdown-help {
         right: 45px;
         width: 250px;
-    }
-
-    #dropdown-logout {
     }
 
     .big-first {
