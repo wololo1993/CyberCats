@@ -1,0 +1,154 @@
+.navbar{
+    background-color: #020245;
+    border: none;
+    margin: 0px;
+    width: 100%;
+}
+
+
+
+
+@media only screen and (min-width:768px) {
+
+    .navbar{
+        height: 60px;
+    }
+
+    .container-fluid{
+        height: 60px;
+    }
+
+    #menu-logo{
+        position: absolute;
+        right: 40%;
+    }
+
+    .nav-buttons{
+        padding: 0px 3px 0px 3px;
+        margin-top: 12px;
+    }
+
+    .dropdown-menu {
+        border-radius: 5px;
+        border-color: white;
+        background-color: white;
+        top: 70px;
+        padding: 0px;
+        width: 250px;
+        height: auto;
+    }
+
+    .dropdown-menu.left:before{
+        z-index: 3002;
+        content: ' ';
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 15px;
+        top: -38px;
+        border: 20px solid;
+        border-color: transparent transparent white;
+        box-shadow: #020245;
+    }
+
+
+    .dropdown-menu.right:before{
+        z-index: 3002;
+        content: ' ';
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 30px;
+        top: -38px;
+        border: 20px solid;
+        border-color: transparent transparent white;
+        box-shadow: #020245;
+    }
+
+    .dropdown-menu li{
+
+        background-color: #79ab2e;
+        padding: 0px;
+        margin: 5px;
+    }
+
+    .dropdown-menu li a{
+        font-size: 18px;
+        padding: 5px;
+    }
+
+
+    .dropdown-menu li:first-of-type{
+        -webkit-border-top-left-radius: 4px;
+        -webkit-border-top-right-radius: 4px;
+    }
+
+    .dropdown-menu li:last-of-type{
+        -webkit-border-bottom-left-radius: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+    }
+
+
+    #dropdown-overview{
+        left: 11px;
+    }
+
+    #dropdown-plan{
+        left: 75px;
+    }
+
+    #dropdown-competences{
+        left: 139px;
+    }
+
+    #dropdown-help{
+
+    }
+
+    #dropdown-logout{
+
+    }
+
+
+    #fenster{
+        background-color: #f7bed2;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        bottom: 60px;
+    }
+
+    navbar-static-bottom{
+        height: 60px;
+        width: 100px;
+    }
+
+
+}
+
+@media only screen and (max-width:767px) {
+
+    .navbar{
+        height: 100%;
+        width: 100%;
+    }
+
+    #menu-logo{
+        display: none ;
+    }
+
+    .container-fluid{
+        padding: 0px;
+    }
+
+    .nav-buttons{
+        margin: 0px;
+        padding-left: 20px;
+        border: 2px solid white;
+    }
+
+}
+
+
+
+
