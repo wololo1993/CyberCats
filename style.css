@@ -191,7 +191,6 @@
 
     .big-first div p {
         color: white;
-
     }
 
     #fenster {
@@ -415,4 +414,18 @@
 
 .dropdown-menu li.formUndRaum a:hover, .dropdown-menu li.formUndRaum a:active {
     background-color: #658bc8;
+}
+
+
+#scrollUp{
+  position: absolute;;
+      right: 30px;
+      top:90px;
+      height: 50px;
+}
+#scrollDown{
+  position: absolute;
+      right: 30px;
+      top:700px;
+      height: 50px;
 }
