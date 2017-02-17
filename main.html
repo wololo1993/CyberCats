@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,8 @@
     <!-- Bootstrap -->
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" type="text/css" rel="stylesheet">
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="js/maincontroller.js"></script>
 
 </head>
 
@@ -27,7 +29,7 @@
                 <img class="menu-image" src="images/chapterOverview-inactive.png">
                 <span class=""></span>
             </div>
-            <ul class="dropdown-menu dropdown-content left" id="dropdown-overview">
+            <ul class="dropdown-menu scrollable-menu dropdown-content left" id="dropdown-overview">
                 <li>
                     <div class="big-first">
                         <div class="big-first-top">
@@ -200,7 +202,7 @@
 
         <ul class="nav navbar-nav navbar-right dropdown nav-buttons" id="button-class">
             <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="classesButton" src="images/studyGroup/studyGroup_2b_inactive.png">
+                <img id="studyGroupImgInactive" class="classesButton" src="">
                 <span class=""></span>
             </div>
             <ul class="dropdown-menu right dropdown-content" id="dropdown-class">
@@ -208,14 +210,14 @@
                     <div class="big-first">
                         <div class="big-first-top">
                             <div class="inline">
-                                <img src="images/studyGroup/studyGroup_2b_active-big.png">
+                                <img id = "studyGroupImgBig" src="">
                             </div>
-                            <div class="inline">
-                                <p>KLASSE<br>
-                                    2B</p>
+                            <div id="studyGroupName" class="inline">
+                              <p>KLASSE<br>
+                                2B</p>
                             </div>
                         </div>
-                        <div class="big-first-bottom">
+                        <div id="formteacher" class="big-first-bottom">
                             <p>KLASSENLEHRER*IN <br>
                                 Valerie Wildenmann
                             </p>
@@ -228,7 +230,7 @@
 
         <ul class="nav navbar-nav dropdown navbar-right nav-buttons" id="button-school">
             <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="schoolButton" src="images/school/school-inactive.png">
+                <img id="schoolImgInactive" class="schoolButton" src="images/school/school-inactive.png">
                 <span class=""></span>
             </div>
             <ul class="dropdown-menu right dropdown-content" id="dropdown-school">
@@ -236,15 +238,13 @@
                     <div class="big-first">
                         <div class="big-first-top">
                             <div class="inline">
-                                <img src="images/school/school-red-big-active.png">
+                                <img id = "schoolImgBig" src="images/school/school-red-big-active.png">
                             </div>
-                            <div class="inline">
-                                <p>ASTRID-<br>
-                                    LINDGREN-<br>
-                                    SCHULE</p>
+                            <div id = "schoolName" class="inline">
+                              Missing
                             </div>
                         </div>
-                        <div class="big-first-bottom">
+                        <div id = "schoolAdress" class="big-first-bottom">
                             <p>
                                 STRASSE NUMMER<br>
                                 PLZ ORT<br>
@@ -261,7 +261,7 @@
 
         <ul class="nav navbar-nav dropdown navbar-right nav-buttons" id="button-student">
             <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="studentButton" src="images/student/superhero-gandalf-inactive.png">
+                <img id="avatarImgInactive" class="studentButton" src="">
                 <span class=""></span>
             </div>
             <ul class="dropdown-menu right dropdown-content" id="dropdown-student">
@@ -269,10 +269,10 @@
                     <div class="big-first">
                         <div class="big-first-top">
                             <div class="inline">
-                                <img src="images/student/superhero-gandalf-big-active.png">
+                                <img id="avatarImgBig" src="">
                             </div>
                             <div class="inline">
-                                <p>TIM<br>
+                                <p id="studentName">TIM<br>
                                     WINTER</p>
                             </div>
                         </div>

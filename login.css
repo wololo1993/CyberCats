@@ -24,15 +24,15 @@ body {
     float: inherit;
 }
 
-#benutzername,{
+#benutzername {
     margin: 5px auto;
-    font-family: Roboto Thin;
-    font-size: 13 pt;
+  font-family: Roboto Thin;
+    font-size: 13pt;
     color: #001a3a; /*CHECK!NACHT*/
 }
 
 #benutzername::-webkit-input-placeholder, #passwort::-webkit-input-placeholder {
-    font-size: 13 pt;
+    font-size: 13pt;
     color: #d3ddf2; /*CHECK!GRAU*/
     text-transform:uppercase;
 }
@@ -46,7 +46,7 @@ body {
     color: #fff; /*weiß*/
     align-self: center !important;
     font-family: Brandon Grotesque Black;
-    font-size: 13 pt;
+    font-size: 13pt;
 }
 
 #footerLogo{
@@ -55,7 +55,7 @@ body {
 
 .ersterFooterText{
     font-family: Roboto Thin;
-    font-size: 9 pt;
+    font-size: 9pt;
     color: #001a3a; /*CHECK!NACHT*/
 }
 
@@ -63,7 +63,7 @@ body {
     padding: 5px;
     color:#8da6d6; /*CHECK!FLIEDER*/
     font-family: Roboto Thin;
-    font-size: 9 pt;
+    font-size: 9pt;
 }
 
 .zweiterFooterText a{

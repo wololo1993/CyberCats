@@ -6,26 +6,30 @@
         <link href="bootstrap.css" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width">
         <link href="login.css" rel="stylesheet" type="text/css">
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="js/logincontroller.js"></script>
+
 
     </head>
 
     <body id="loginBody">
 
+
         <div class="container">
             <div class="row">
                 <div>
                     <img id="headerBild" src="images/login/header.png" alt="Login Header">
-                    <form id="loginFelder" class="col-sm-6 col-md-4 col-md-offset-4">
+                    <div id="loginFelder" class="col-sm-6 col-md-4 col-md-offset-4">
                         <div id="input-group" class="container col-lg-12">
                             <div data-brackets-id='3488' id="inputFelder">
                                 <input id="benutzername" type="text" class="form-control loginData" placeholder="BENUTZERNAME" required autofocus>
 
                                 <input id="passwort" type="password" class="form-control loginData" placeholder="PASSWORT" required min=7>
+                                                                            <button id="loginButton" type="submit" class="btn btn-lg btn-success btn-block" type="submit" onclick="loginButton()">LOS!</button>
 
-                                <button id="loginButton" type="submit" class="btn btn-lg btn-success btn-block" type="submit" onclick="loginButton()">LOS!</button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
 
                 <footer class="footer">
