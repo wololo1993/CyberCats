@@ -4,9 +4,15 @@ var tokenJSON = localStorage.getItem('token');
 var token = JSON.parse(tokenJSON);
 var student = getStudent();
 var avatars = getAvatars();
+var chapters = getChapters();
+var chapterillustrations = getChapterillustrations();
+var studentcompetenceNachChapter = [[]];
+var studentcompetence = getStudentcompetence();
+
 
 $(document).ready(function () {
   load();
+
 });
 
 function load() {
@@ -80,6 +86,81 @@ function getAvatars() {
     avatars = response;
   });
 }
+
+function getChapters() {
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://46.101.204.215:1337/api/V1/chapter",
+    "method": "GET",
+    "headers": {
+      "authorization": token.token,
+    }
+  }
+
+  $.ajax(settings).done(function (response) {
+    chapters = response;
+  });
+}
+
+function getChapterillustrations() {
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://46.101.204.215:1337/api/V1/chapterillustrations/",
+    "method": "GET",
+    "headers": {
+      "authorization": token.token,
+    }
+  }
+
+  $.ajax(settings).done(function (response) {
+    chapterillustrations = response;
+  });
+}
+
+function getStudentcompetence() {
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://46.101.204.215:1337/api/V1/studentcompetence",
+    "method": "GET",
+    "headers": {
+      "authorization": token.token,
+    }
+  }
+
+  $.ajax(settings).done(function (response) {
+    studentcompetence = response;
+
+
+    response.sort(function (a , b) {
+      return (a.fromDate - b.fromDate);
+
+    })
+
+    /*
+    studentcompetenceNachChapter = []
+
+
+    console.log(studentcompetence[0]);
+
+    for(var i = 0; i < 16; i++){
+      studentcompetenceNachChapter[i] = [];
+    }
+
+      for (var i = 0; i < response.length; i++) {
+        (studentcompetenceNachChapter[(studentcompetence[i].chapterId)]).push(studentcompetence[i]);
+      }
+      for (var i = 0; i < studentcompetenceNachChapter.length;i++){
+        (studentcompetenceNachChapter[i]).sort(function (a, b) {
+          return a.number - b.number;
+        })
+      }*/
+  });
+}
+
+
 /**
  * replaces "-" in schoolName with "-<br>"
  *
@@ -88,6 +169,101 @@ function getAvatars() {
  */
 function getSchoolname(schoolName) {
   return schoolName.replace("-", "-<br>")
+}
+
+function changeOnChapter(chapterId,achieved){
+  document.getElementById("body1").style.backgroundColor = chapters[chapterId-1].weakcolor;
+  if(chapterId < 10){
+    document.getElementById("flagImg").src = "images/chapter0"+chapterId+"/littleChapterFlag.png";
+  } else {
+    document.getElementById("flagImg").src = "images/chapter"+chapterId+"/littleChapterFlag.png";
+  }
+
+
+  if(chapterId == 0){
+
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://46.101.204.215:1337/api/V1/studentcompetence?checked=true",
+      "method": "GET",
+      "headers": {
+        "authorization": token.token,
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      response.sort(function (a, b) {
+        return (a.fromDate - b.fromDate);
+      })
+
+      for (var i = 0; i < response.length; i++) {
+        $("#todo_liste").append("<div class='bubbles' background-image:'images/contentTextBubble.png'>" +
+          response[i].studentText + +"</div>");
+      }
+    })
+  } else {
+    var achivedYN = (achieved)? "true" : "false";
+
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://46.101.204.215:1337/api/V1/studentcompetence?checked="+achivedYN+"&chapterId="+chapterId,
+      "method": "GET",
+      "headers": {
+        "authorization": token.token,
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      response.sort(function (a, b) {
+        return (a.fromDate - b.fromDate);
+      })
+
+      for (var i = 0; i < response.length; i++) {
+        $("#todo_liste").append("<div class='bubbles' background-image:'images/contentTextBubble.png'>" +
+          response[i].studentText + +"</div>");
+      }
+    })
+  }
+
+
+
+
+
+
+
+
+
+
+
+  /*
+
+  document.getElementById("todo_liste").innerHTML = "";
+
+
+  for(var i = 0; i < studentcompetence.length; i++){
+    $( "#todo_liste" ).append( "<div class='bubbles' background-image:'images/contentTextBubble.png'>" +
+      studentcompetence[i].studentText+
+    +"</div>");
+  }*/
+
+}
+
+function dynamischeBilderDropdown(){
+  /*
+  var sheet = document.createElement('style')
+  sheet.innerHTML =
+    ".open .dropdown-toggle-profil {content:url(\""
+    +avatars[(student.avatarId)].avatarUrl +"\")}"
+    +".open .dropdown-toggle-school {content:url(\""
+    +student.school.imageUrl+"\")}"
+    +".open .dropdown-toggle-studyGroup {content:url(\""
+    +student.studyGroups.imageUrl +"\")}";
+
+
+  document.body.appendChild(sheet);
+ */
 }
 
 

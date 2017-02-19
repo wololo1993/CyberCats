@@ -15,10 +15,9 @@
 
 @media only screen and (min-width: 768px) {
 
-    #body1 {
+   /* #body1 {
         background-color: #f7bed2; /*CHECK!Pink*/
-    }
-
+    /*}*/
     .navbar {
         height: 60px;
     }
@@ -31,13 +30,13 @@
         position: absolute;
         right: 45%;
     }
-    
+
     #logo_unten{
         position: absolute;
         right: 45%;
         top: 5px;
     }
-    
+
     #text_unten{
         position: absolute;
         right: 30%;
@@ -57,38 +56,27 @@
         background-color: #8da6d6;  /*CHECK!Flieder*/
     }
 
-    .menu-image:hover, :active, .open .menu-image{
+    .menu-image:active, .open .menu-image{
     content: url("images/chapterOverview-active.png");
     }
-    
-    .eduPlanButton:hover, :active, .open .eduPlanButton{
+
+    .eduPlanButton:active, .open .eduPlanButton{
         content: url("images/educationalPlan-active.png");
     }
-    
-    .achiCoButton:hover, :active, .open .achiCoButton{
+
+    .achiCoButton:active, .open .achiCoButton{
         content: url("images/achievedCompetences-active.png");
     }
-    
-     .studentButton:hover, :active, .open .studentButton{
-        content: url(images/student/superhero-gandalf-active.png);
-    }
-    
-    .schoolButton:hover, :active, .open .schoolButton{
-        content: url(images/school/school-red-active.png);
-    }
-    
-    .classesButton:hover, :active, .open .classesButton{
-        content: url(images/studyGroup/studyGroup_2b_active.png);
-    }
 
-     .helpButton:hover, :active, .open .helpButton{
+    .helpButton:active, .open .helpButton{
         content: url("images/help-active.png");
     }
 
-    .logoutButton:hover, :active, .open .logoutButton{
-        content: url(images/logout-active.png);
+    .logoutButton:active, .open .logoutButton{
+        content: url("images/logout-active.png");
     }
-    
+
+
     .dropdown-menu {
         border-radius: 5px;
         border-color: white;
@@ -194,9 +182,8 @@
     }
 
     #fenster {
-        background-color: #f7bed2;  /*CHECK!Pink*/
         width: 100%;
-        position: absolute;
+        position: fixed;
         top: 60px;
         bottom: 50px;
     }
