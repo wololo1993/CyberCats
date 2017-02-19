@@ -444,3 +444,42 @@
   top: 700px;
   height: 50px;
 }
+
+#loginButton{
+    margin: 20px auto;
+    width: 150px !important;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    background-color: #001a3a; /*CHECK!NACHT*/
+    color: #fff; /*weiß*/
+    align-self: center !important;
+    font-family: Brandon Grotesque Black;
+    font-size: 13pt;
+}
+
+#abbrechenButton{
+    margin: 20px auto;
+    width: 150px !important;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    background-color: #001a3a; /*CHECK!NACHT*/
+    color: #fff; /*weiß*/
+    align-self: center !important;
+    font-family: Brandon Grotesque Black;
+    font-size: 13pt;
+}
+
+#PLoeschenButton{
+    margin: 20px auto;
+    width: 150px !important;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    background-color: #001a3a; /*CHECK!NACHT*/
+    color: #fff; /*weiß*/
+    align-self: center !important;
+    font-family: Brandon Grotesque Black;
+    font-size: 13pt;
+}
+.avatarbilder{
+    
+}

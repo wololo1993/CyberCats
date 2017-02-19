@@ -275,7 +275,7 @@ function changeContent(content){
 
   if(content == "comp"){ $("#fenster").load("parts.html #competenzContent")}
   else if(content == "deleteProfile"){}
-  else if(content == "avatarChange"){ $("#fenster").load("Avatar.html #avatarContent")}
+  else if(content == "avatarChange"){ $("#fenster").load("parts.html #avatarContent")}
   else if(content == "delete"){ }
 }
 
