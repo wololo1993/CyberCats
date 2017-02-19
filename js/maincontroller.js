@@ -1,21 +1,21 @@
 //get token from localStorage
 var tokenJSON = localStorage.getItem('token');
 var token = JSON.parse(tokenJSON);
-var student = getStudent();
-var avatars = getAvatars();
-var chapters = getChapters();
+var student =   getStudent();
+var avatars =   getAvatars();
+var chapters =   getChapters();
 var chapterillustrations = getChapterillustrations();
-var studentcompetenceNachChapter = [[]];
-var studentcompetence = getStudentcompetence();
-
 
 $(document).ready(function () {
+  setTimeout(function(){init()}, 200);
+});
+
+function init (){
   load();
   foerderPlaneInit();
   changeOnChapter(0,true);
   dynamischeBilderDropdown();
-
-});
+}
 
 function load() {
 
@@ -121,47 +121,6 @@ function getChapterillustrations() {
   });
 }
 
-function getStudentcompetence() {
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://46.101.204.215:1337/api/V1/studentcompetence",
-    "method": "GET",
-    "headers": {
-      "authorization": token.token,
-    }
-  }
-
-  $.ajax(settings).done(function (response) {
-    studentcompetence = response;
-
-
-    response.sort(function (a, b) {
-      return (a.fromDate - b.fromDate);
-
-    })
-
-    /*
-     studentcompetenceNachChapter = []
-
-
-     console.log(studentcompetence[0]);
-
-     for(var i = 0; i < 16; i++){
-     studentcompetenceNachChapter[i] = [];
-     }
-
-     for (var i = 0; i < response.length; i++) {
-     (studentcompetenceNachChapter[(studentcompetence[i].chapterId)]).push(studentcompetence[i]);
-     }
-     for (var i = 0; i < studentcompetenceNachChapter.length;i++){
-     (studentcompetenceNachChapter[i]).sort(function (a, b) {
-     return a.number - b.number;
-     })
-     }*/
-  });
-}
-
 
 /**
  * replaces "-" in schoolName with "-<br>"
@@ -174,6 +133,14 @@ function getSchoolname(schoolName) {
 }
 
 function changeOnChapter(chapterId, achieved) {
+  changeContent("comp");
+  setTimeout(function(){changeOnChapterDelayed(chapterId, achieved)}, 200);
+}
+
+function changeOnChapterDelayed(chapterId, achieved) {
+
+  changeContent("comp");
+
   if (chapterId != 0) {
     document.getElementById("body1").style.backgroundColor = chapters[chapterId - 1].weakcolor;
     if (chapterId < 10) {
@@ -181,6 +148,10 @@ function changeOnChapter(chapterId, achieved) {
     } else {
       document.getElementById("flagImg").src = "images/chapter" + chapterId + "/littleChapterFlag.png";
     }
+  }
+
+  if(document.getElementById("todo_liste") == null){
+    changeOnChapter(chapterId,achieved);
   }
   document.getElementById("todo_liste").innerHTML = "";
 
@@ -263,7 +234,7 @@ function foerderPlaneInit(){
   //document.getElementById("#dropdown-plan").innerHTML="";
 
 
-  $('#dropdown-plan').load('parts.html #foerderplanTemplate');
+  //$('#dropdown-plan').load('#foerderplanTemplate');
 
   var settings = {
     "async": true,
@@ -290,7 +261,6 @@ function foerderPlaneInit(){
   });
 
 
-
 }
 
 function dynamischeBilderDropdown() {
@@ -306,6 +276,14 @@ function dynamischeBilderDropdown() {
 
 
    document.body.appendChild(sheet);*/
+}
+
+function changeContent(content){
+
+  if(content == "comp"){ $("#fenster").load("parts.html #competenzContent")}
+  else if(content == "deleteProfile"){}
+  else if(content == "avatarChange"){ $("#fenster").load("Avatar.html #avatarContent")}
+  else if(content == "delete"){ }
 }
 
 
