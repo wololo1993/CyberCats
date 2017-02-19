@@ -139,25 +139,11 @@ function changeOnChapter(chapterId, achieved) {
 
 function changeOnChapterDelayed(chapterId, achieved) {
 
-  changeContent("comp");
-
-  if (chapterId != 0) {
-    document.getElementById("body1").style.backgroundColor = chapters[chapterId - 1].weakcolor;
-    if (chapterId < 10) {
-      document.getElementById("flagImg").src = "images/chapter0" + chapterId + "/littleChapterFlag.png";
-    } else {
-      document.getElementById("flagImg").src = "images/chapter" + chapterId + "/littleChapterFlag.png";
-    }
-  }
-
-  if(document.getElementById("todo_liste") == null){
-    changeOnChapter(chapterId,achieved);
-  }
   document.getElementById("todo_liste").innerHTML = "";
 
   if (chapterId == 0) {
+    document.getElementById("body1").style.backgroundColor =  "#8da6d6";
 
-    console.log()
 
     var settings = {
       "async": true,
@@ -182,32 +168,41 @@ function changeOnChapterDelayed(chapterId, achieved) {
       }
     })
   } else {
-    var achivedYN = (achieved) ? "true" : "false";
 
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "http://46.101.204.215:1337/api/V1/studentcompetence?checked=" + achivedYN + "&chapterId=" + chapterId,
-      "method": "GET",
-      "headers": {
-        "authorization": token.token,
-      }
+    document.getElementById("body1").style.backgroundColor = chapters[chapterId - 1].weakcolor;
+    if (chapterId < 10) {
+      document.getElementById("flagImg").src = "images/chapter0" + chapterId + "/littleChapterFlag.png";
+    } else {
+      document.getElementById("flagImg").src = "images/chapter" + chapterId + "/littleChapterFlag.png";
     }
 
-    $.ajax(settings).done(function (response) {
-      response.sort(function (a, b) {
-        return (a.fromDate - b.fromDate);
+      var achivedYN = (achieved) ? "true" : "false";
+
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://46.101.204.215:1337/api/V1/studentcompetence?checked=" + achivedYN + "&chapterId=" + chapterId,
+        "method": "GET",
+        "headers": {
+          "authorization": token.token,
+        }
+      }
+
+      $.ajax(settings).done(function (response) {
+        response.sort(function (a, b) {
+          return (a.fromDate - b.fromDate);
+        })
+
+        for (var i = 0; i < response.length; i++) {
+          $("#todo_liste").append("<div class='bubble'>" +
+            "<div class='right'>" + "<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
+            "<div class='left'>" + "<p>" + response[i].studentText + "</p>" + "</div>" +
+            "</div>");
+
+        }
       })
 
-      for (var i = 0; i < response.length; i++) {
-        $("#todo_liste").append("<div class='bubble'>" +
-          "<div class='right'>" +"<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
-        "<div class='left'>" + "<p>" + response[i].studentText + "</p>" + "</div>"+
-          "</div>");
-
-      }
-    })
-  }
+    }
 
 
   /*
@@ -248,8 +243,6 @@ function foerderPlaneInit(){
 
   $.ajax(settings).done(function (response) {
 
-    console.log("versuch blubb")
-
     for(var i = 0; i < response.length; i++){
       $("#dropdown-plan").append(
       "<li onclick='"+ "getFoerderplan(" +i+ ")" + "'><a> " + response[i].name+"</a></li>"
@@ -284,6 +277,17 @@ function changeContent(content){
   else if(content == "deleteProfile"){}
   else if(content == "avatarChange"){ $("#fenster").load("Avatar.html #avatarContent")}
   else if(content == "delete"){ }
+}
+
+function logout(){
+  localStorage.clear();
+  token = "";
+
+  if(localStorage.getItem(token)==null && token == ""){
+    window.document.location.href = "index.html";
+  } else {
+    alert("logout Fehlgeschlagen")
+  }
 }
 
 
