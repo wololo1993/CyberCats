@@ -171,16 +171,20 @@ function getSchoolname(schoolName) {
   return schoolName.replace("-", "-<br>")
 }
 
-function changeOnChapter(chapterId,achieved){
-  document.getElementById("body1").style.backgroundColor = chapters[chapterId-1].weakcolor;
-  if(chapterId < 10){
-    document.getElementById("flagImg").src = "images/chapter0"+chapterId+"/littleChapterFlag.png";
-  } else {
-    document.getElementById("flagImg").src = "images/chapter"+chapterId+"/littleChapterFlag.png";
+function changeOnChapter(chapterId,achieved) {
+  if (chapterId != 0) {
+    document.getElementById("body1").style.backgroundColor = chapters[chapterId - 1].weakcolor;
+    if (chapterId < 10) {
+      document.getElementById("flagImg").src = "images/chapter0" + chapterId + "/littleChapterFlag.png";
+    } else {
+      document.getElementById("flagImg").src = "images/chapter" + chapterId + "/littleChapterFlag.png";
+    }
   }
-
+    document.getElementById("todo_liste").innerHTML = "";
 
   if(chapterId == 0){
+
+    console.log()
 
     var settings = {
       "async": true,
@@ -198,8 +202,10 @@ function changeOnChapter(chapterId,achieved){
       })
 
       for (var i = 0; i < response.length; i++) {
-        $("#todo_liste").append("<div class='bubbles' background-image:'images/contentTextBubble.png'>" +
-          response[i].studentText + +"</div>");
+        $("#todo_liste").append("<div class='bubble'>"+
+          "<p>"+response[i].studentText+"</p>"+
+          "<img src="+"images/achievedCompetences-inactive.png"+">"+
+          "</div>");
       }
     })
   } else {
@@ -221,8 +227,8 @@ function changeOnChapter(chapterId,achieved){
       })
 
       for (var i = 0; i < response.length; i++) {
-        $("#todo_liste").append("<div class='bubbles' background-image:'images/contentTextBubble.png'>" +
-          response[i].studentText + +"</div>");
+        $("#todo_liste").append("<div class='bubble'>"+
+            "<p>"+response[i].studentText+"</p>"+"</div>");
       }
     })
   }

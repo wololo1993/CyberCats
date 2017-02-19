@@ -219,6 +219,40 @@
         margin-left: 30px;
     }
 
+    #todo_liste{
+      overflow-y: scroll;
+      height: 620px;
+      scrollbar: hidden;
+    }
+  #todo_liste::-webkit-scrollbar {
+    display: none;
+  }
+
+    .bubble {
+      background-image: url("images/contentTextBubble.png");
+      background-size:cover;
+      width: 350px;
+      height: 110px;
+      padding: 20px;
+    }
+
+  .bubble p{
+
+    font-family: RobotoThin, sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    mergin: 30px;
+
+  }
+
+  .bubble img{
+    position: inherit;
+    top: 0px;
+    right: 0px;
+  }
+
+
+
     .navbar-fixed-bottom {
         height: 50px;
         width: 100%;
