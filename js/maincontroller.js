@@ -1,4 +1,3 @@
-
 //get token from localStorage
 var tokenJSON = localStorage.getItem('token');
 var token = JSON.parse(tokenJSON);
@@ -12,6 +11,9 @@ var studentcompetence = getStudentcompetence();
 
 $(document).ready(function () {
   load();
+  foerderPlaneInit();
+  changeOnChapter(0,true);
+  dynamischeBilderDropdown();
 
 });
 
@@ -134,29 +136,29 @@ function getStudentcompetence() {
     studentcompetence = response;
 
 
-    response.sort(function (a , b) {
+    response.sort(function (a, b) {
       return (a.fromDate - b.fromDate);
 
     })
 
     /*
-    studentcompetenceNachChapter = []
+     studentcompetenceNachChapter = []
 
 
-    console.log(studentcompetence[0]);
+     console.log(studentcompetence[0]);
 
-    for(var i = 0; i < 16; i++){
-      studentcompetenceNachChapter[i] = [];
-    }
+     for(var i = 0; i < 16; i++){
+     studentcompetenceNachChapter[i] = [];
+     }
 
-      for (var i = 0; i < response.length; i++) {
-        (studentcompetenceNachChapter[(studentcompetence[i].chapterId)]).push(studentcompetence[i]);
-      }
-      for (var i = 0; i < studentcompetenceNachChapter.length;i++){
-        (studentcompetenceNachChapter[i]).sort(function (a, b) {
-          return a.number - b.number;
-        })
-      }*/
+     for (var i = 0; i < response.length; i++) {
+     (studentcompetenceNachChapter[(studentcompetence[i].chapterId)]).push(studentcompetence[i]);
+     }
+     for (var i = 0; i < studentcompetenceNachChapter.length;i++){
+     (studentcompetenceNachChapter[i]).sort(function (a, b) {
+     return a.number - b.number;
+     })
+     }*/
   });
 }
 
@@ -171,7 +173,7 @@ function getSchoolname(schoolName) {
   return schoolName.replace("-", "-<br>")
 }
 
-function changeOnChapter(chapterId,achieved) {
+function changeOnChapter(chapterId, achieved) {
   if (chapterId != 0) {
     document.getElementById("body1").style.backgroundColor = chapters[chapterId - 1].weakcolor;
     if (chapterId < 10) {
@@ -180,9 +182,9 @@ function changeOnChapter(chapterId,achieved) {
       document.getElementById("flagImg").src = "images/chapter" + chapterId + "/littleChapterFlag.png";
     }
   }
-    document.getElementById("todo_liste").innerHTML = "";
+  document.getElementById("todo_liste").innerHTML = "";
 
-  if(chapterId == 0){
+  if (chapterId == 0) {
 
     console.log()
 
@@ -202,19 +204,19 @@ function changeOnChapter(chapterId,achieved) {
       })
 
       for (var i = 0; i < response.length; i++) {
-        $("#todo_liste").append("<div class='bubble'>"+
-          "<p>"+response[i].studentText+"</p>"+
-          "<img src="+"images/achievedCompetences-inactive.png"+">"+
+        $("#todo_liste").append("<div class='bubble inline'>" +
+            "<div class='right'>" +"<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
+          "<div class='left'>" + "<p>" + response[i].studentText + "</p>" + "</div>"+
           "</div>");
       }
     })
   } else {
-    var achivedYN = (achieved)? "true" : "false";
+    var achivedYN = (achieved) ? "true" : "false";
 
     var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://46.101.204.215:1337/api/V1/studentcompetence?checked="+achivedYN+"&chapterId="+chapterId,
+      "url": "http://46.101.204.215:1337/api/V1/studentcompetence?checked=" + achivedYN + "&chapterId=" + chapterId,
       "method": "GET",
       "headers": {
         "authorization": token.token,
@@ -227,49 +229,83 @@ function changeOnChapter(chapterId,achieved) {
       })
 
       for (var i = 0; i < response.length; i++) {
-        $("#todo_liste").append("<div class='bubble'>"+
-            "<p>"+response[i].studentText+"</p>"+"</div>");
+        $("#todo_liste").append("<div class='bubble'>" +
+          "<div class='right'>" +"<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
+        "<div class='left'>" + "<p>" + response[i].studentText + "</p>" + "</div>"+
+          "</div>");
+
       }
     })
   }
 
 
-
-
-
-
-
-
-
-
-
   /*
 
-  document.getElementById("todo_liste").innerHTML = "";
+   document.getElementById("todo_liste").innerHTML = "";
 
 
-  for(var i = 0; i < studentcompetence.length; i++){
-    $( "#todo_liste" ).append( "<div class='bubbles' background-image:'images/contentTextBubble.png'>" +
-      studentcompetence[i].studentText+
-    +"</div>");
-  }*/
+   for(var i = 0; i < studentcompetence.length; i++){
+   $( "#todo_liste" ).append( "<div class='bubbles' background-image:'images/contentTextBubble.png'>" +
+   studentcompetence[i].studentText+
+   +"</div>");
+   }*/
 
 }
 
-function dynamischeBilderDropdown(){
+function getFoerderplan(planId){
+
+  console.log(planId)
+
+}
+
+function foerderPlaneInit(){
+
+  //document.getElementById("#dropdown-plan").innerHTML="";
+
+
+  $('#dropdown-plan').load('parts.html #foerderplanTemplate');
+
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://46.101.204.215:1337/api/V1/educationalPlan",
+    "method": "GET",
+    "headers": {
+      "authorization": token.token,
+    }
+  }
+
+  $.ajax(settings).done(function (response) {
+
+    console.log("versuch blubb")
+
+    for(var i = 0; i < response.length; i++){
+      $("#dropdown-plan").append(
+      "<li onclick='"+ "getFoerderplan(" +i+ ")" + "'><a> " + response[i].name+"</a></li>"
+      )
+      response[i]
+    }
+
+
+  });
+
+
+
+}
+
+function dynamischeBilderDropdown() {
   /*
-  var sheet = document.createElement('style')
-  sheet.innerHTML =
-    ".open .dropdown-toggle-profil {content:url(\""
-    +avatars[(student.avatarId)].avatarUrl +"\")}"
-    +".open .dropdown-toggle-school {content:url(\""
-    +student.school.imageUrl+"\")}"
-    +".open .dropdown-toggle-studyGroup {content:url(\""
-    +student.studyGroups.imageUrl +"\")}";
+   var sheet = document.createElement('style')
+   sheet.innerHTML =
+   ".open #button-student {content:url(\""
+   +avatars[(student.avatarId)].avatarUrl +"\")}"
+   +".open #dropdown-school {content:url(\""
+   +student.school.imageUrl+"\")}"
+   +".open .classesButton {content:url(\""
+   +student.studyGroups.imageUrl +"\")}";
 
 
-  document.body.appendChild(sheet);
- */
+   document.body.appendChild(sheet);*/
 }
 
 
