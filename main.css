@@ -214,9 +214,11 @@
   }
 
   #todo_liste {
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
+    overflow-x: visible;
     height: 620px;
-    scrollbar: hidden;
+    width: 600px;
+    /*scrollbar: hidden;*/
   }
 
   #todo_liste::-webkit-scrollbar {
@@ -226,6 +228,8 @@
   .bubble {
     background-image: url("images/contentTextBubble.png");
     background-size: cover;
+    margin: 20px;
+    overflow-x: visible;
     width: 350px;
     height: 110px;
     padding: 20px;
@@ -239,13 +243,75 @@
 
   }
 
+  .bubble div {
+    overflow-x: visible;
+    z-index: 5;
+  }
+
   .bubble div.right{
-      width: 17%;
+    float: right;
+    width: 0%;
+  }
+
+  .bubble div.left{
+    float: left;
+    width: 100%;
+  }
+
+  .bubble div div.right{
+      width: 20%;
       float:right;
   }
-  .bubble div.left{
-    width: 83%;
+  .bubble div div.left{
+    width: 80%;
       float:left;
+  }
+
+  .infoBubble
+  {
+    position: relative;
+    overflow: visible;
+    left: 250px;
+    top: -20px;
+    width: 250px;
+    height: 100px;
+    padding: 0px;
+    background: #001a3a;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    border: #FFFFFF solid 4px;
+    float: right;
+  }
+
+  .infoBubble:after
+  {
+    margin-left: 50px;
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #001a3a;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -60px;
+    top: 18px;
+  }
+
+  .infoBubble:before
+  {
+    margin-left: 50px;
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 13px 13px 13px 0;
+    border-color: transparent #FFFFFF;
+    display: block;
+    width: 0;
+    z-index: 0;
+    left: -63px;
+    top: 15px;
   }
 
   .navbar-fixed-bottom {
@@ -490,7 +556,7 @@
 .ändereDiv{
     padding: 100px;
     padding-left: 200px;
-    color: black; 
+    color: black;
     font-family: Brandon Grotesque Black;
     font-size: 20pt;
 }

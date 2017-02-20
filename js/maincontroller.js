@@ -15,8 +15,10 @@ $(document).ready(function () {
 function init() {
   load();
   foerderPlaneInit();
-  changeOnChapter(0, true);
+  changeContent("comp");
+  //changeOnChapter(0, true);
   dynamischeBilderDropdown();
+  document.getElementById("body1").style.backgroundColor = "#000";
 }
 
 function load() {
@@ -198,11 +200,11 @@ function changeOnChapterDelayed(chapterId, achieved) {
       })
 
       for (var i = 0; i < response.length; i++) {
-        $("#todo_liste").append("<div class='bubble'>" +
+        $("#todo_liste").append("<div class='bubble'>" +"<div>"+
           "<div class='right'>" + "<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
           "<div class='left'>" + "<p>" + response[i].studentText + "</p>" + "</div>" +
+          "</div>"+
           "</div>");
-
       }
     })
 
@@ -240,7 +242,7 @@ function getFoerderplanDelayed(planId) {
     "url": "http://46.101.204.215:1337/api/V1/educationalPlan/:" + planId,
     "method": "GET",
     "headers": {
-      "authorization": token.token,
+      "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFuIn0.OzWf9avXr61RUJDZT8lSdjxoBDMLMerXIuZGcwIPjUE",
     }
   }
 
@@ -249,7 +251,7 @@ function getFoerderplanDelayed(planId) {
     var settings = {
       "async": false,
       "crossDomain": true,
-      "url": "http://46.101.204.215:1337/api/V1/studentcompetence?checked=true",
+      "url": "http://46.101.204.215:1337/api/V1/studentcompetence",
       "method": "GET",
       "headers": {
         "authorization": token.token,
@@ -258,35 +260,32 @@ function getFoerderplanDelayed(planId) {
 
     $.ajax(settings).done(function (competences) {
 
-      setTimeout(function () {
-        makeFoerderplanBubbles(competences,foerderplan)
-      }, 200);
+      console.log("number"+competences[0].number);
 
+
+
+
+      for (var j = 0; j < foerderplan[0].competences.length; j++) {
+
+        var _id = foerderplan[0].competences[j].competenceId;
+
+        $("#todo_liste").append(
+          "<div class='bubble'>" +
+            "<div class='right'>"+"<div class='infoBubble'"+ "></div>"+"</div>"+
+            "<div class='left'>"+
+              "<div class='right'>" +
+          "<img src=" + "images/achievedCompetences-inactive.png"+">"+
+          "</div>" +
+              "<div class='left'>"+
+                "<p>" + competences[_id].studentText + "</p>" + "" +
+              "</div>"+
+            "</div>"+
+          "</div>");
+      }
     });
   });
 }
 
-function makeFoerderplanBubbles(competences ,foerderplan){
-
-  console.log("lubb");
-  console.log("comp.length =" + competences.length);
-  console.log("foerder.length=" + foerderplan[0].competences.length);
-
-
-
-
-
-    for (var j = 0; j < foerderplan[0].competences.length; j++) {
-      console.log(foerderplan[0].competences[j].competenceId)
-      var _id = foerderplan[0].competences[j].competenceId;
-      console.log(competences[competences.length-1]);
-      console.log(competences[_id])
-      $("#todo_liste").append("<div class='bubble'>" +
-          "<div class='right'>" + "<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
-          "<div class='left'>" + "<p>" + competences[_id].studentText + "</p>" + "</div>" +
-          "</div>");
-    }
-}
 
 function foerderPlaneInit() {
 

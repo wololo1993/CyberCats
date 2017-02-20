@@ -1,156 +1,171 @@
 <html>
 
-    <head>
-        <link href="bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="main.css" type="text/css" rel="stylesheet">
-    </head>
+<head>
+  <link href="bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="main.css" type="text/css" rel="stylesheet">
+</head>
 
 
-    <body>
-        <div id="foerderplanTemplate">
-            <li>
-                <div class="big-first">
-                    <div class="big-first-top">
-                        <div class="inline">
-                            <img src="images/educationalPlan-big.png">
-                        </div>
-                        <div class="inline">
-                            <p>FÖRDERPLANE</p>
-                        </div>
-                    </div>
-                    <div class="big-first-bottom" style="float: none">
-                    </div>
-                </div>
-            </li>
+<body>
+
+<div id="BubbleTemp">
+
+  <div class="bubble">
+    <div style="float: left">
+      <div style="float: right; width:17%">
+        <img src="images/achievedCompetences-inactive.png">
+      </div>
+      <div style="float: left; width: 73%">
+        <p>lopsem dirivatum eres humus blödus</p>
+      </div>
+      <div style="float: right">
+        <div class="infoBubble"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="foerderplanTemplate">
+  <li>
+    <div class="big-first">
+      <div class="big-first-top">
+        <div class="inline">
+          <img src="images/educationalPlan-big.png">
         </div>
-
-
-        <div id="competenzContent">
-          <div id=linke_seite class="col-sm-3 col-md-4 col-lg-4">
-            <div id="flagDiv">
-              <img id="flagImg" src="">
-            </div>
-            <img src="images/illustrations/illustrationLeft.png">
-          </div>
-
-          <div id="todo_liste" class="col-sm-6 col-md-4 col-lg-4">
-            <div class="bubble">
-              <div style="float: right; width:17%">
-                  <img src="images/achievedCompetences-inactive.png">
-                </div>
-              <div style="float: left; width: 73%">
-                  <p>lopsem dirivatum eres humus blödus</p>
-                </div>
-            </div>
-          </div>
-
-          <div id=rechte_seite class="col-sm-3 col-md-4 col-lg-4">
-            <div>
-            </div>
-            <img src="images/illustrations/illustrationRight.png">
-          </div>
-
-          <td>
-            <img id="scrollUp" src="images/chapter01/scrollUp.png" alt="scrollUp">
-            <img id="scrollDown" src="images/chapter01/scrollDown.png" alt="scrollDown">
-          </td>
+        <div class="inline">
+          <p>FÖRDERPLANE</p>
         </div>
-
-        <div id="passwordChangeContent">
-            <div class="ändereDiv" id="passwortAendern">
-                <img src="images/change-password.png">
-                <p>PASSWORT ÄNDERN</p>
-            <div>
-            <div id="außen">  AKTUELLES PASSWORT*  </div>
-            <div id="mitte">  <input id="passwordinput" type="password" class="form-control loginData">
-            </div>
-            <div id="außen"> </div>
-            </div>
-
-            <div>
-                <div id="außen">  NEUES PASSWORT*
-                </div>
-                <div id="mitte">  <input id="passwordinput" type="password" class="form-control loginData">
-                </div>
-                <div id="außen">
-                </div>
-            </div>
-
-            <div>
-                <div id="außen">  PASSWORT BESTÄTIGUNG*
-                </div>
-                <div id="mitte">  <input id="passwordinput" type="password" class="form-control loginData">
-                </div>
-                <div id="außen">
-                </div>
-            </div>
-
-            <div id="außen">
-            </div>
-
-            <button id="loginButton" class="btn btn-lg btn-success btn-block" type="submit" onclick="iwas"> ÄNDERN
-            </button>
-
-            </div>
-        </div>
-
-        <div id ="profileDeleteContent">
-            <div class="ändereDiv1" id="profilLoeschen">
-                    <img src="images/delete-profile.png">
-                    <p>PROFIL LÖSCHEN</p>
-
-                <div>
-                    <div id="plDiv"> PASSWORT*
-                    </div>
-                    <div id="mitte">
-                        <input id="passwordinput" type="password" class="form-control loginData">
-                    </div>
-                    <div id="außen">
-                    </div>
-                </div>
-
-                <button id="PLoeschenButton" class="btn btn-lg btn-success btn-block" type="submit" onclick="iwas"> LÖSCHEN
-                </button>
-            </div>
-        </div>
-
-            <div id="avatarContent">
-                <div id="startBild">
-                    <div style="text-align:center">
-                    </div>
-                </div>
-
-                <div class="ändereDiv" id="avatarAendern">
-                    <img id="avatarChange"src="">
-                    <p style="margin-bottom:0px">PROFILBILD ÄNDERN</p>
-                        <div id="buttonsFloat">
-                            <button id="abbrechenButton" class="btn btn-lg btn-success btn-block" type="submit" onclick="startBild()"style="margin-bottom:0px"> ABBRECHEN </button>
-                        </div>
-
-                    <div id="buttonsFloat">
-                        <button id="loginButton" class="btn btn-lg btn-success btn-block" type="submit" onclick="changePicSave()"> SPEICHERN </button>
-                    </div>
-
-                    <div class="avatarbilder">
-                        <img src="images/student/superhero-batman-big-active.png" onclick="changePic(0)">
-                        <img src="images/student/superhero-catwoman-big-active.png" onclick="changePic(1)">
-                        <img src="images/student/superhero-gandalf-big-active.png" onclick="changePic(2)">
-                        <img src="images/student/superhero-greenlantern-big-active.png" onclick="changePic(3)">
-                        <img src="images/student/superhero-hulk-big-active.png" onclick="changePic(4)">
-                        <img src="images/student/superhero-kickass-big-active.png" onclick="changePic(5)">
-                        <img src="images/student/superhero-luke-big-active.png" onclick="changePic(6)">
-                        <img src="images/student/superhero-robin-big-active.png" onclick="changePic(7)">
+      </div>
+      <div class="big-first-bottom" style="float: none">
+      </div>
+    </div>
+  </li>
+</div>
 
 
+<div id="competenzContent">
+  <div id=linke_seite class="col-sm-3 col-md-4 col-lg-4">
+    <div id="flagDiv">
+      <img id="flagImg" src="">
+    </div>
+    <img src="images/illustrations/illustrationLeft.png">
+  </div>
 
-                        <img src="images/student/superhero-skeletor-big-active.png" onclick="changePic(8)">
-                        <img src="images/student/superhero-spiderman-big-active.png" onclick="changePic(9)">
-                        <img src="images/student/superhero-superman-big-active.png" onclick="changePic(10)">
-                        <img src="images/student/superhero-superwoman-big-active.png" onclick="changePic(11)">
-                    </div>
-                </div>
-            </div>
+  <div id="todo_liste" class="col-sm-6 col-md-4 col-lg-4">
 
-    </body>
+  </div>
+
+  <div id=rechte_seite class="col-sm-3 col-md-4 col-lg-4">
+    <div>
+    </div>
+    <img src="images/illustrations/illustrationRight.png">
+  </div>
+
+  <td>
+    <img id="scrollUp" src="images/chapter01/scrollUp.png" alt="scrollUp">
+    <img id="scrollDown" src="images/chapter01/scrollDown.png" alt="scrollDown">
+  </td>
+</div>
+
+<div id="passwordChangeContent">
+  <div class="ändereDiv" id="passwortAendern">
+    <img src="images/change-password.png">
+    <p>PASSWORT ÄNDERN</p>
+    <div>
+      <div id="außen"> AKTUELLES PASSWORT*</div>
+      <div id="mitte"><input id="passwordinput" type="password" class="form-control loginData">
+      </div>
+      <div id="außen"></div>
+    </div>
+
+    <div>
+      <div id="außen"> NEUES PASSWORT*
+      </div>
+      <div id="mitte"><input id="passwordinput" type="password" class="form-control loginData">
+      </div>
+      <div id="außen">
+      </div>
+    </div>
+
+    <div>
+      <div id="außen"> PASSWORT BESTÄTIGUNG*
+      </div>
+      <div id="mitte"><input id="passwordinput" type="password" class="form-control loginData">
+      </div>
+      <div id="außen">
+      </div>
+    </div>
+
+    <div id="außen">
+    </div>
+
+    <button id="loginButton" class="btn btn-lg btn-success btn-block" type="submit" onclick="iwas"> ÄNDERN
+    </button>
+
+  </div>
+</div>
+
+<div id="profileDeleteContent">
+  <div class="ändereDiv1" id="profilLoeschen">
+    <img src="images/delete-profile.png">
+    <p>PROFIL LÖSCHEN</p>
+
+    <div>
+      <div id="plDiv"> PASSWORT*
+      </div>
+      <div id="mitte">
+        <input id="passwordinput" type="password" class="form-control loginData">
+      </div>
+      <div id="außen">
+      </div>
+    </div>
+
+    <button id="PLoeschenButton" class="btn btn-lg btn-success btn-block" type="submit" onclick="iwas"> LÖSCHEN
+    </button>
+  </div>
+</div>
+
+<div id="avatarContent">
+  <div id="startBild">
+    <div style="text-align:center">
+    </div>
+  </div>
+
+  <div class="ändereDiv" id="avatarAendern">
+    <img id="avatarChange" src="">
+    <p style="margin-bottom:0px">PROFILBILD ÄNDERN</p>
+    <div id="buttonsFloat">
+      <button id="abbrechenButton" class="btn btn-lg btn-success btn-block" type="submit" onclick="startBild()"
+              style="margin-bottom:0px"> ABBRECHEN
+      </button>
+    </div>
+
+    <div id="buttonsFloat">
+      <button id="loginButton" class="btn btn-lg btn-success btn-block" type="submit" onclick="changePicSave()">
+        SPEICHERN
+      </button>
+    </div>
+
+    <div class="avatarbilder">
+      <img src="images/student/superhero-batman-big-active.png" onclick="changePic(0)">
+      <img src="images/student/superhero-catwoman-big-active.png" onclick="changePic(1)">
+      <img src="images/student/superhero-gandalf-big-active.png" onclick="changePic(2)">
+      <img src="images/student/superhero-greenlantern-big-active.png" onclick="changePic(3)">
+      <img src="images/student/superhero-hulk-big-active.png" onclick="changePic(4)">
+      <img src="images/student/superhero-kickass-big-active.png" onclick="changePic(5)">
+      <img src="images/student/superhero-luke-big-active.png" onclick="changePic(6)">
+      <img src="images/student/superhero-robin-big-active.png" onclick="changePic(7)">
+
+
+      <img src="images/student/superhero-skeletor-big-active.png" onclick="changePic(8)">
+      <img src="images/student/superhero-spiderman-big-active.png" onclick="changePic(9)">
+      <img src="images/student/superhero-superman-big-active.png" onclick="changePic(10)">
+      <img src="images/student/superhero-superwoman-big-active.png" onclick="changePic(11)">
+    </div>
+  </div>
+</div>
+
+</body>
 
 </html>
