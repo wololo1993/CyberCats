@@ -561,3 +561,17 @@
     font-size: 20pt;
 }
 
+#buttonsFloat{
+    width: 305px;
+   vertical-align: middle;
+}
+
+#buttonabbrechen{
+float: left;
+}
+
+#buttonspeichern{
+    float: right;
+}
+
+
