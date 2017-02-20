@@ -1,318 +1,322 @@
+<!DOCTYPE html>
 <html>
 
-<head>
+    <head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CHECK!</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>CHECK!</title>
 
-  <!-- Bootstrap -->
-  <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="style.css" type="text/css" rel="stylesheet">
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="js/maincontroller.js"></script>
+      <!-- Bootstrap -->
+      <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="main.css" type="text/css" rel="stylesheet">
+      <script src="node_modules/jquery/dist/jquery.min.js"></script>
+      <script src="js/maincontroller.js"></script>
 
-</head>
+    </head>
 
-<body id="body1">
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
+    <body id="body1">
 
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-    </button>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
 
-    <ul class="nav navbar-nav dropdown navbar-left nav-buttons" id="button-overview">
-      <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img class="menu-image" src="images/chapterOverview-inactive.png">
-        <span class=""></span>
-      </div>
-      <ul class="dropdown-menu scrollable-menu dropdown-content left" id="dropdown-overview">
-        <li>
-          <div class="big-first">
-            <div class="big-first-top">
-              <div class="inline">
-                <img src="images/confirmation.png">
-              </div>
-              <div class="inline">
-                <p>CHECK!<br>
-                  KOMPETENZLISTE</p>
-              </div>
-            </div>
-            <div class="big-first-bottom">
-            </div>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        </button>
+
+        <ul class="nav navbar-nav dropdown navbar-left nav-buttons" id="button-overview">
+          <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="menu-image" src="images/chapterOverview-inactive.png">
+            <span class=""></span>
           </div>
-        </li>
-        <li onclick="changeOnChapter(1,false)" class="dasBinIch"><a href="#">DAS BIN ICH!</a></li>
-        <li onclick="changeOnChapter(2,false)" class="ichUndDieAnderen"><a href="#">ICH UND DIE ANDEREN</a></li>
-        <li onclick="changeOnChapter(3,false)" class="dieWeltUmMich"><a href="#">DIE WELT UM MICH HERUM</a></li>
-        <li onclick="changeOnChapter(4,false)" class="ichWerdeSelbstständig"><a href="#">ICH WERDE SELBSTÄNDIG</a></li>
-        <li onclick="changeOnChapter(5,false)" class="sichBewegen"><a href="#">SICH BEWEGEN</a></li>
-        <li onclick="changeOnChapter(6,false)" class="lernen"><a href="#">LERNEN</a></li>
-        <li onclick="changeOnChapter(7,false)" class="arbeiten"><a href="#">ARBEITEN</a></li>
-        <li onclick="changeOnChapter(8,false)" class="gestaltenUndErschaffen"><a href="#">GESTALTEN UND ERSCHAFFEN</a>
-        </li>
-        <li onclick="changeOnChapter(9,false)" class="sprechen"><a href="#">SPRECHEN</a></li>
-        <li onclick="changeOnChapter(10,false)" class="fremdsprache"><a href="#">FREMDSPRACHE</a></li>
-        <li onclick="changeOnChapter(11,false)" class="lesen"><a href="#">LESEN</a></li>
-        <li onclick="changeOnChapter(12,false)" class="schreiben"><a href="#">SCHREIBEN</a></li>
-        <li onclick="changeOnChapter(13,false)" class="messen"><a href="#">MESSEN</a></li>
-        <li onclick="changeOnChapter(14,false)" class="loesungenFinden"><a href="#">LÖSUNGEN FINDEN</a></li>
-        <li onclick="changeOnChapter(15,false)" class="zaehlenUndRechnen"><a href="#">ZÄHLEN UND RECHNEN</a></li>
-        <li onclick="changeOnChapter(16,false)" class="formUndRaum"><a href="#">FORM UND RAUM ENTDECKEN</a></li>
-      </ul>
-    </ul>
+            <ul class="dropdown-menu scrollable-menu dropdown-content left" id="dropdown-overview">
+                <li>
+                  <div class="big-first">
+                    <div class="big-first-top">
+                      <div class="inline">
+                        <img src="images/confirmation.png">
+                      </div>
+                      <div class="inline">
+                        <p>CHECK!<br>
+                          KOMPETENZLISTE</p>
+                      </div>
+                    </div>
+                    <div class="big-first-bottom">
+                    </div>
+                  </div>
+                </li>
+                <li onclick="changeOnChapter(1,false)" class="dasBinIch"><a href="#">DAS BIN ICH!</a></li>
+                <li onclick="changeOnChapter(2,false)" class="ichUndDieAnderen"><a href="#">ICH UND DIE ANDEREN</a></li>
+                <li onclick="changeOnChapter(3,false)" class="dieWeltUmMich"><a href="#">DIE WELT UM MICH HERUM</a></li>
+                <li onclick="changeOnChapter(4,false)" class="ichWerdeSelbstständig"><a href="#">ICH WERDE SELBSTÄNDIG</a></li>
+                <li onclick="changeOnChapter(5,false)" class="sichBewegen"><a href="#">SICH BEWEGEN</a></li>
+                <li onclick="changeOnChapter(6,false)" class="lernen"><a href="#">LERNEN</a></li>
+                <li onclick="changeOnChapter(7,false)" class="arbeiten"><a href="#">ARBEITEN</a></li>
+                <li onclick="changeOnChapter(8,false)" class="gestaltenUndErschaffen"><a href="#">GESTALTEN UND ERSCHAFFEN</a>
+                </li>
+                <li onclick="changeOnChapter(9,false)" class="sprechen"><a href="#">SPRECHEN</a></li>
+                <li onclick="changeOnChapter(10,false)" class="fremdsprache"><a href="#">FREMDSPRACHE</a></li>
+                <li onclick="changeOnChapter(11,false)" class="lesen"><a href="#">LESEN</a></li>
+                <li onclick="changeOnChapter(12,false)" class="schreiben"><a href="#">SCHREIBEN</a></li>
+                <li onclick="changeOnChapter(13,false)" class="messen"><a href="#">MESSEN</a></li>
+                <li onclick="changeOnChapter(14,false)" class="loesungenFinden"><a href="#">LÖSUNGEN FINDEN</a></li>
+                <li onclick="changeOnChapter(15,false)" class="zaehlenUndRechnen"><a href="#">ZÄHLEN UND RECHNEN</a></li>
+                <li onclick="changeOnChapter(16,false)" class="formUndRaum"><a href="#">FORM UND RAUM ENTDECKEN</a></li>
+              </ul>
+        </ul>
 
-    <ul class="nav navbar-nav dropdown navbar-left nav-buttons" id="button-plan">
-      <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img class="eduPlanButton" src="images/educationalPlan-inactive.png">
-        <span class=""></span>
-      </div>
-      <ul class="dropdown-menu left dropdown-content" id="dropdown-plan">
-        <li>
-          <div class="big-first">
-            <div class="big-first-top">
-              <div class="inline">
-                <img src="images/educationalPlan-big.png">
-              </div>
-              <div class="inline">
-                <p>FÖRDERPLANE</p>
-              </div>
-            </div>
-            <div class="big-first-bottom" style="float: none">
-            </div>
+
+        <ul class="nav navbar-nav dropdown navbar-left nav-buttons" id="button-plan">
+          <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="eduPlanButton" src="images/educationalPlan-inactive.png">
+            <span class=""></span>
           </div>
-        </li>
-      </ul>
-    </ul>
+          <ul class="dropdown-menu left dropdown-content" id="dropdown-plan">
+            <li>
+              <div class="big-first">
+                <div class="big-first-top">
+                  <div class="inline">
+                    <img src="images/educationalPlan-big.png">
+                  </div>
+                  <div class="inline">
+                    <p>FÖRDERPLANE</p>
+                  </div>
+                </div>
+                <div class="big-first-bottom" style="float: none">
+                </div>
+              </div>
+            </li>
+          </ul>
+        </ul>
 
-    <ul class="nav navbar-nav dropdown navbar-left nav-buttons" id="button-competences">
-      <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img class="achiCoButton" src="images/achievedCompetences-inactive.png">
-        <span class=""></span>
-      </div>
-      <ul class="dropdown-menu left dropdown-content" id="dropdown-competences">
-        <li>
-          <div class="big-first">
-            <div class="big-first-top">
-              <div class="inline">
-                <img src="images/achievedCompetences-big.png">
-              </div>
-              <div class="inline">
-                <p>DAS<br>
-                  KANN<br>
-                  ICH!</p>
-              </div>
-            </div>
-            <div class="big-first-bottom" style="float: none">
-            </div>
+
+        <ul class="nav navbar-nav dropdown navbar-left nav-buttons" id="button-competences">
+          <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="achiCoButton" src="images/achievedCompetences-inactive.png">
+            <span class=""></span>
           </div>
-        </li>
-        <li onclick="changeOnChapter(0,false)" class="alleKompetenzen"><a href="#">ALLE KOMPETENZEN!</a></li>
-        <li onclick="changeOnChapter(1,false)" class="dasBinIch"><a href="#">DAS BIN ICH!</a></li>
-        <li onclick="changeOnChapter(2,false)" class="ichUndDieAnderen"><a href="#">ICH UND DIE ANDEREN</a></li>
-        <li onclick="changeOnChapter(3,false)" class="dieWeltUmMich"><a href="#">DIE WELT UM MICH HERUM</a></li>
-        <li onclick="changeOnChapter(4,false)" class="ichWerdeSelbstständig"><a href="#">ICH WERDE SELBSTÄNDIG</a></li>
-        <li onclick="changeOnChapter(5,false)" class="sichBewegen"><a href="#">SICH BEWEGEN</a></li>
-        <li onclick="changeOnChapter(6,false)" class="lernen"><a href="#">LERNEN</a></li>
-        <li onclick="changeOnChapter(7,false)" class="arbeiten"><a href="#">ARBEITEN</a></li>
-        <li onclick="changeOnChapter(8,false)" class="gestaltenUndErschaffen"><a href="#">GESTALTEN UND ERSCHAFFEN</a>
-        </li>
-        <li onclick="changeOnChapter(9,false)" class="sprechen"><a href="#">SPRECHEN</a></li>
-        <li onclick="changeOnChapter(10,false)" class="fremdsprache"><a href="#">FREMDSPRACHE</a></li>
-        <li onclick="changeOnChapter(11,false)" class="lesen"><a href="#">LESEN</a></li>
-        <li onclick="changeOnChapter(12,false)" class="schreiben"><a href="#">SCHREIBEN</a></li>
-        <li onclick="changeOnChapter(13,false)" class="messen"><a href="#">MESSEN</a></li>
-        <li onclick="changeOnChapter(14,false)" class="loesungenFinden"><a href="#">LÖSUNGEN FINDEN</a></li>
-        <li onclick="changeOnChapter(15,false)" class="zaehlenUndRechnen"><a href="#">ZÄHLEN UND RECHNEN</a></li>
-        <li onclick="changeOnChapter(16,false)" class="formUndRaum"><a href="#">FORM UND RAUM ENTDECKEN</a></li>
-      </ul>
-    </ul>
-
-    <ul class="nav navbar-nav nav-buttons" id="menu-logo">
-      <img src="images/logo.png">
-    </ul>
-
-
-    <ul class="nav navbar-nav dropdown navbar-right nav-buttons" id="button-logout">
-      <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img class="logoutButton" src="images/logout-iactive.png">
-        <span class=""></span>
-      </div>
-      <ul class="dropdown-menu right dropdown-content" id="dropdown-logout">
-        <li>
-          <div class="big-first">
-            <div class="big-first-top">
-              <div class="inline">
-                <img src="images/logout-big.png">
+          <ul class="dropdown-menu left dropdown-content" id="dropdown-competences">
+            <li>
+              <div class="big-first">
+                <div class="big-first-top">
+                  <div class="inline">
+                    <img src="images/achievedCompetences-big.png">
+                  </div>
+                  <div class="inline">
+                    <p>DAS<br>
+                      KANN<br>
+                      ICH!</p>
+                  </div>
+                </div>
+                <div class="big-first-bottom" style="float: none">
+                </div>
               </div>
-              <div class="inline">
-                <p>MÖCHTEST DU<br>
-                  CHECK!<br>
-                  VERLASSEN?</p>
-              </div>
-            </div>
-            <div class="big-first-bottom" style="float: none">
-            </div>
+            </li>
+            <li onclick="changeOnChapter(0,false)" class="alleKompetenzen"><a href="#">ALLE KOMPETENZEN!</a></li>
+            <li onclick="changeOnChapter(1,false)" class="dasBinIch"><a href="#">DAS BIN ICH!</a></li>
+            <li onclick="changeOnChapter(2,false)" class="ichUndDieAnderen"><a href="#">ICH UND DIE ANDEREN</a></li>
+            <li onclick="changeOnChapter(3,false)" class="dieWeltUmMich"><a href="#">DIE WELT UM MICH HERUM</a></li>
+            <li onclick="changeOnChapter(4,false)" class="ichWerdeSelbstständig"><a href="#">ICH WERDE SELBSTÄNDIG</a></li>
+            <li onclick="changeOnChapter(5,false)" class="sichBewegen"><a href="#">SICH BEWEGEN</a></li>
+            <li onclick="changeOnChapter(6,false)" class="lernen"><a href="#">LERNEN</a></li>
+            <li onclick="changeOnChapter(7,false)" class="arbeiten"><a href="#">ARBEITEN</a></li>
+            <li onclick="changeOnChapter(8,false)" class="gestaltenUndErschaffen"><a href="#">GESTALTEN UND ERSCHAFFEN</a>
+            </li>
+            <li onclick="changeOnChapter(9,false)" class="sprechen"><a href="#">SPRECHEN</a></li>
+            <li onclick="changeOnChapter(10,false)" class="fremdsprache"><a href="#">FREMDSPRACHE</a></li>
+            <li onclick="changeOnChapter(11,false)" class="lesen"><a href="#">LESEN</a></li>
+            <li onclick="changeOnChapter(12,false)" class="schreiben"><a href="#">SCHREIBEN</a></li>
+            <li onclick="changeOnChapter(13,false)" class="messen"><a href="#">MESSEN</a></li>
+            <li onclick="changeOnChapter(14,false)" class="loesungenFinden"><a href="#">LÖSUNGEN FINDEN</a></li>
+            <li onclick="changeOnChapter(15,false)" class="zaehlenUndRechnen"><a href="#">ZÄHLEN UND RECHNEN</a></li>
+            <li onclick="changeOnChapter(16,false)" class="formUndRaum"><a href="#">FORM UND RAUM ENTDECKEN</a></li>
+          </ul>
+        </ul>
+
+        <ul class="nav navbar-nav nav-buttons" id="menu-logo">
+          <img src="images/logo.png">
+        </ul>
+
+
+        <ul class="nav navbar-nav dropdown navbar-right nav-buttons" id="button-logout">
+          <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="logoutButton" src="images/logout-iactive.png">
+            <span class=""></span>
           </div>
-        </li>
-        <li onclick="logout()"><a href="#">JA</a></li>
-        <li><a href="#">NEIN</a></li>
-      </ul>
-    </ul>
+          <ul class="dropdown-menu right dropdown-content" id="dropdown-logout">
+            <li>
+              <div class="big-first">
+                <div class="big-first-top">
+                  <div class="inline">
+                    <img src="images/logout-big.png">
+                  </div>
+                  <div class="inline">
+                    <p>MÖCHTEST DU<br>
+                      CHECK!<br>
+                      VERLASSEN?</p>
+                  </div>
+                </div>
+                <div class="big-first-bottom" style="float: none">
+                </div>
+              </div>
+            </li>
+            <li onclick="logout()"><a href="#">JA</a></li>
+            <li><a href="#">NEIN</a></li>
+          </ul>
+        </ul>
 
 
-    <ul class="nav navbar-nav dropdown navbar-right nav-buttons" id="button-help">
-      <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img class="helpButton" src="images/help-inactive.png">
-        <span class=""></span>
-      </div>
-      <ul class="dropdown-menu right dropdown-content" id="dropdown-help">
-        <li>
-          <div class="big-first">
-            <div class="big-first-top">
-              <div class="inline">
-                <img src="images/confirmation.png">
-              </div>
-              <div class="inline">
-                <p>BRAUCHST<br>
-                  DU HILFE?</p>
-              </div>
-            </div>
-            <div class="big-first-bottom" style="float: none">
-            </div>
+        <ul class="nav navbar-nav dropdown navbar-right nav-buttons" id="button-help">
+          <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="helpButton" src="images/help-inactive.png">
+            <span class=""></span>
           </div>
-        </li>
-        <li><a href="http://www.check-lehrerzimmer.com/hilfe/erste-schritte/">SO GEHT'S!</a></li>
-        <li><a href="http://www.check-lehrerzimmer.com/tutorial">VIDEO-TUTORIALS</a></li>
-        <li><a href="http://www.check-lehrerzimmer.com/faq/">HÄUFIG GESTELLTE FRAGEN</a></li>
-        <li><a href="http://www.check-lehrerzimmer.com/contact/">KONTAKT</a></li>
-      </ul>
-    </ul>
-
-    <ul class="nav navbar-nav dropdown navbar-right nav-buttons" id="button-dividor">
-      <div class="divider">
-      </div>
-    </ul>
-
-
-    <ul class="nav navbar-nav navbar-right dropdown nav-buttons" id="button-class">
-      <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img id="studyGroupImgInactive" class="classesButton" src="">
-        <span class=""></span>
-      </div>
-      <ul class="dropdown-menu right dropdown-content" id="dropdown-class">
-        <li>
-          <div class="big-first">
-            <div class="big-first-top">
-              <div class="inline">
-                <img id="studyGroupImgBig" src="">
+          <ul class="dropdown-menu right dropdown-content" id="dropdown-help">
+            <li>
+              <div class="big-first">
+                <div class="big-first-top">
+                  <div class="inline">
+                    <img src="images/confirmation.png">
+                  </div>
+                  <div class="inline">
+                    <p>BRAUCHST<br>
+                      DU HILFE?</p>
+                  </div>
+                </div>
+                <div class="big-first-bottom" style="float: none">
+                </div>
               </div>
-              <div id="studyGroupName" class="inline">
-                <p>KLASSE<br>
-                  2B</p>
-              </div>
-            </div>
-            <div id="formteacher" class="big-first-bottom">
-              <p>KLASSENLEHRER*IN <br>
-                Valerie Wildenmann
-              </p>
-            </div>
+            </li>
+            <li><a href="http://www.check-lehrerzimmer.com/hilfe/erste-schritte/">SO GEHT'S!</a></li>
+            <li><a href="http://www.check-lehrerzimmer.com/tutorial">VIDEO-TUTORIALS</a></li>
+            <li><a href="http://www.check-lehrerzimmer.com/faq/">HÄUFIG GESTELLTE FRAGEN</a></li>
+            <li><a href="http://www.check-lehrerzimmer.com/contact/">KONTAKT</a></li>
+          </ul>
+        </ul>
+
+        <ul class="nav navbar-nav dropdown navbar-right nav-buttons" id="button-dividor">
+          <div class="divider">
           </div>
-        </li>
-      </ul>
-    </ul>
+        </ul>
 
 
-    <ul class="nav navbar-nav dropdown navbar-right nav-buttons" id="button-school">
-      <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img id="schoolImgInactive" class="schoolButton" src="images/school/school-inactive.png">
-        <span class=""></span>
-      </div>
-      <ul class="dropdown-menu right dropdown-content" id="dropdown-school">
-        <li>
-          <div class="big-first">
-            <div class="big-first-top">
-              <div class="inline">
-                <img id="schoolImgBig" src="images/school/school-red-big-active.png">
-              </div>
-              <div id="schoolName" class="inline">
-                Missing
-              </div>
-            </div>
-            <div id="schoolAdress" class="big-first-bottom">
-              <p>
-                STRASSE NUMMER<br>
-                PLZ ORT<br>
-                LAND<br>
-                <br>
-                EMAIL<br>
-                TELEFON
-              </p>
-            </div>
+        <ul class="nav navbar-nav navbar-right dropdown nav-buttons" id="button-class">
+          <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img id="studyGroupImgInactive" class="classesButton" src="">
+            <span class=""></span>
           </div>
-        </li>
-      </ul>
-    </ul>
+          <ul class="dropdown-menu right dropdown-content" id="dropdown-class">
+            <li>
+              <div class="big-first">
+                <div class="big-first-top">
+                  <div class="inline">
+                    <img id="studyGroupImgBig" src="">
+                  </div>
+                  <div id="studyGroupName" class="inline">
+                    <p>KLASSE<br>
+                      2B</p>
+                  </div>
+                </div>
+                <div id="formteacher" class="big-first-bottom">
+                  <p>KLASSENLEHRER*IN <br>
+                    Valerie Wildenmann
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </ul>
 
-    <ul class="nav navbar-nav dropdown navbar-right nav-buttons" id="button-student">
-      <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img id="avatarImgInactive" class="studentButton" src="">
-        <span class=""></span>
-      </div>
-      <ul class="dropdown-menu right dropdown-content" id="dropdown-student">
-        <li>
-          <div class="big-first">
-            <div class="big-first-top">
-              <div class="inline">
-                <img id="avatarImgBig" src="">
-              </div>
-              <div class="inline">
-                <p id="studentName">TIM<br>
-                  WINTER</p>
-              </div>
-            </div>
-            <div class="big-first-bottom">
-            </div>
+
+        <ul class="nav navbar-nav dropdown navbar-right nav-buttons" id="button-school">
+          <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img id="schoolImgInactive" class="schoolButton" src="images/school/school-inactive.png">
+            <span class=""></span>
           </div>
-        </li>
-        <li onclick="changeContent('avatarChange')"><a href="#">MEIN PROFILBILD ÄNDERN</a></li>
-        <li><a href="#">MEIN PASSWORT ÄNDERN</a></li>
-        <li><a href="#">MEIN PROFIL LÖSCHEN</a></li>
-      </ul>
-    </ul>
+          <ul class="dropdown-menu right dropdown-content" id="dropdown-school">
+            <li>
+              <div class="big-first">
+                <div class="big-first-top">
+                  <div class="inline">
+                    <img id="schoolImgBig" src="images/school/school-red-big-active.png">
+                  </div>
+                  <div id="schoolName" class="inline">
+                    Missing
+                  </div>
+                </div>
+                <div id="schoolAdress" class="big-first-bottom">
+                  <p>
+                    STRASSE NUMMER<br>
+                    PLZ ORT<br>
+                    LAND<br>
+                    <br>
+                    EMAIL<br>
+                    TELEFON
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </ul>
+
+        <ul class="nav navbar-nav dropdown navbar-right nav-buttons" id="button-student">
+          <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img id="avatarImgInactive" class="studentButton" src="">
+            <span class=""></span>
+          </div>
+          <ul class="dropdown-menu right dropdown-content" id="dropdown-student">
+            <li>
+              <div class="big-first">
+                <div class="big-first-top">
+                  <div class="inline">
+                    <img id="avatarImgBig" src="">
+                  </div>
+                  <div class="inline">
+                    <p id="studentName">TIM<br>
+                      WINTER</p>
+                  </div>
+                </div>
+                <div class="big-first-bottom">
+                </div>
+              </div>
+            </li>
+            <li onclick="changeContent('avatarChange')"><a href="#">MEIN PROFILBILD ÄNDERN</a></li>
+            <li><a href="#">MEIN PASSWORT ÄNDERN</a></li>
+            <li><a href="#">MEIN PROFIL LÖSCHEN</a></li>
+          </ul>
+        </ul>
+
+      </div>
+    </nav>
 
 
-  </div>
-</nav>
+    <div id="fenster">
 
-<div id="fenster">
-
-</div>
-
-
-<nav class="nav navbar navbar-inverse navbar-fixed-bottom">
-  <div class="container-fluid bottom">
-    <div class="col-sm-4 col-md-4 col-lg-4">
     </div>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-      <img src="images/login/footer.png" alt="" id="logo_unten">
-      <footer id="text_unten">
-        <p><br>edition 2016 dark night blue 1.0</p>
-      </footer>
-    </div>
-    <div class="col-sm-4 col-md-4 col-lg-4">
-    </div>
-  </div>
-</nav>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-</body>
 
+    <nav class="nav navbar navbar-inverse navbar-fixed-bottom">
+      <div class="container-fluid bottom">
+        <div class="col-sm-4 col-md-4 col-lg-4">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+          <img src="images/login/footer.png" alt="" id="logo_unten">
+          <footer id="text_unten">
+            <p><br>edition 2016 dark night blue 1.0</p>
+          </footer>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    </body>
 
 </html>

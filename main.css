@@ -480,6 +480,13 @@
     font-family: Brandon Grotesque Black;
     font-size: 13pt;
 }
+
+.btn btn-lg btn-success btn-block{
+    align-self: center;
+    vertical-align: center;
+
+}
+
 .avatarbilder{
-    
+
 }
