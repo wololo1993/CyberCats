@@ -1,19 +1,21 @@
 //get token from localStorage
 var tokenJSON = localStorage.getItem('token');
 var token = JSON.parse(tokenJSON);
-var student =   getStudent();
-var avatars =   getAvatars();
-var chapters =   getChapters();
+var student = getStudent();
+var avatars = getAvatars();
+var chapters = getChapters();
 var chapterillustrations = getChapterillustrations();
 
 $(document).ready(function () {
-  setTimeout(function(){init()}, 200);
+  setTimeout(function () {
+    init()
+  }, 200);
 });
 
-function init (){
+function init() {
   load();
   foerderPlaneInit();
-  changeOnChapter(0,true);
+  changeOnChapter(0, true);
   dynamischeBilderDropdown();
 }
 
@@ -134,7 +136,9 @@ function getSchoolname(schoolName) {
 
 function changeOnChapter(chapterId, achieved) {
   changeContent("comp");
-  setTimeout(function(){changeOnChapterDelayed(chapterId, achieved)}, 200);
+  setTimeout(function () {
+    changeOnChapterDelayed(chapterId, achieved)
+  }, 200);
 }
 
 function changeOnChapterDelayed(chapterId, achieved) {
@@ -142,7 +146,7 @@ function changeOnChapterDelayed(chapterId, achieved) {
   document.getElementById("todo_liste").innerHTML = "";
 
   if (chapterId == 0) {
-    document.getElementById("body1").style.backgroundColor =  "#8da6d6";
+    document.getElementById("body1").style.backgroundColor = "#8da6d6";
 
 
     var settings = {
@@ -162,8 +166,8 @@ function changeOnChapterDelayed(chapterId, achieved) {
 
       for (var i = 0; i < response.length; i++) {
         $("#todo_liste").append("<div class='bubble inline'>" +
-            "<div class='right'>" +"<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
-          "<div class='left'>" + "<p>" + response[i].studentText + "</p>" + "</div>"+
+          "<div class='right'>" + "<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
+          "<div class='left'>" + "<p>" + response[i].studentText + "</p>" + "</div>" +
           "</div>");
       }
     })
@@ -176,33 +180,33 @@ function changeOnChapterDelayed(chapterId, achieved) {
       document.getElementById("flagImg").src = "images/chapter" + chapterId + "/littleChapterFlag.png";
     }
 
-      var achivedYN = (achieved) ? "true" : "false";
+    var achivedYN = (achieved) ? "true" : "false";
 
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "http://46.101.204.215:1337/api/V1/studentcompetence?checked=" + achivedYN + "&chapterId=" + chapterId,
-        "method": "GET",
-        "headers": {
-          "authorization": token.token,
-        }
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://46.101.204.215:1337/api/V1/studentcompetence?checked=" + achivedYN + "&chapterId=" + chapterId,
+      "method": "GET",
+      "headers": {
+        "authorization": token.token,
       }
+    }
 
-      $.ajax(settings).done(function (response) {
-        response.sort(function (a, b) {
-          return (a.fromDate - b.fromDate);
-        })
-
-        for (var i = 0; i < response.length; i++) {
-          $("#todo_liste").append("<div class='bubble'>" +
-            "<div class='right'>" + "<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
-            "<div class='left'>" + "<p>" + response[i].studentText + "</p>" + "</div>" +
-            "</div>");
-
-        }
+    $.ajax(settings).done(function (response) {
+      response.sort(function (a, b) {
+        return (a.fromDate - b.fromDate);
       })
 
-    }
+      for (var i = 0; i < response.length; i++) {
+        $("#todo_liste").append("<div class='bubble'>" +
+          "<div class='right'>" + "<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
+          "<div class='left'>" + "<p>" + response[i].studentText + "</p>" + "</div>" +
+          "</div>");
+
+      }
+    })
+
+  }
 
 
   /*
@@ -217,14 +221,74 @@ function changeOnChapterDelayed(chapterId, achieved) {
    }*/
 
 }
+function getFoerderplan(planId) {
+  changeContent("comp");
+  setTimeout(function () {
+    getFoerderplanDelayed(planId)
+  }, 200);
+}
+function getFoerderplanDelayed(planId) {
 
-function getFoerderplan(planId){
+  console.log("planId: "+planId)
 
-  console.log(planId)
+  var competences = "";
+  var foerderplan = "";
 
+  var settings = {
+    "async": false,
+    "crossDomain": true,
+    "url": "http://46.101.204.215:1337/api/V1/educationalPlan/:" + planId,
+    "method": "GET",
+    "headers": {
+      "authorization": token.token,
+    }
+  }
+
+  $.ajax(settings).done(function (foerderplan) {
+
+    var settings = {
+      "async": false,
+      "crossDomain": true,
+      "url": "http://46.101.204.215:1337/api/V1/studentcompetence?checked=true",
+      "method": "GET",
+      "headers": {
+        "authorization": token.token,
+      }
+    }
+
+    $.ajax(settings).done(function (competences) {
+
+      setTimeout(function () {
+        makeFoerderplanBubbles(competences,foerderplan)
+      }, 200);
+
+    });
+  });
 }
 
-function foerderPlaneInit(){
+function makeFoerderplanBubbles(competences ,foerderplan){
+
+  console.log("lubb");
+  console.log("comp.length =" + competences.length);
+  console.log("foerder.length=" + foerderplan[0].competences.length);
+
+
+
+
+
+    for (var j = 0; j < foerderplan[0].competences.length; j++) {
+      console.log(foerderplan[0].competences[j].competenceId)
+      var _id = foerderplan[0].competences[j].competenceId;
+      console.log(competences[competences.length-1]);
+      console.log(competences[_id])
+      $("#todo_liste").append("<div class='bubble'>" +
+          "<div class='right'>" + "<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
+          "<div class='left'>" + "<p>" + competences[_id].studentText + "</p>" + "</div>" +
+          "</div>");
+    }
+}
+
+function foerderPlaneInit() {
 
   //document.getElementById("#dropdown-plan").innerHTML="";
 
@@ -243,9 +307,9 @@ function foerderPlaneInit(){
 
   $.ajax(settings).done(function (response) {
 
-    for(var i = 0; i < response.length; i++){
+    for (var i = 0; i < response.length; i++) {
       $("#dropdown-plan").append(
-      "<li onclick='"+ "getFoerderplan(" +i+ ")" + "'><a> " + response[i].name+"</a></li>"
+        "<li onclick='" + "getFoerderplan(" + i + ")" + "'><a> " + response[i].name + "</a></li>"
       )
       response[i]
     }
@@ -271,21 +335,28 @@ function dynamischeBilderDropdown() {
    document.body.appendChild(sheet);*/
 }
 
-function changeContent(content){
+function changeContent(content) {
 
-  if(content == "comp"){ $("#fenster").load("parts.html #competenzContent")}
-  else if(content == "deleteProfile"){}
-  else if(content == "avatarChange"){ $("#fenster").load("parts.html #avatarContent")}
-  else if(content == "passwordChange"){$("#fenster").load("parts.html #passwordChangeContent")}
-  else if(content == "profileDelete") {$("#fenster").load("parts.html #profileDeleteContent")}
-  else if(content == "delete"){ }
+  if (content == "comp") {
+    $("#fenster").load("parts.html #competenzContent")
+  }
+  else if (content == "deleteProfile") {
+    $("#fenster").load("parts.html #profileDeleteContent")
+  }
+  else if (content == "avatarChange") {
+    $("#fenster").load("parts.html #avatarContent")
+  }
+  else if (content == "pwChange"){
+    $("#fenster").load("parts.html #passwordChangeContent")
+
+  }
 }
 
-function logout(){
+function logout() {
   localStorage.clear();
   token = "";
 
-  if(localStorage.getItem(token)==null && token == ""){
+  if (localStorage.getItem(token) == null && token == "") {
     window.document.location.href = "index.html";
   } else {
     alert("logout Fehlgeschlagen")
