@@ -487,6 +487,11 @@
 
 }
 
-.avatarbilder{
-
+.ändereDiv{
+    padding: 100px;
+    padding-left: 200px;
+    color: black; 
+    font-family: Brandon Grotesque Black;
+    font-size: 20pt;
 }
+

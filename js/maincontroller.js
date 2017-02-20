@@ -276,6 +276,8 @@ function changeContent(content){
   if(content == "comp"){ $("#fenster").load("parts.html #competenzContent")}
   else if(content == "deleteProfile"){}
   else if(content == "avatarChange"){ $("#fenster").load("parts.html #avatarContent")}
+  else if(content == "passwordChange"){$("#fenster").load("parts.html #passwordChangeContent")}
+  else if(content == "profileDelete") {$("#fenster").load("parts.html #profileDeleteContent")}
   else if(content == "delete"){ }
 }
 
