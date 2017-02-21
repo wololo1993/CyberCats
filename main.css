@@ -239,8 +239,7 @@
     font-family: RobotoThin, sans-serif;
     font-size: 13px;
     font-weight: 900;
-    mergin: 30px;
-
+    margin: 30px;
   }
 
   .bubble div {
@@ -336,7 +335,6 @@
   .navbar-fixed-bottom div div p {
     color: #4565ad;
   }
-
 }
 
 @media only screen and (max-width: 767px) {
@@ -363,7 +361,6 @@
   .navbar-fixed-bottom {
     display: none;
   }
-
 }
 
 .dropdown-menu left {
@@ -507,17 +504,19 @@
 }
 
 #scrollUp {
-  position: absolute;;
+  position: absolute;
   right: 30px;
   top: 90px;
   height: 50px;
+  float: right;
 }
 
 #scrollDown {
   position: absolute;
   right: 30px;
-  top: 700px;
+  bottom: 90px;
   height: 50px;
+  float: right;
 }
 
 #loginButton{
@@ -559,7 +558,6 @@
 .btn btn-lg btn-success btn-block{
     align-self: center;
     vertical-align: center;
-
 }
 
 .ändereDiv{
@@ -568,15 +566,22 @@
     color: black;
     font-family: Brandon Grotesque Black;
     font-size: 20pt;
+    align-self: center;
+    display: block;
+}
+
+#avatarAendern{
+    text-align: center;
 }
 
 #buttonsFloat{
     width: 305px;
    vertical-align: middle;
+    align-self: center;
 }
 
 #buttonabbrechen{
-float: left;
+    float: left;
 }
 
 #buttonspeichern{
@@ -596,13 +601,14 @@ float: left;
   font-family: Brandon Grotesque Black;
   font-size: 20pt;
 }
+
 #profilLoeschen p{
   margin-top: 10px;
 }
 
-
 #passwordinput{
 }
+
 #plDiv{
   width:33%;
   float: left;
@@ -613,14 +619,15 @@ float: left;
   padding-right: 30px;
   padding-top: 5px;
 }
+
 #mitte{
   padding: 0px;
   width:33%;
   float: left;
 }
+
 #außen{
   width:33%;
   height: 60px;
   float: left;
 }
-
