@@ -265,16 +265,19 @@
   .bubble div div.left{
     width: 80%;
       float:left;
+    height: 60px;
   }
 
   .infoBubble
   {
+    font-family: Brandon Grotesque White;
+    font-size: 15px;
+    color: white;
     position: relative;
     overflow: visible;
     left: 250px;
     top: -20px;
     width: 250px;
-    height: 100px;
     padding: 0px;
     background: #001a3a;
     -webkit-border-radius: 7px;
@@ -312,6 +315,12 @@
     z-index: 0;
     left: -63px;
     top: 15px;
+  }
+
+  .bubbleNumber {
+    font-size: 5px;
+    bottom: 0px;
+    float: left;
   }
 
   .navbar-fixed-bottom {
@@ -574,4 +583,44 @@ float: left;
     float: right;
 }
 
+/* ProfilLöschen */
+
+#profilLoeschen{
+  margin-top: 50px;
+  align-content: center;
+  text-align: center;
+  align-items: center;
+  align-self: center;
+  text-align-all: center;
+
+  font-family: Brandon Grotesque Black;
+  font-size: 20pt;
+}
+#profilLoeschen p{
+  margin-top: 10px;
+}
+
+
+#passwordinput{
+}
+#plDiv{
+  width:33%;
+  float: left;
+  text-align: right;
+  font-family: Brandon Grotesque;
+  color: #d3ddf2;
+  font-size: 14pt;
+  padding-right: 30px;
+  padding-top: 5px;
+}
+#mitte{
+  padding: 0px;
+  width:33%;
+  float: left;
+}
+#außen{
+  width:33%;
+  height: 60px;
+  float: left;
+}
 

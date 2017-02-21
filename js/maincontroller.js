@@ -5,6 +5,7 @@ var student = getStudent();
 var avatars = getAvatars();
 var chapters = getChapters();
 var chapterillustrations = getChapterillustrations();
+var avatarSelected ="";
 
 $(document).ready(function () {
   setTimeout(function () {
@@ -15,10 +16,10 @@ $(document).ready(function () {
 function init() {
   load();
   foerderPlaneInit();
-  changeContent("comp");
+  changeContent("deleteProfile");
   //changeOnChapter(0, true);
   dynamischeBilderDropdown();
-  document.getElementById("body1").style.backgroundColor = "#000";
+  document.getElementById("body1").style.backgroundColor = "#FFF";
 }
 
 function load() {
@@ -202,8 +203,10 @@ function changeOnChapterDelayed(chapterId, achieved) {
       for (var i = 0; i < response.length; i++) {
         $("#todo_liste").append("<div class='bubble'>" +"<div>"+
           "<div class='right'>" + "<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
-          "<div class='left'>" + "<p>" + response[i].studentText + "</p>" + "</div>" +
+          "<div class='left'>" + "<p>" + response[i].studentText + "</p>" +
+          "</div>" +
           "</div>"+
+          "<p id='bubbleNumber'>"+ response[i].number +"</p>"+
           "</div>");
       }
     })
@@ -225,19 +228,18 @@ function changeOnChapterDelayed(chapterId, achieved) {
 }
 function getFoerderplan(planId) {
   changeContent("comp");
+  document.getElementById("body1").style.backgroundColor = "#8da6d6";
   setTimeout(function () {
     getFoerderplanDelayed(planId)
   }, 200);
 }
 function getFoerderplanDelayed(planId) {
 
+
   console.log("planId: "+planId)
 
-  var competences = "";
-  var foerderplan = "";
-
   var settings = {
-    "async": false,
+    "async": true,
     "crossDomain": true,
     "url": "http://46.101.204.215:1337/api/V1/educationalPlan/:" + planId,
     "method": "GET",
@@ -249,7 +251,7 @@ function getFoerderplanDelayed(planId) {
   $.ajax(settings).done(function (foerderplan) {
 
     var settings = {
-      "async": false,
+      "async": true,
       "crossDomain": true,
       "url": "http://46.101.204.215:1337/api/V1/studentcompetence",
       "method": "GET",
@@ -260,28 +262,52 @@ function getFoerderplanDelayed(planId) {
 
     $.ajax(settings).done(function (competences) {
 
-      console.log("number"+competences[0].number);
-
-
-
-
-      for (var j = 0; j < foerderplan[0].competences.length; j++) {
-
-        var _id = foerderplan[0].competences[j].competenceId;
-
-        $("#todo_liste").append(
-          "<div class='bubble'>" +
-            "<div class='right'>"+"<div class='infoBubble'"+ "></div>"+"</div>"+
-            "<div class='left'>"+
-              "<div class='right'>" +
-          "<img src=" + "images/achievedCompetences-inactive.png"+">"+
-          "</div>" +
-              "<div class='left'>"+
-                "<p>" + competences[_id].studentText + "</p>" + "" +
-              "</div>"+
-            "</div>"+
-          "</div>");
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://46.101.204.215:1337/api/V1/educationalPlan",
+        "method": "GET",
+        "headers": {
+          "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFuIn0.OzWf9avXr61RUJDZT8lSdjxoBDMLMerXIuZGcwIPjUE",
+        }
       }
+
+      $.ajax(settings).done(function (foerderplanTitel) {
+
+
+        for (var j = 0; j < foerderplan[0].competences.length; j++) {
+
+          var _id = foerderplan[0].competences[j].competenceId;
+
+          $("#todo_liste").append(
+            "<div class='bubble'>" +
+            "<div id='infoDiv' class='right'>" + "<div class='infoBubble'" + ">" +
+            foerderplanTitel[planId].name +"<br>"+
+            foerderplan[0].competences[j].note +
+            "</div>" + "</div>" +
+            "<div class='left'>" +
+            "<div class='right bubbleImg'>" +
+            "<img src=" + "images/achievedCompetences-inactive.png" + ">" +
+            "</div>" +
+            "<div class='left'>" +
+            "<p>" + competences[_id].studentText + "</p>" + "" +
+            "<p>" + competences[_id].number + "</p>" +
+            "</div>" +
+            "</div>" +
+            "</div>");
+
+          $(".bubbleImg").parent().parent().children('#infoDiv').hide();
+
+          $(".bubbleImg").hover(
+            function () {
+              $(this).parent().parent().children('#infoDiv').show();
+            },
+            function () {
+              $(this).parent().parent().children('#infoDiv').hide();
+            }
+          );
+        }
+      });
     });
   });
 }
@@ -343,6 +369,7 @@ function changeContent(content) {
     $("#fenster").load("parts.html #profileDeleteContent")
   }
   else if (content == "avatarChange") {
+    avatarSelected = "";
     $("#fenster").load("parts.html #avatarContent")
   }
   else if (content == "pwChange"){
@@ -360,6 +387,62 @@ function logout() {
   } else {
     alert("logout Fehlgeschlagen")
   }
+}
+
+function deleteProfile(){
+
+// PW kann nicht mitgeschicktwerden ist ja noch nutzlos
+  // document.getElementById("#passwordinput").value;
+
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://46.101.204.215:1337/api/V1/student",
+    "method": "DELETE",
+    "headers": {
+      "authorization": token.token,
+    }
+  }
+
+  $.ajax(settings).done(function (response) {
+    console.log("DELETET",response);
+  });
+}
+
+function selectAvatar(avatarID) {
+  avatarSelected = avatarID;
+  console.log($("#avatarBilder"));
+  var avi = $("#avatarBilder").children();
+  console.log(avi[avatarID]);
+}
+
+function changeAvatar(){
+
+
+  if(avatarSelected == ""){
+    alert("None Selected");
+  }
+
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://46.101.204.215:1337/api/V1/avatar/:"+avatarSelected,
+    "method": "PUT",
+    "headers": {
+      "authorization": token.token,
+    }
+  }
+
+  $.ajax(settings).done(function (response) {
+    console.log("AvatarChanged",response);
+  });
+
+  avatarSelected="";
+
+  document.getElementById("avatarImgInactive").src = (avatars[student.avatarId].avatarInactiveUrl).substring(1);
+  document.getElementById("avatarImgBig").src = (avatars[student.avatarId].avatarBigUrl).substring(1);
+
+
 }
 
 
