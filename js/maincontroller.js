@@ -18,7 +18,10 @@ function init() {
   foerderPlaneInit();
   changeContent("deleteProfile");
   //changeOnChapter(0, true);
-  dynamischeBilderDropdown();
+  setTimeout(function () {
+    dynamischeBilderDropdown();
+  }, 200);
+
   document.getElementById("body1").style.backgroundColor = "#FFF";
 }
 
@@ -244,7 +247,7 @@ function getFoerderplanDelayed(planId) {
     "url": "http://46.101.204.215:1337/api/V1/educationalPlan/:" + planId,
     "method": "GET",
     "headers": {
-      "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFuIn0.OzWf9avXr61RUJDZT8lSdjxoBDMLMerXIuZGcwIPjUE",
+      "authorization": token.token,
     }
   }
 
@@ -268,7 +271,7 @@ function getFoerderplanDelayed(planId) {
         "url": "http://46.101.204.215:1337/api/V1/educationalPlan",
         "method": "GET",
         "headers": {
-          "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFuIn0.OzWf9avXr61RUJDZT8lSdjxoBDMLMerXIuZGcwIPjUE",
+          "authorization": token.token,
         }
       }
 
@@ -282,12 +285,14 @@ function getFoerderplanDelayed(planId) {
           $("#todo_liste").append(
             "<div class='bubble'>" +
             "<div id='infoDiv' class='right'>" + "<div class='infoBubble'" + ">" +
+              "<div class='infoBubbleText'>" +
             foerderplanTitel[planId].name +"<br>"+
             foerderplan[0].competences[j].note +
+            "</div>"+
             "</div>" + "</div>" +
             "<div class='left'>" +
-            "<div class='right bubbleImg'>" +
-            "<img src=" + "images/achievedCompetences-inactive.png" + ">" +
+            "<div class='right bubbleImgDiv'>" +
+            "<img class='bubbleImg'src=" + "images/educationalPlan-inactive.png" + ">" +
             "</div>" +
             "<div class='left'>" +
             "<p>" + competences[_id].studentText + "</p>" + "" +
@@ -296,14 +301,18 @@ function getFoerderplanDelayed(planId) {
             "</div>" +
             "</div>");
 
-          $(".bubbleImg").parent().parent().children('#infoDiv').hide();
+          $(".bubbleImgDiv").parent().parent().children('#infoDiv').hide();
+          $(".bubbleImg").attr("src","images/educationalPlan-inactive.png");
 
-          $(".bubbleImg").hover(
+          $(".bubbleImgDiv").hover(
             function () {
               $(this).parent().parent().children('#infoDiv').show();
+              $(this).children('.bubbleImg').attr("src","images/educationalPlan-active.png");
+
             },
             function () {
               $(this).parent().parent().children('#infoDiv').hide();
+              $(this).children('.bubbleImg').attr("src","images/educationalPlan-inactive.png");
             }
           );
         }
@@ -346,18 +355,14 @@ function foerderPlaneInit() {
 }
 
 function dynamischeBilderDropdown() {
-  /*
+
    var sheet = document.createElement('style')
    sheet.innerHTML =
-   ".open #button-student {content:url(\""
-   +avatars[(student.avatarId)].avatarUrl +"\")}"
-   +".open #dropdown-school {content:url(\""
-   +student.school.imageUrl+"\")}"
-   +".open .classesButton {content:url(\""
-   +student.studyGroups.imageUrl +"\")}";
+     ".open .studentButton {content:url(\""+avatars[(student.avatarId)].avatarUrl +"\")}" +
+     ".open .schoolButton {content:url(\"" +student.school.imageUrl+"\")}" +
+     ".open .classesButton {content:url(\"" +student.studyGroups.imageUrl +"\")}";
 
-
-   document.body.appendChild(sheet);*/
+   document.body.appendChild(sheet);
 }
 
 function changeContent(content) {
@@ -366,13 +371,18 @@ function changeContent(content) {
     $("#fenster").load("parts.html #competenzContent")
   }
   else if (content == "deleteProfile") {
+    document.getElementById("body1").style.backgroundColor = "#FFF";
+
     $("#fenster").load("parts.html #profileDeleteContent")
   }
   else if (content == "avatarChange") {
+    document.getElementById("body1").style.backgroundColor = "#FFF";
+
     avatarSelected = "";
     $("#fenster").load("parts.html #avatarContent")
   }
   else if (content == "pwChange"){
+    document.getElementById("body1").style.backgroundColor = "#FFF";
     $("#fenster").load("parts.html #passwordChangeContent")
 
   }
