@@ -239,7 +239,12 @@
     font-family: RobotoThin, sans-serif;
     font-size: 13px;
     font-weight: 900;
-    margin: 30px;
+    height: 50px;
+    margin: 0px 0px 13px 0px;
+  }
+  .bubble div p.number {
+    color: grey;
+    font-size: 8px;
   }
 
   .bubble div {
@@ -513,6 +518,7 @@
   top: 90px;
   height: 50px;
   float: right;
+  z-index: 5;
 }
 
 #scrollDown {
@@ -521,6 +527,8 @@
   bottom: 90px;
   height: 50px;
   float: right;
+  z-index: 5;
+
 }
 
 #loginButton{
@@ -661,7 +669,7 @@
   color: #d3ddf2;
   font-size: 14pt;
   padding-right: 30px;
-  padding-top: 5px;  
+  padding-top: 5px;
 }
 
 #npDiv2{
