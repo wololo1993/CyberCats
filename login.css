@@ -70,3 +70,39 @@ body {
   color: #8da6d6; /*CHECK!FLIEDER  */
 }
 
+.hinweismeldung{
+    align-self: center;
+    height: 200px;
+    width: 300px;
+    border: 2px solid;
+    border-color: white;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.textfeld{
+    height: 80px;
+    width: 270px;
+    margin-left: 15px;
+    margin-top: 10px;
+    font-family: Roboto Thin;
+    font-size: 13pt;
+    color: white;
+}
+
+.deleteButton{
+    margin-top: 10px;
+    margin-left: 260px;
+}
+
+#warning{
+    background-color: #b71967;
+}
+
+#advice{
+    background-color: #001a3a /*CHECK!NACHT*/
+}
+
+#confirmation{
+    background-color: #76b82d /*CHECK!GRÜN*/
+}
