@@ -78,6 +78,8 @@ body {
     border-color: white;
     border-radius: 5px;
     margin: auto;
+    z-index: 10;
+    position: absolute;
 }
 
 .textfeld{
