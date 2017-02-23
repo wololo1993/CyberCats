@@ -1,4 +1,3 @@
-
 //versteckt hinweisContainer
 $(document).ready(function () {
   $(".hinweismeldung").hide();
@@ -12,11 +11,9 @@ $(document).ready(function () {
 function loginButton() {
 
 
-
-
   var form = new FormData();
-   form.append("username", $("#benutzername").val());
-   form.append("password", $("#passwort").val());
+  form.append("username", $("#benutzername").val());
+  form.append("password", $("#passwort").val());
 
 
   var settings = {
@@ -31,12 +28,12 @@ function loginButton() {
   $.ajax(settings).done(function (response) {
 
     localStorage.setItem('token', response);
-    localStorage.setItem('name',"jan");
+    localStorage.setItem('name', "jan");
     window.document.location.href = "main.html";
 
   }).fail(function () {
     //läd Hinweiscontainer aus perts.html in das vorgesehene div
-    $(".hinweismeldung").load("parts.html #warning",function () {
+    $(".hinweismeldung").load("parts.html #warning", function () {
       $("#warning").children(".textfeld").append("<p>Benutzername und oder Passwort Falsch</p>");
     })
     $(".hinweismeldung").show();
@@ -46,6 +43,6 @@ function loginButton() {
 /**
  * Versteckt den Hinweis Container wieder
  */
-function meldungWeg(){
+function meldungWeg() {
   $(".hinweismeldung").hide();
 }

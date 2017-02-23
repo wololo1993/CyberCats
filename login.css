@@ -70,17 +70,17 @@ body {
   color: #8da6d6; /*CHECK!FLIEDER  */
 }
 
-.hinweismeldung{
-    align-self: center;
-    height: 200px;
-    width: 300px;
-    top: -300px;
-    border: 2px solid;
-    border-color: white;
-    border-radius: 5px;
-    margin: auto;
-    z-index: 10;
-    position: relative;
+.hinweismeldung {
+  align-self: center;
+  height: 200px;
+  width: 300px;
+  top: -300px;
+  border: 2px solid;
+  border-color: white;
+  border-radius: 5px;
+  margin: auto;
+  z-index: 10;
+  position: relative;
 }
 
 .textfeld {

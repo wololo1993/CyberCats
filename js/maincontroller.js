@@ -236,7 +236,6 @@ function changeOnChapterDelayed(chapterId, achieved) {
       response.sort(function (a, b) {
 
         if (a.fromDate == null) {
-          console.log(a.fromDate)
           a2 = 0;
         } else {
           a2 = (a.fromDate).replace("-", "");
@@ -244,15 +243,11 @@ function changeOnChapterDelayed(chapterId, achieved) {
 
         }
         if (b.fromDate == null) {
-          console.log(b.fromDate)
           b2 = 0;
         } else {
           b2 = (b.fromDate).replace("-", "");
           b2 = b2.replace("-", "");
         }
-
-        console.log(b2 + " - " + a2);
-        console.log(b2 - a2);
 
         return b2 - a2;
       })
