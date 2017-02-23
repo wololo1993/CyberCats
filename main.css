@@ -13,8 +13,6 @@
   float: left;
 }
 
-@media only screen and (min-width: 768px) {
-
   /* #body1 {
        background-color: #f7bed2; /*CHECK!Pink*/
   /*}*/
@@ -366,7 +364,6 @@
   .navbar-fixed-bottom div div p {
     color: #4565ad;
   }
-}
 
 @media only screen and (max-width: 767px) {
 
@@ -792,6 +789,9 @@
 
 
 .hinweismeldung {
+  position: absolute;
+  top: 40%;
+  left: 36%;
   align-self: center;
   height: 200px;
   width: 300px;
@@ -815,6 +815,10 @@
 .deleteButton {
   margin-top: 10px;
   margin-left: 260px;
+}
+
+.fehlermeldungsBild{
+  margin-left: 113px;
 }
 
 #warning {

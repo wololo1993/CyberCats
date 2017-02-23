@@ -73,12 +73,13 @@
         </div>
 
         <div id="passwordChangeContent">
+          <div class="hinweismeldung"></div>
           <div class="ändereDiv" id="passwortAendern">
             <img src="images/change-password.png">
             <p>PASSWORT ÄNDERN</p>
             <div>
               <div id="npDiv"> AKTUELLES PASSWORT*</div>
-              <div id="mitte3"><input class="passwort" type="password" class="form-control loginData">
+              <div id="mitte3"><input id="passwordinputAktuell" class="passwort" type="password" class="form-control loginData">
               </div>
               <div id="außen"></div>
             </div>
@@ -86,7 +87,7 @@
             <div>
               <div id="npDiv1"> NEUES PASSWORT*
               </div>
-              <div id="mitte2"><input class="passwort" type="password" class="form-control loginData">
+              <div id="mitte2"><input id="passwordinputNeu" class="passwort" type="password" class="form-control loginData">
               </div>
               <div id="außen">
               </div>
@@ -95,7 +96,7 @@
             <div>
               <div id="npDiv2"> PASSWORT BESTÄTIGUNG*
               </div>
-              <div id="mitte1"><input class="passwort" type="password" class="form-control loginData">
+              <div id="mitte1"><input id="passwordinputNeu2" class="passwort" type="password" class="form-control loginData">
               </div>
             </div>
 
@@ -103,10 +104,10 @@
             </button>
 
           </div>
-          <div class="hinweismeldung"></div>
         </div>
 
         <div id="profileDeleteContent">
+          <div class="hinweismeldung"></div>
           <div class="ändereDiv1" id="profilLoeschen">
             <img src="images/delete-profile.png">
             <p>PROFIL LÖSCHEN</p>
@@ -124,10 +125,10 @@
               LÖSCHEN
             </button>
           </div>
-          <div class="hinweismeldung"></div>
         </div>
 
         <div id="avatarContent">
+          <div class="hinweismeldung"></div>
           <div id="startBild">
             <div style="text-align:center">
             </div>
@@ -139,7 +140,7 @@
             <div id="buttonsFloat">
               <div id="buttonabbrechen">
                 <button id="abbrechenButton" class="btn btn-lg btn-success btn-block" type="submit"
-                        onclick="changeContent('comp')"
+                        onclick="changeOnChapter(0,true)"
                         style="margin-bottom:0px"> ABBRECHEN
                 </button>
               </div>
@@ -171,7 +172,7 @@
 
         <div id="warning">
           <img class="deleteButton" onclick="meldungWeg()" src="images/delete.png" alt="Delete Button">
-          <img id="fehlermeldungBild1" src="images/warning.png" alt="Warning" style="margin-left: 113px">
+          <img class="fehlermeldungsBild" id="fehlermeldungBild1" src="images/warning.png" alt="Warning">
           <div class="textfeld">
           </div>
         </div>
@@ -179,14 +180,14 @@
 
         <div id="advice">
           <img class="deleteButton" onclick="meldungWeg()" src="images/delete.png" alt="Delete Button">
-          <img id="fehlermeldungBild2" src="images/advice.png" alt="Advice" style="margin-left: 113px">
+          <img class="fehlermeldungsBild" id="fehlermeldungBild2" src="images/advice.png" alt="Advice">
           <div class="textfeld">
           </div>
         </div>
 
         <div id="confirmation">
           <img class="deleteButton" onclick="meldungWeg()" src="images/delete.png" alt="Delete Button">
-          <img id="fehlermeldungBild3v" src="images/confirmation.png" alt="Confirmation" style="margin-left: 113px">
+          <img class="fehlermeldungsBild" id="fehlermeldungBild3v" src="images/confirmation.png" alt="Confirmation">
           <div class="textfeld">
           </div>
         </div>

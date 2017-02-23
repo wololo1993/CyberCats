@@ -7,6 +7,11 @@ var chapters = getChapters();
 var avatarSelected = "";
 var scrollDivID = 0;
 
+/**
+ * wird ausgeführt wenn document ready und lässt dann alles initalisieren, zieht vorher noch die förderplan daten
+ * in den local Storage wartet auch wegen obiger funktionsaufrufe noch 200ms ansonsten sind daten der API noch nicht da
+ * die ind die HTML geladen werden sollten
+ */
 $(document).ready(function () {
   getFoerderPlaene();
 
@@ -15,6 +20,9 @@ $(document).ready(function () {
   }, 200);
 });
 
+/**
+ * initalisiert das ganze
+ */
 function init() {
   meldungWeg();
   load();
@@ -22,12 +30,13 @@ function init() {
   initScrollButtons();
   setTimeout(function () {
     dynamischeBilderDropdown();
-    changeOnChapter(0,true);
+    changeOnChapter(0, true);
   }, 100);
 
   document.getElementById("body1").style.backgroundColor = "#FFF";
 }
 
+//läd gespeicherte informationen aus init in die HTML/CSS daten
 function load() {
 
 //Writes information in main.html
@@ -118,7 +127,6 @@ function getChapters() {
 }
 
 
-
 /**
  * replaces "-" in schoolName with "-<br>"
  *
@@ -151,7 +159,7 @@ function changeOnChapterDelayed(chapterId, achieved) {
 
   document.getElementById("todo_liste").innerHTML = "";
   var chapterURL = "";
-  if (chapterId == 0) {
+  if (chapterId == 0) { //wird nur aufgerufen wenn alle erreichten Kompetenzen gefordert sind
     document.getElementById("body1").style.backgroundColor = "#8da6d6";
     //falsche scroll buttens da keine für alle kompetenzen gegeben
     document.getElementById("scrollUp").src = "images/chapter16/scrollUp.png";
@@ -168,15 +176,34 @@ function changeOnChapterDelayed(chapterId, achieved) {
     }
 
     $.ajax(settings).done(function (response) {
+      response.sort(function (a, b) {
+        a2 = (a.fromDate).replace("-", "");
+        a2 = a2.replace("-", "");
+        b2 = (b.fromDate).replace("-", "");
+        b2 = b2.replace("-", "");
 
+        return b2 - a2;
+      })
+      //einfach durch jede Kompetenz durchgehen und jeweils eine bubble dafür erstellen
       for (var i = 0; i < response.length; i++) {
 
-        makeBubble("Erreicht am:", response[i].fromDate, "images/achievedCompetences-active.png", "images/achievedCompetences-inactive.png",
+        var chapter = response[i].chapterId;
+        var chapterURL = ""
+
+        if (chapter < 10) {
+          chapterURL = "chapter0" + chapter;
+        } else {
+          chapterURL = "chapter" + chapter;
+        }
+
+        makeBubble("Erreicht am:", response[i].fromDate, "images/" + chapterURL + "/competenceDone.png", "images/" + chapterURL + "/competenceDone.png",
           response[i].studentText, response[i].number, i);
 
       }
     })
   } else {
+    //wenn spezielles Kapitel geforderd hole flagge / hintergrund des jeweiligen kapitels
+    //und erstelle HTTP Request nach kapitel und ob nur erreichte oder alle angezeigt werden sollen
 
     document.getElementById("body1").style.backgroundColor = chapters[chapterId - 1].weakcolor;
     if (chapterId < 10) {
@@ -204,7 +231,30 @@ function changeOnChapterDelayed(chapterId, achieved) {
     }
 
     $.ajax(settings).done(function (response) {
+      //sortier funktion setzt neustes nach oben und alle nicht erreichten nach unten
+      response.sort(function (a, b) {
 
+        if (a.fromDate == null) {
+          console.log(a.fromDate)
+          a2 = 0;
+        } else {
+          a2 = (a.fromDate).replace("-", "");
+          a2 = a2.replace("-", "");
+
+        }
+        if (b.fromDate == null) {
+          console.log(b.fromDate)
+          b2 = 0;
+        } else {
+          b2 = (b.fromDate).replace("-", "");
+          b2 = b2.replace("-", "");
+        }
+
+        console.log(b2 + " - " + a2);
+        console.log(b2 - a2);
+
+        return b2 - a2;
+      })
 
       for (var i = 0; i < response.length; i++) {
 
@@ -213,15 +263,17 @@ function changeOnChapterDelayed(chapterId, achieved) {
         var imgActive = (response[i].checked.valueOf().toLocaleString().localeCompare("true".toLocaleString())) ? "images/" + chapterURL + "/competenceUndone.png" : "images/" + chapterURL + "/competenceDone.png";
         var imgInActive = (response[i].checked.valueOf().toLocaleString().localeCompare("true".toLocaleString())) ? "images/" + chapterURL + "/competenceUndone.png" : "images/" + chapterURL + "/competenceDone.png";
 
+        // Kompetenz im förderplan ist wenn ja überschreibt es die normalen parameter
+
         var compInEDPlan = checkIfFoerderplan(response[i]);
 
-         if (compInEDPlan != null) {
+        if (compInEDPlan != null) {
 
-           bubbleTitel = compInEDPlan.bubbleInfoTitel;
-           bubbleText = compInEDPlan.bubbleInfoNote;
-           imgActive = "images/educationalPlan-active.png";
-           imgInActive = "images/educationalPlan-inactive.png";
-         }
+          bubbleTitel = compInEDPlan.bubbleInfoTitel;
+          bubbleText = compInEDPlan.bubbleInfoNote;
+          imgActive = "images/educationalPlan-active.png";
+          imgInActive = "images/educationalPlan-inactive.png";
+        }
 
 
         makeBubble(bubbleTitel, bubbleText, imgActive, imgInActive, response[i].studentText, response[i].number, i)
@@ -233,7 +285,9 @@ function changeOnChapterDelayed(chapterId, achieved) {
 }
 
 /**
+ * läd den componenten Content
  * ruft getFoerderplanDelayed 200 ms später auf damit HTML content geladen ist
+ * und ändert noch die hintergrund farbe
  * @param planId
  */
 function getFoerderplan(planId) {
@@ -249,38 +303,64 @@ function getFoerderplan(planId) {
  */
 function getFoerderplanDelayed(planId) {
 
-  console.log(planId);
 
-  var foerderplan = JSON.parse(localStorage.getItem("EDplanNr"+(planId+1)))
+  //aus string im localStorage mach wieder ein JSON
+  var foerderplan = JSON.parse(localStorage.getItem("EDplanNr" + (planId + 1)))
   var foerderplanTitel = JSON.parse(localStorage.getItem("EDPlaene"));
 
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "http://46.101.204.215:1337/api/V1/studentcompetence",
-      "method": "GET",
-      "headers": {
-        "authorization": token.token,
-      }
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://46.101.204.215:1337/api/V1/studentcompetence",
+    "method": "GET",
+    "headers": {
+      "authorization": token.token,
     }
+  }
 
-    $.ajax(settings).done(function (competences) {
+  $.ajax(settings).done(function (competences) {
 
 
-        for (var j = 0; j < foerderplan[0].competences.length; j++) {
+    //für jede förderplan competenz passende richtige competenz finden und dann die bubble dazu erstellen
+    //wenn Kompetenz erreicht ist wird das Done bildchen des jeweiligen kapitels angezeigt
 
-          var _id = foerderplan[0].competences[j].competenceId;
+    for (var j = 0; j < foerderplan[0].competences.length; j++) {
 
-          makeBubble(foerderplanTitel[planId].name, foerderplan[0].competences[j].note, "images/educationalPlan-active.png"
-            , "images/educationalPlan-inactive.png", competences[_id].studentText, competences[_id].number, _id);
+      var _id = foerderplan[0].competences[j].competenceId;
+
+      var chapterURL = "";
+      var infoBubbleTitel = foerderplanTitel[planId].name;
+      var infoBubbleText = foerderplan[0].competences[j].note;
+      var imgActive = "images/educationalPlan-active.png";
+      var imgInActive = "images/educationalPlan-inactive.png";
+
+
+      if (competences[_id].checked) {
+        if (competences[_id].chapterId < 10) {
+          chapterURL = "chapter0" + competences[_id].chapterId;
+        } else {
+          chapterURL = "chapter" + competences[_id].chapterId;
         }
-      });
+
+        infoBubbleTitel = "Erreicht am:";
+        infoBubbleText = competences[_id].fromDate;
+        imgActive = "images/" + chapterURL + "/competenceDone.png";
+        imgInActive = imgActive;
+      }
+
+
+      makeBubble(infoBubbleTitel, infoBubbleText, imgActive
+        , imgInActive, competences[_id].studentText, competences[_id].number, _id);
+    }
+  });
 
   scrollDivID = 0;
   initScrollButtons();
 }
 
-
+/**
+ * holt sich die förderpläne und fügt sie ins dropdown ein
+ */
 function foerderPlaneInit() {
 
   var settings = {
@@ -304,6 +384,11 @@ function foerderPlaneInit() {
   });
 }
 
+/**
+ * erstellt eine neue style datei mit den funktionen die bilder bei aktive zu ändern
+ * geht nur hier da URLs ja von API gegeben
+ * und fügt es dann an dieses document an.
+ */
 function dynamischeBilderDropdown() {
 
   var sheet = document.createElement('style')
@@ -314,7 +399,10 @@ function dynamischeBilderDropdown() {
 
   document.body.appendChild(sheet);
 }
-
+/**
+ * switcht je nach content das fenster für die jeweilige seite aus
+ * @param content
+ */
 function changeContent(content) {
 
   if (content == "comp") {
@@ -341,7 +429,9 @@ function changeContent(content) {
   }, 100);
 
 }
-
+/**
+ * löscht local storage prüft ob token noch da ist und leitet auf index.html weiter
+ */
 function logout() {
   localStorage.clear();
   token = "";
@@ -352,11 +442,13 @@ function logout() {
     alert("logout Fehlgeschlagen")
   }
 }
-
+/**
+ *  logout nach positivem API Request
+ */
 function deleteProfile() {
 
 // PW kann nicht mitgeschicktwerden ist ja noch nutzlos
-  // document.getElementById("#passwordinput").value;
+// document.getElementById("#passwordinput").value;
 
   var settings = {
     "async": true,
@@ -369,11 +461,7 @@ function deleteProfile() {
   }
 
   $.ajax(settings).done(function (response) {
-    $(".hinweismeldung").load("parts.html #confirmation", function () {
-      $("#confirmation").children(".textfeld").append("Profil gelöscht");
-    })
-    $(".hinweismeldung").show();
-
+    logout();
   }).fail(function () {
     $(".hinweismeldung").load("parts.html #warning", function () {
         $("#warning").children(".textfeld").append("Falsches Passwort");
@@ -383,10 +471,16 @@ function deleteProfile() {
   });
 }
 
+/**
+ * wenn auf avatar geklickt wird wird er hier gespeichert
+ * @param avatarID
+ */
 function selectAvatar(avatarID) {
   avatarSelected = avatarID;
 }
-
+/**
+ * gibt ausgewählten avatar an den server weiter wenn Fehler kommt nen HinweisDiv
+ */
 function changeAvatar() {
 
   if (avatarSelected == "") {
@@ -424,7 +518,11 @@ function changeAvatar() {
 
   load();
 }
-
+/**
+ * zieht sich schonmal die förderpläne und die förderplankapitel in den local storage
+ * damit es nachher nicht zu fehlern kommt
+ * vorallem weil in der for schleife ein sync aufruf passieren muss
+ */
 function getFoerderPlaene() {
   var settingsEDPlan = {
     "async": false,
@@ -436,7 +534,7 @@ function getFoerderPlaene() {
     }
   }
   $.ajax(settingsEDPlan).done(function (response) {
-    localStorage.setItem("EDPlaene",JSON.stringify(response));
+    localStorage.setItem("EDPlaene", JSON.stringify(response));
 
     for (var i = 1; i <= response.length; i++) {
 
@@ -450,39 +548,57 @@ function getFoerderPlaene() {
         }
       }
       $.ajax(settingsEDPlaene).done(function (comp) {
-        localStorage.setItem("EDplanNr"+i,JSON.stringify(comp));
+        localStorage.setItem("EDplanNr" + i, JSON.stringify(comp));
       });
     }
   });
 }
 
+/**
+ * geht alle spezifischen förderpläne durch um alle ids mit der der übergebenen Kompetenz abzugleichen
+ * wenn zutrifft gibt es den Titel des Förderplankapitels mit dem Förderplan note zurück als JSON um so das nochmalige
+ * Suchen zu erspaaren {"bubbleInfoTitel":...,"bubbleInfoNote":...}
+ * @param comp
+ * @returns {*} JSON {"bubbleInfoTitel":...,"bubbleInfoNote":...}
+ */
 function checkIfFoerderplan(comp) {
+  //string zu JSON aus localStorage
   var foerderPlaene = JSON.parse(localStorage.getItem("EDPlaene"));
 
+  //für jeden förderplan
+  for (var i = 1; i <= foerderPlaene.length; i++) {
+    //same here
+    var foerderPlanNr = JSON.parse(localStorage.getItem("EDplanNr" + i))
 
-  for(var i = 1; i <= foerderPlaene.length; i++){
+    //für jede Kompetenz im spezifischen Förderplan
+    for (var j = 0; j < foerderPlanNr[0].competences.length; j++) {
+      if (comp.id == foerderPlanNr[0].competences[j].competenceId) {
 
-    var foerderPlanNr = JSON.parse(localStorage.getItem("EDplanNr"+i))
-
-
-    for(var j = 0; j < foerderPlanNr[0].competences.length; j++){
-      if(comp.id == foerderPlanNr[0].competences[j].competenceId){
-        console.log("Competenz id"+comp.id+"  foerderplan compID: "+foerderPlanNr[0].competences[j].competenceId)
-        console.log(foerderPlanNr[0].competences[j]);
-        console.log(comp);
-
-       return {"bubbleInfoTitel":foerderPlaene[i-1].name,
-       "bubbleInfoNote":foerderPlanNr[0].competences[j].note}
+        return {
+          "bubbleInfoTitel": foerderPlaene[i - 1].name,
+          "bubbleInfoNote": foerderPlanNr[0].competences[j].note
+        }
       }
     }
   }
   return null;
 }
 
-
+/**
+ * erstellt für die parameter eine Bubble mit Hover Funktion(über IMG)
+ *
+ * @param foerderplanTitel
+ * @param foerderplanNote
+ * @param imgActive
+ * @param imgInActive
+ * @param studentText
+ * @param bubbleNumber
+ * @param bubbleid
+ */
 function makeBubble(foerderplanTitel, foerderplanNote, imgActive, imgInActive, studentText, bubbleNumber, bubbleid) {
 
   var bubbleID = "bubbleID" + bubbleid;
+  //erstelle kopmlexes HTML Gebilde
 
   $("#todo_liste").append(
     "<div class='bubble' id='bubbleID" + bubbleid + "'>" +
@@ -502,12 +618,14 @@ function makeBubble(foerderplanTitel, foerderplanNote, imgActive, imgInActive, s
     "</div>" +
     "</div>" +
     "</div>");
+  //füge InfoBubble Hide/show ein
 
   $(".bubbleImgDiv" + bubbleid).parent().parent().children('#infoDiv').hide();
   $(".bubbleImgDiv" + bubbleid).children('.bubbleImg').attr("src", imgInActive);
 
-  if (foerderplanNote != null && foerderplanNote != "null") {
+  //falls aber keine FörderplanNote bzw auch kein Datum Drinsteht gibt es auch keine Hover funktion
 
+  if (foerderplanNote != null && foerderplanNote != "null") {
 
     $(".bubbleImgDiv" + bubbleid).hover(
       function () {
@@ -522,7 +640,10 @@ function makeBubble(foerderplanTitel, foerderplanNote, imgActive, imgInActive, s
     );
   }
 }
-
+/**
+ * sendet Passwort request
+ * da nicht gegeben wie das pw geschickt werden soll und da das PW überhaupt noch keine funktion hat hier weggelassen
+ */
 function passwordChange() {
   var benutzername = localStorage.getItem('name');
 
@@ -554,6 +675,7 @@ function passwordChange() {
           "authorization": token2.token,
         }
       }
+      //Anzeige von Hinweisen ob geklappt oder nicht
       $.ajax(settingsChangePW).done(function (response) {
         $(".hinweismeldung").load("parts.html #confirmation", function () {
           $("#confirmation").children(".textfeld").append("PW geändert");
@@ -574,6 +696,10 @@ function passwordChange() {
     $(".hinweismeldung").show();
   }
 }
+/**
+ * sollte eigentlich funktionieren wie ich mir das vorstelle
+ * und zu dem jeweiligen element scrollen
+ */
 
 function initScrollButtons() {
 
@@ -593,7 +719,10 @@ function initScrollButtons() {
       }, 200);
   });
 }
+/**
+ * entfernt alle meldungen bz versteckt das div wo sie dann drin stehen
 
+ */
 function meldungWeg() {
   $(".hinweismeldung").hide();
 }
