@@ -1,196 +1,197 @@
 <html>
 
-<head>
-  <link href="bootstrap.css" rel="stylesheet" type="text/css">
-  <link href="main.css" type="text/css" rel="stylesheet">
+    <head>
+        <link href="bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="main.css" type="text/css" rel="stylesheet">
 
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="js/maincontroller.js"></script>
-</head>
-
-
-<body>
-
-<div id="BubbleTemp">
-
-  <div class="bubble">
-    <div style="float: left">
-      <div style="float: right; width:17%">
-        <img src="images/achievedCompetences-inactive.png">
-      </div>
-      <div style="float: left; width: 73%">
-        <p>lopsem dirivatum eres humus blödus</p>
-      </div>
-      <div style="float: right">
-        <div class="infoBubble"></div>
-      </div>
-    </div>
-  </div>
-</div>
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="js/maincontroller.js"></script>
+    </head>
 
 
-<div id="foerderplanTemplate">
-  <li>
-    <div class="big-first">
-      <div class="big-first-top">
-        <div class="inline">
-          <img src="images/educationalPlan-big.png">
+
+    <body>
+
+
+        <div id="BubbleTemp">
+            <div class="bubble">
+                <div style="float: left">
+                    <div style="float: right; width:17%">
+                        <img src="images/achievedCompetences-inactive.png">
+                    </div>
+                    <div style="float: left; width: 73%">
+                        <p>lopsem dirivatum eres humus blödus</p>
+                    </div>
+                    <div style="float: right">
+                        <div class="infoBubble"></div>
+                    </div>
+                </div>
+          </div>
         </div>
-        <div class="inline">
-          <p>FÖRDERPLANE</p>
+
+
+        <div id="foerderplanTemplate">
+          <li>
+            <div class="big-first">
+              <div class="big-first-top">
+                <div class="inline">
+                  <img src="images/educationalPlan-big.png">
+                </div>
+                <div class="inline">
+                  <p>FÖRDERPLANE</p>
+                </div>
+              </div>
+              <div class="big-first-bottom" style="float: none">
+              </div>
+            </div>
+          </li>
         </div>
-      </div>
-      <div class="big-first-bottom" style="float: none">
-      </div>
-    </div>
-  </li>
-</div>
 
 
-<div id="competenzContent">
-  <div id=linke_seite class="col-sm-3 col-md-4 col-lg-4">
-    <div id="flagDiv">
-      <img id="flagImg" src="">
-    </div>
-    <img src="images/illustrations/illustrationLeft.png">
-  </div>
+        <div id="competenzContent">
+          <div id=linke_seite class="col-sm-3 col-md-4 col-lg-4">
+            <div id="flagDiv">
+              <img id="flagImg" src="">
+            </div>
+            <img src="images/illustrations/illustrationLeft.png">
+          </div>
 
-  <div id="todo_liste" class="col-sm-6 col-md-4 col-lg-4">
+          <div id="todo_liste" class="col-sm-6 col-md-4 col-lg-4">
 
-  </div>
+          </div>
 
-  <div id=rechte_seite class="col-sm-3 col-md-4 col-lg-4">
-    <div>
-    </div>
-    <img src="images/illustrations/illustrationRight.png">
-  </div>
+          <div id=rechte_seite class="col-sm-3 col-md-4 col-lg-4">
+            <div>
+            </div>
+            <img src="images/illustrations/illustrationRight.png">
+          </div>
 
-  <td>
-    <img id="scrollUp" src="" onclick="countDOWN()">
-    <img id="scrollDown" src="" onclick="countUP()">
-  </td>
-</div>
+          <td>
+            <img id="scrollUp" src="" onclick="countDOWN()">
+            <img id="scrollDown" src="" onclick="countUP()">
+          </td>
+        </div>
 
-<div id="passwordChangeContent">
-  <div class="ändereDiv" id="passwortAendern">
-    <img src="images/change-password.png">
-    <p>PASSWORT ÄNDERN</p>
-    <div>
-      <div id="npDiv"> AKTUELLES PASSWORT*</div>
-      <div id="mitte3"><input id="passwordinputAktuell" type="password" class="form-control loginData">
-      </div>
-      <div id="außen"></div>
-    </div>
+        <div id="passwordChangeContent">
+          <div class="ändereDiv" id="passwortAendern">
+            <img src="images/change-password.png">
+            <p>PASSWORT ÄNDERN</p>
+            <div>
+              <div id="npDiv"> AKTUELLES PASSWORT*</div>
+              <div id="mitte3"><input class="passwort" type="password" class="form-control loginData">
+              </div>
+              <div id="außen"></div>
+            </div>
 
-    <div>
-      <div id="npDiv1"> NEUES PASSWORT*
-      </div>
-      <div id="mitte2"><input id="passwordinputNeu" type="password" class="form-control loginData">
-      </div>
-      <div id="außen">
-      </div>
-    </div>
+            <div>
+              <div id="npDiv1"> NEUES PASSWORT*
+              </div>
+              <div id="mitte2"><input class="passwort" type="password" class="form-control loginData">
+              </div>
+              <div id="außen">
+              </div>
+            </div>
 
-    <div>
-      <div id="npDiv2"> PASSWORT BESTÄTIGUNG*
-      </div>
-      <div id="mitte1"><input id="passwordinputNeu2" type="password" class="form-control loginData">
-      </div>
-    </div>
+            <div>
+              <div id="npDiv2"> PASSWORT BESTÄTIGUNG*
+              </div>
+              <div id="mitte1"><input class="passwort" type="password" class="form-control loginData">
+              </div>
+            </div>
 
-    <button id="ändernButton" class="btn btn-lg btn-success btn-block" type="submit" onclick="passwordChange()"> ÄNDERN
-    </button>
+            <button id="ändernButton" class="btn btn-lg btn-success btn-block" type="submit" onclick="passwordChange()"> ÄNDERN
+            </button>
 
-  </div>
-  <div class="hinweismeldung"></div>
-</div>
+          </div>
+          <div class="hinweismeldung"></div>
+        </div>
 
-<div id="profileDeleteContent">
-  <div class="ändereDiv1" id="profilLoeschen">
-    <img src="images/delete-profile.png">
-    <p>PROFIL LÖSCHEN</p>
-    <div>
-      <div id="plDiv"> PASSWORT*
-      </div>
-      <div id="mitte">
-        <input id="passwordinput" type="password" class="form-control loginData">
-      </div>
-      <div id="außen">
-      </div>
-    </div>
+        <div id="profileDeleteContent">
+          <div class="ändereDiv1" id="profilLoeschen">
+            <img src="images/delete-profile.png">
+            <p>PROFIL LÖSCHEN</p>
+            <div>
+              <div id="plDiv"> PASSWORT*
+              </div>
+              <div id="mitte">
+                <input class="passwort" type="password" class="form-control loginData">
+              </div>
+              <div id="außen">
+              </div>
+            </div>
 
-    <button id="PLoeschenButton" class="btn btn-lg btn-success btn-block" type="submit" onclick='deleteProfile()'>
-      LÖSCHEN
-    </button>
-  </div>
-  <div class="hinweismeldung"></div>
-</div>
+            <button id="PLoeschenButton" class="btn btn-lg btn-success btn-block" type="submit" onclick='deleteProfile()'>
+              LÖSCHEN
+            </button>
+          </div>
+          <div class="hinweismeldung"></div>
+        </div>
 
-<div id="avatarContent">
-  <div id="startBild">
-    <div style="text-align:center">
-    </div>
-  </div>
+        <div id="avatarContent">
+          <div id="startBild">
+            <div style="text-align:center">
+            </div>
+          </div>
 
-  <div class="ändereDiv" id="avatarAendern">
-    <img id="avatarChange" src="">
-    <p style="margin-bottom:0px">PROFILBILD ÄNDERN</p>
-    <div id="buttonsFloat">
-      <div id="buttonabbrechen">
-        <button id="abbrechenButton" class="btn btn-lg btn-success btn-block" type="submit"
-                onclick="changeContent('comp')"
-                style="margin-bottom:0px"> ABBRECHEN
-        </button>
-      </div>
+          <div class="ändereDiv" id="avatarAendern">
+            <img id="avatarChange" src="">
+            <p style="margin-bottom:0px">PROFILBILD ÄNDERN</p>
+            <div id="buttonsFloat">
+              <div id="buttonabbrechen">
+                <button id="abbrechenButton" class="btn btn-lg btn-success btn-block" type="submit"
+                        onclick="changeContent('comp')"
+                        style="margin-bottom:0px"> ABBRECHEN
+                </button>
+              </div>
 
-      <div id="buttonspeichern">
-        <button id="loginButton" class="btn btn-lg btn-success btn-block" type="submit" onclick="changeAvatar()">
-          SPEICHERN
-        </button>
-      </div>
-    </div>
-  </div>
+              <div id="buttonspeichern">
+                <button id="loginButton" class="btn btn-lg btn-success btn-block" type="submit" onclick="changeAvatar()">
+                  SPEICHERN
+                </button>
+              </div>
+            </div>
+          </div>
 
-  <div class="avatarbilder" id="avatarBilder">
-    <img src="images/student/superhero-batman-big-active.png" onclick="selectAvatar(0)">
-    <img src="images/student/superhero-catwoman-big-active.png" onclick="selectAvatar(1)">
-    <img src="images/student/superhero-gandalf-big-active.png" onclick="selectAvatar(2)">
-    <img src="images/student/superhero-greenlantern-big-active.png" onclick="selectAvatar(3)">
-    <img src="images/student/superhero-hulk-big-active.png" onclick="selectAvatar(4)">
-    <img src="images/student/superhero-kickass-big-active.png" onclick="selectAvatar(5)">
-    <img src="images/student/superhero-luke-big-active.png" onclick="selectAvatar(6)">
-    <img src="images/student/superhero-robin-big-active.png" onclick="selectAvatar(7)">
-    <img src="images/student/superhero-skeletor-big-active.png" onclick="selectAvatar(8)">
-    <img src="images/student/superhero-spiderman-big-active.png" onclick="selectAvatar(9)">
-    <img src="images/student/superhero-superman-big-active.png" onclick="selectAvatar(10)">
-    <img src="images/student/superhero-superwoman-big-active.png" onclick="selectAvatar(11)">
-  </div>
-  <div class="hinweismeldung"></div>
-</div>
+          <div class="avatarbilder" id="avatarBilder">
+            <img src="images/student/superhero-batman-big-active.png" onclick="selectAvatar(0)">
+            <img src="images/student/superhero-catwoman-big-active.png" onclick="selectAvatar(1)">
+            <img src="images/student/superhero-gandalf-big-active.png" onclick="selectAvatar(2)">
+            <img src="images/student/superhero-greenlantern-big-active.png" onclick="selectAvatar(3)">
+            <img src="images/student/superhero-hulk-big-active.png" onclick="selectAvatar(4)">
+            <img src="images/student/superhero-kickass-big-active.png" onclick="selectAvatar(5)">
+            <img src="images/student/superhero-luke-big-active.png" onclick="selectAvatar(6)">
+            <img src="images/student/superhero-robin-big-active.png" onclick="selectAvatar(7)">
+            <img src="images/student/superhero-skeletor-big-active.png" onclick="selectAvatar(8)">
+            <img src="images/student/superhero-spiderman-big-active.png" onclick="selectAvatar(9)">
+            <img src="images/student/superhero-superman-big-active.png" onclick="selectAvatar(10)">
+            <img src="images/student/superhero-superwoman-big-active.png" onclick="selectAvatar(11)">
+          </div>
+          <div class="hinweismeldung"></div>
+        </div>
 
-<div id="warning">
-  <img class="deleteButton" onclick="meldungWeg()" src="images/delete.png" alt="Delete Button">
-  <img id="fehlermeldungBild1" src="images/warning.png" alt="Warning">
-  <div class="textfeld">
-  </div>
-</div>
-
-
-<div id="advice">
-  <img class="deleteButton" onclick="meldungWeg()" src="images/delete.png" alt="Delete Button">
-  <img id="fehlermeldungBild2" src="images/advice.png" alt="Advice">
-  <div class="textfeld">
-  </div>
-</div>
-
-<div id="confirmation">
-  <img class="deleteButton" onclick="meldungWeg()" src="images/delete.png" alt="Delete Button">
-  <img id="fehlermeldungBild3v" src="images/confirmation.png" alt="Confirmation">
-  <div class="textfeld">
-  </div>
-</div>
+        <div id="warning">
+          <img class="deleteButton" onclick="meldungWeg()" src="images/delete.png" alt="Delete Button">
+          <img id="fehlermeldungBild1" src="images/warning.png" alt="Warning">
+          <div class="textfeld">
+          </div>
+        </div>
 
 
-</body>
+        <div id="advice">
+          <img class="deleteButton" onclick="meldungWeg()" src="images/delete.png" alt="Delete Button">
+          <img id="fehlermeldungBild2" src="images/advice.png" alt="Advice">
+          <div class="textfeld">
+          </div>
+        </div>
+
+        <div id="confirmation">
+          <img class="deleteButton" onclick="meldungWeg()" src="images/delete.png" alt="Delete Button">
+          <img id="fehlermeldungBild3v" src="images/confirmation.png" alt="Confirmation">
+          <div class="textfeld">
+          </div>
+        </div>
+
+
+    </body>
 
 </html>
