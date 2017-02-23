@@ -1,5 +1,5 @@
 
-
+//versteckt hinweisContainer
 $(document).ready(function () {
   $(".hinweismeldung").hide();
 });
@@ -7,22 +7,16 @@ $(document).ready(function () {
 /**
  * API PUT login
  * saves token in localStorage
+ * href to main.html
  */
-
 function loginButton() {
 
 
 
 
   var form = new FormData();
-  /*
    form.append("username", $("#benutzername").val());
-   form.append("password", $("#passwort).val();
-   */
-
-  form.append("username", "jan");
-  form.append("password", "111MKD");
-
+   form.append("password", $("#passwort").val());
 
 
   var settings = {
@@ -41,6 +35,7 @@ function loginButton() {
     window.document.location.href = "main.html";
 
   }).fail(function () {
+    //läd Hinweiscontainer aus perts.html in das vorgesehene div
     $(".hinweismeldung").load("parts.html #warning",function () {
       $("#warning").children(".textfeld").append("<p>Benutzername und oder Passwort Falsch</p>");
     })
@@ -48,7 +43,9 @@ function loginButton() {
   });
 
 }
-
+/**
+ * Versteckt den Hinweis Container wieder
+ */
 function meldungWeg(){
   $(".hinweismeldung").hide();
 }

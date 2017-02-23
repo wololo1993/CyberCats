@@ -176,6 +176,7 @@ function changeOnChapterDelayed(chapterId, achieved) {
     }
 
     $.ajax(settings).done(function (response) {
+      //sortiert nach Datum neuste zuerst
       response.sort(function (a, b) {
         a2 = (a.fromDate).replace("-", "");
         a2 = a2.replace("-", "");
