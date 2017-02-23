@@ -4,9 +4,7 @@ var token = JSON.parse(tokenJSON);
 var student = getStudent();
 var avatars = getAvatars();
 var chapters = getChapters();
-var chapterillustrations = getChapterillustrations();
 var avatarSelected = "";
-var benutzername = "";
 var scrollDivID = 0;
 
 $(document).ready(function () {
@@ -14,20 +12,18 @@ $(document).ready(function () {
 
   setTimeout(function () {
     init()
-  }, 500);
+  }, 200);
 });
 
 function init() {
-  console.log()
   meldungWeg();
   load();
   foerderPlaneInit();
   initScrollButtons();
-  changeContent("comp");
   setTimeout(function () {
     dynamischeBilderDropdown();
-    makeBubble("blads", "asd", "images/logo.png", "images/logo.png", "asd", "asd", 1);
-  }, 200);
+    changeOnChapter(0,true);
+  }, 100);
 
   document.getElementById("body1").style.backgroundColor = "#FFF";
 }
@@ -78,7 +74,6 @@ function getStudent() {
   }
 
   $.ajax(settings).done(function (response) {
-    //console.log(response.avatarId);
     student = response;
   });
 
@@ -103,7 +98,9 @@ function getAvatars() {
     avatars = response;
   });
 }
-
+/**
+ * speichert Chapters ab um zB die farben zu bekommen
+ */
 function getChapters() {
   var settings = {
     "async": true,
@@ -120,21 +117,6 @@ function getChapters() {
   });
 }
 
-function getChapterillustrations() {
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://46.101.204.215:1337/api/V1/chapterillustrations/",
-    "method": "GET",
-    "headers": {
-      "authorization": token.token,
-    }
-  }
-
-  $.ajax(settings).done(function (response) {
-    chapterillustrations = response;
-  });
-}
 
 
 /**
@@ -147,20 +129,33 @@ function getSchoolname(schoolName) {
   return schoolName.replace("-", "-<br>")
 }
 
+/**
+ * ruft changeOnChapterDelayed 200ms später auf damit bis dahin der HTML content geladen hat
+ * @param chapterId
+ * @param achieved
+ */
 function changeOnChapter(chapterId, achieved) {
   changeContent("comp");
   setTimeout(function () {
     changeOnChapterDelayed(chapterId, achieved)
   }, 200);
 }
-
+/**
+ * Läd je nach chapter die jeweiligen Bubbles
+ * bei chapter 0 werden alle geladen,
+ *
+ * @param chapterId
+ * @param achieved
+ */
 function changeOnChapterDelayed(chapterId, achieved) {
 
   document.getElementById("todo_liste").innerHTML = "";
   var chapterURL = "";
   if (chapterId == 0) {
     document.getElementById("body1").style.backgroundColor = "#8da6d6";
-
+    //falsche scroll buttens da keine für alle kompetenzen gegeben
+    document.getElementById("scrollUp").src = "images/chapter16/scrollUp.png";
+    document.getElementById("scrollDown").src = "images/chapter16/scrollDown.png";
 
     var settings = {
       "async": true,
@@ -173,9 +168,6 @@ function changeOnChapterDelayed(chapterId, achieved) {
     }
 
     $.ajax(settings).done(function (response) {
-      response.sort(function (a, b) {
-        return (a.fromDate - b.fromDate);
-      });
 
       for (var i = 0; i < response.length; i++) {
 
@@ -212,12 +204,9 @@ function changeOnChapterDelayed(chapterId, achieved) {
     }
 
     $.ajax(settings).done(function (response) {
-      response.sort(function (a, b) {
-        return (a.fromDate - b.fromDate);
-      });
+
 
       for (var i = 0; i < response.length; i++) {
-        console.log(i);
 
         var bubbleTitel = "Erreicht am:";
         var bubbleText = response[i].fromDate;
@@ -227,8 +216,6 @@ function changeOnChapterDelayed(chapterId, achieved) {
         var compInEDPlan = checkIfFoerderplan(response[i]);
 
          if (compInEDPlan != null) {
-
-           console.log(compInEDPlan);
 
            bubbleTitel = compInEDPlan.bubbleInfoTitel;
            bubbleText = compInEDPlan.bubbleInfoNote;
@@ -245,18 +232,10 @@ function changeOnChapterDelayed(chapterId, achieved) {
   initScrollButtons();
 }
 
-function waitOnAnswer(foerderplanVonCompetence, bubbleTitel, bubbleText, imgActive, imgInActive, studText, Number, i) {
-
-
-  if (foerderplanVonCompetence != null) {
-    bubbleTitel = foerderplanVonCompetence[1];
-    bubbleText = foerderplanVonCompetence[0];
-    imgActive = "images/educationalPlan-active.png";
-    imgInActive = "images/educationalPlan-inactive.png";
-  }
-  makeBubble(bubbleTitel, bubbleText, imgActive, imgInActive, studText, Number, i);
-}
-
+/**
+ * ruft getFoerderplanDelayed 200 ms später auf damit HTML content geladen ist
+ * @param planId
+ */
 function getFoerderplan(planId) {
   changeContent("comp");
   document.getElementById("body1").style.backgroundColor = "#8da6d6";
@@ -264,19 +243,16 @@ function getFoerderplan(planId) {
     getFoerderplanDelayed(planId)
   }, 200);
 }
+/**
+ * fügt alle competenzen die im jeweiligen förderplan stehen ein
+ * @param planId
+ */
 function getFoerderplanDelayed(planId) {
 
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "http://46.101.204.215:1337/api/V1/educationalPlan/:" + planId,
-    "method": "GET",
-    "headers": {
-      "authorization": token.token,
-    }
-  }
+  console.log(planId);
 
-  $.ajax(settings).done(function (foerderplan) {
+  var foerderplan = JSON.parse(localStorage.getItem("EDplanNr"+(planId+1)))
+  var foerderplanTitel = JSON.parse(localStorage.getItem("EDPlaene"));
 
     var settings = {
       "async": true,
@@ -290,18 +266,6 @@ function getFoerderplanDelayed(planId) {
 
     $.ajax(settings).done(function (competences) {
 
-      var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "http://46.101.204.215:1337/api/V1/educationalPlan",
-        "method": "GET",
-        "headers": {
-          "authorization": token.token,
-        }
-      }
-
-      $.ajax(settings).done(function (foerderplanTitel) {
-
 
         for (var j = 0; j < foerderplan[0].competences.length; j++) {
 
@@ -311,8 +275,7 @@ function getFoerderplanDelayed(planId) {
             , "images/educationalPlan-inactive.png", competences[_id].studentText, competences[_id].number, _id);
         }
       });
-    });
-  });
+
   scrollDivID = 0;
   initScrollButtons();
 }
@@ -422,9 +385,6 @@ function deleteProfile() {
 
 function selectAvatar(avatarID) {
   avatarSelected = avatarID;
-  console.log($("#avatarBilder"));
-  var avi = $("#avatarBilder").children();
-  console.log(avi[avatarID]);
 }
 
 function changeAvatar() {
@@ -483,7 +443,7 @@ function getFoerderPlaene() {
       var settingsEDPlaene = {
         "async": false,
         "crossDomain": true,
-        "url": "http://46.101.204.215:1337/api/V1/educationalPlan/:" + i,
+        "url": "http://46.101.204.215:1337/api/V1/educationalPlan/" + i,
         "method": "GET",
         "headers": {
           "authorization": token.token,
@@ -507,7 +467,11 @@ function checkIfFoerderplan(comp) {
 
     for(var j = 0; j < foerderPlanNr[0].competences.length; j++){
       if(comp.id == foerderPlanNr[0].competences[j].competenceId){
-       return {"bubbleInfoTitel":foerderPlaene[i].name,
+        console.log("Competenz id"+comp.id+"  foerderplan compID: "+foerderPlanNr[0].competences[j].competenceId)
+        console.log(foerderPlanNr[0].competences[j]);
+        console.log(comp);
+
+       return {"bubbleInfoTitel":foerderPlaene[i-1].name,
        "bubbleInfoNote":foerderPlanNr[0].competences[j].note}
       }
     }
@@ -612,7 +576,6 @@ function passwordChange() {
 }
 
 function initScrollButtons() {
-  console.log("UP" + scrollDivID);
 
 
   $("#scrollUp").click(function () {
@@ -623,8 +586,6 @@ function initScrollButtons() {
   });
 
   $("#scrollDown").click(function () {
-
-    console.log("DOWN" + scrollDivID);
 
     if (scrollDivID)
       $('#todo_liste').animate({
