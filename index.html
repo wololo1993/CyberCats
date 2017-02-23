@@ -15,56 +15,28 @@
 
     <body id="loginBody">
 
-        <div class="container" style="position: relative">
+        <div class="container">
+          <div class="row">
+            <div>
+              <img id="headerBild" src="images/login/header.png" alt="Login Header">
+              <div id="loginFelder" class="col-sm-6 col-md-4 col-md-offset-4">
+                <div id="input-group" class="container col-lg-12">
+                  <div data-brackets-id='3488' id="inputFelder">
+                    <input id="benutzername" type="text" class="form-control loginData" placeholder="BENUTZERNAME">
 
-            <!--<div class="hinweismeldung">
-                <div id="warning">
-                    <img class="deleteButton" src="images/delete.png" alt="Delete Button">
-                    <img id="fehlermeldungBild1" src="images/warning.png" alt="Warning">
-                    <div class="textfeld">
-                    </div>
-                </div>
-             </div>-->
+                    <input id="passwort" type="password" class="form-control loginData" placeholder="PASSWORT">
+                    <button id="loginButton" type="submit" class="btn btn-lg btn-success btn-block" type="submit"
+                    onclick="loginButton()">LOS!
+                    </button>
 
-            <!--<div class="hinweismeldung">
-                <div id="advice">
-                    <img class="deleteButton" src="images/delete.png" alt="Delete Button">
-                    <img id="fehlermeldungBild2" src="images/advice.png" alt="Advice">
-                    <div class="textfeld">
-                    </div>
-                </div>
-            </div>-->
-
-            <!--<div class="hinweismeldung">
-                <div id="confirmation">
-                    <img class="deleteButton" src="images/delete.png" alt="Delete Button">
-                    <img id="fehlermeldungBild3v" src="images/confirmation.png" alt="Confirmation">
-                    <div class="textfeld">
-                    </div>
-                </div>
-            </div>-->
-
-
-             <div class="row">
-                <div>
-                  <img id="headerBild" src="images/login/header.png" alt="Login Header">
-                  <div id="loginFelder" class="col-sm-6 col-md-4 col-md-offset-4">
-                    <div id="input-group" class="container col-lg-12">
-                      <div data-brackets-id='3488' id="inputFelder">
-                        <input id="benutzername" type="text" class="form-control loginData" placeholder="BENUTZERNAME">
-
-                        <input id="passwort" type="password" class="form-control loginData" placeholder="PASSWORT">
-                        <button id="loginButton" type="submit" class="btn btn-lg btn-success btn-block" type="submit"
-                        onclick="loginButton()">LOS!
-                        </button>
-
-                      </div>
-                    </div>
                   </div>
                 </div>
+              </div>
+            </div>
 
 
-                <footer class="footer">
+
+            <footer class="footer">
                   <div class="container">
                     <img id="footerLogo" src="images/login/footer.png" alt="CHECK! Footer">
                     <br>
@@ -83,10 +55,15 @@
                       </p>
                     </div>
                   </div>
-                </footer>
+              <div class="hinweismeldung"></div>
+
+            </footer>
 
             </div>
         </div>
+
+
+
 
 
     </body>

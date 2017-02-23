@@ -74,37 +74,38 @@ body {
     align-self: center;
     height: 200px;
     width: 300px;
+    top: -300px;
     border: 2px solid;
     border-color: white;
     border-radius: 5px;
     margin: auto;
     z-index: 10;
-    position: absolute;
+    position: relative;
 }
 
-.textfeld{
-    height: 80px;
-    width: 270px;
-    margin-left: 15px;
-    margin-top: 10px;
-    font-family: Roboto Thin;
-    font-size: 13pt;
-    color: white;
+.textfeld {
+  height: 80px;
+  width: 270px;
+  margin-left: 15px;
+  margin-top: 10px;
+  font-family: Roboto Thin;
+  font-size: 13pt;
+  color: white;
 }
 
-.deleteButton{
-    margin-top: 10px;
-    margin-left: 260px;
+.deleteButton {
+  margin-top: 10px;
+  margin-left: 260px;
 }
 
-#warning{
-    background-color: #b71967;
+#warning {
+  background-color: #b71967;
 }
 
-#advice{
-    background-color: #001a3a /*CHECK!NACHT*/
+#advice {
+  background-color: #001a3a /*CHECK!NACHT*/
 }
 
-#confirmation{
-    background-color: #76b82d /*CHECK!GRÜN*/
+#confirmation {
+  background-color: #76b82d /*CHECK!GRÜN*/
 }

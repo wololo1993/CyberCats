@@ -6,6 +6,8 @@ var avatars = getAvatars();
 var chapters = getChapters();
 var chapterillustrations = getChapterillustrations();
 var avatarSelected = "";
+var benutzername = "";
+var scrollDivID = 0;
 
 $(document).ready(function () {
   setTimeout(function () {
@@ -14,12 +16,16 @@ $(document).ready(function () {
 });
 
 function init() {
+  console.log()
+
   load();
   foerderPlaneInit();
-  changeContent("deleteProfile");
+  initScrollButtons();
+  changeContent("comp");
   //changeOnChapter(0, true);
   setTimeout(function () {
     dynamischeBilderDropdown();
+    makeBubble("blads", "asd", "images/logo.png", "images/logo.png", "asd", "asd", 1);
   }, 200);
 
   document.getElementById("body1").style.backgroundColor = "#FFF";
@@ -150,7 +156,7 @@ function changeOnChapter(chapterId, achieved) {
 function changeOnChapterDelayed(chapterId, achieved) {
 
   document.getElementById("todo_liste").innerHTML = "";
-  var chapterURL="";
+  var chapterURL = "";
   if (chapterId == 0) {
     document.getElementById("body1").style.backgroundColor = "#8da6d6";
 
@@ -175,7 +181,7 @@ function changeOnChapterDelayed(chapterId, achieved) {
       for (var i = 0; i < response.length; i++) {
 
         makeBubble("Erreicht am:", response[i].fromDate, "images/achievedCompetences-active.png", "images/achievedCompetences-inactive.png",
-          response[i].studentText, response[i].number,i);
+          response[i].studentText, response[i].number, i);
 
       }
     })
@@ -184,15 +190,14 @@ function changeOnChapterDelayed(chapterId, achieved) {
     document.getElementById("body1").style.backgroundColor = chapters[chapterId - 1].weakcolor;
     if (chapterId < 10) {
       document.getElementById("flagImg").src = "images/chapter0" + chapterId + "/littleChapterFlag.png";
-      chapterURL = "chapter0"+chapterId;
+      chapterURL = "chapter0" + chapterId;
     } else {
-      chapterURL = "chapter" +chapterId;
+      chapterURL = "chapter" + chapterId;
     }
 
     document.getElementById("flagImg").src = "images/" + chapterURL + "/littleChapterFlag.png";
     document.getElementById("scrollUp").src = "images/" + chapterURL + "/scrollUp.png";
     document.getElementById("scrollDown").src = "images/" + chapterURL + "/scrollDown.png";
-
 
 
     var achivedYN = (achieved) ? "true" : "false";
@@ -210,42 +215,49 @@ function changeOnChapterDelayed(chapterId, achieved) {
     $.ajax(settings).done(function (response) {
       response.sort(function (a, b) {
         return (a.fromDate - b.fromDate);
-      })
+      });
 
-      for (var i = 0; i < response.length; i++) {/*
-       $("#todo_liste").append("<div class='bubble'>" + "<div>" +
-       "<div class='right'>" + "<img src=" + "images/achievedCompetences-inactive.png" + ">" + "</div>" +
-       "<div class='left'>" + "<p>" + response[i].studentText + "</p>" +
-       "</div>" +
-       "</div>" +
-       "<p id='bubbleNumber'>" + response[i].number + "</p>" +
-       "</div>");*/
+      for (var i = 0; i < response.length; i++) {
+        console.log(i);
+
+        var bubbleTitel = "Erreicht am:";
+        var bubbleText = response[i].fromDate;
+        var imgActive = (response[i].checked.valueOf().toLocaleString().localeCompare("true".toLocaleString())) ? "images/" + chapterURL + "/competenceUndone.png" : "images/" + chapterURL + "/competenceDone.png";
+        var imgInActive = (response[i].checked.valueOf().toLocaleString().localeCompare("true".toLocaleString())) ? "images/" + chapterURL + "/competenceUndone.png" : "images/" + chapterURL + "/competenceDone.png";
+        /*
+         if (!achieved) {
+         var foerderplanVonCompetence="";
 
 
+         foerderplanVonCompetence = checkIfFoerderplan(response[i]);
+         console.log(checkIfFoerderplan())
+         dynamischeBilderDropdown();
+         console.log(response[i].studentText);
 
-        makeBubble("Erreicht am:", response[i].fromDate,
-          (response[i].checked.valueOf().toLocaleString().localeCompare("true".toLocaleString())) ? "images/"+chapterURL+"/competenceUndone.png" :  "images/"+chapterURL+"/competenceDone.png",
-          (response[i].checked.valueOf().toLocaleString().localeCompare("true".toLocaleString())) ? "images/"+chapterURL+"/competenceUndone.png" :  "images/"+chapterURL+"/competenceDone.png",
-          response[i].studentText, response[i].number,i);
+         waitOnAnswer(foerderplanVonCompetence,bubbleTitel,bubbleText,imgActive,imgInActive, (response[i].studentText), response[i].number,i);
+         }, 0);
 
+         } else {*/
+        makeBubble(bubbleTitel, bubbleText, imgActive, imgInActive, response[i].studentText, response[i].number, i)
       }
-    })
-
+    });
   }
-
-
-  /*
-
-   document.getElementById("todo_liste").innerHTML = "";
-
-
-   for(var i = 0; i < studentcompetence.length; i++){
-   $( "#todo_liste" ).append( "<div class='bubbles' background-image:'images/contentTextBubble.png'>" +
-   studentcompetence[i].studentText+
-   +"</div>");
-   }*/
-
+  scrollDivID = 0;
+  initScrollButtons();
 }
+
+function waitOnAnswer(foerderplanVonCompetence, bubbleTitel, bubbleText, imgActive, imgInActive, studText, Number, i) {
+
+
+  if (foerderplanVonCompetence != null) {
+    bubbleTitel = foerderplanVonCompetence[1];
+    bubbleText = foerderplanVonCompetence[0];
+    imgActive = "images/educationalPlan-active.png";
+    imgInActive = "images/educationalPlan-inactive.png";
+  }
+  makeBubble(bubbleTitel, bubbleText, imgActive, imgInActive, studText, Number, i);
+}
+
 function getFoerderplan(planId) {
   changeContent("comp");
   document.getElementById("body1").style.backgroundColor = "#8da6d6";
@@ -297,11 +309,13 @@ function getFoerderplanDelayed(planId) {
           var _id = foerderplan[0].competences[j].competenceId;
 
           makeBubble(foerderplanTitel[planId].name, foerderplan[0].competences[j].note, "images/educationalPlan-active.png"
-            , "images/educationalPlan-inactive.png", competences[_id].studentText, competences[_id].number,_id);
+            , "images/educationalPlan-inactive.png", competences[_id].studentText, competences[_id].number, _id);
         }
       });
     });
   });
+  scrollDivID = 0;
+  initScrollButtons();
 }
 
 
@@ -398,7 +412,17 @@ function deleteProfile() {
   }
 
   $.ajax(settings).done(function (response) {
-    console.log("DELETET", response);
+    $(".hinweismeldung").load("parts.html #confirmation", function () {
+      $("#confirmation").children(".textfeld").html = response;
+    })
+    $(".hinweismeldung").show();
+
+  }).fail(function () {
+    $(".hinweismeldung").load("parts.html #warning", function () {
+        $("#warning").children(".textfeld").html = "Avatar nicht geändert";
+      }
+    );
+    $(".hinweismeldung").show();
   });
 }
 
@@ -410,7 +434,6 @@ function selectAvatar(avatarID) {
 }
 
 function changeAvatar() {
-
 
   if (avatarSelected == "") {
     alert("None Selected");
@@ -427,7 +450,16 @@ function changeAvatar() {
   }
 
   $.ajax(settings).done(function (response) {
-    console.log("AvatarChanged", response);
+    $(".hinweismeldung").load("parts.html #confirmation", function () {
+      $("#confirmation").children(".textfeld").html = response;
+    })
+    $(".hinweismeldung").show();
+
+  }).fail(function () {
+    $(".hinweismeldung").load("parts.html #warning", function () {
+      $("#warning").children(".textfeld").html = "Avatar nicht geändert";
+    })
+    $(".hinweismeldung").show();
   });
 
   avatarSelected = "";
@@ -438,144 +470,55 @@ function changeAvatar() {
 
 }
 
-function makeBubbleXXX(eduId, achived, chapterId, förderplanId) {
-  /*
-   if (chapterId == 0) {
-   document.getElementById("body1").style.backgroundColor = "#8da6d6";
-
-   var settingsCompetences = {
-   "async": true,
-   "crossDomain": true,
-   "url": "http://46.101.204.215:1337/api/V1/studentcompetence?checked=" + achived ? "true" : "false",
-   "method": "GET",
-   "headers": {
-   "authorization": token.token,
-   }
-   }
-   } else {
-
-   if (chapterId < 10) {
-   document.getElementById("flagImg").src = "images/chapter0" + chapterId + "/littleChapterFlag.png";
-   } else {
-   document.getElementById("flagImg").src = "images/chapter" + chapterId + "/littleChapterFlag.png";
-   }
-
-   var settingsCompetences = {
-   "async": true,
-   "crossDomain": true,
-   "url": "http://46.101.204.215:1337/api/V1/studentcompetence?checked=" + achived ? "true" : "false" + "&chapterId=" + chapterId,
-   "method": "GET",
-   "headers": {
-   "authorization": token.token,
-   }
-   }
-   }
-   if (förderplanId != -1) {
-
-   var settingsFoerderplanID = {
-   "async": true,
-   "crossDomain": true,
-   "url": "http://46.101.204.215:1337/api/V1/educationalPlan/:" + förderplanId,
-   "method": "GET",
-   "headers": {
-   "authorization": token.token,
-   }
-   }
-   }
-   else {
-
-   var settingsFoerderplan = {
-   "async": true,
-   "crossDomain": true,
-   "url": "http://46.101.204.215:1337/api/V1/educationalPlan",
-   "method": "GET",
-   "headers": {
-   "authorization": token.token,
-   }
-   }
-   }
-
-   var foerderplaene = [];
-   for (var i = 0; i < foerderplan.length; i++)
-   var settingsFoerderplane = {
-   "async": true,
-   "crossDomain": true,
-   "url": "http://46.101.204.215:1337/api/V1/educationalPlan/:" + i,
-   "method": "GET",
-   "headers": {
-   "authorization": token.token,
-   }
-   }
-   $.ajax(settingsFoerderplane).done(function (response) {
-   foerderplaene[i] = response;
-   });
-
-
-   var infoBubbleTXT = "";
-   var imgSRC = "";
-   var compIsFoerderplan = checkIfFoerderplan(competence, foerderPlaene);
-
-
-   var _id = foerderplan[0].competences[j].competenceId;
-
-   $("#todo_liste").append(
-   "<div class='bubble'>" +
-   "<div id='infoDiv' class='right'>" + "<div class='infoBubble'" + ">" +
-   "<div class='infoBubbleText'>" +
-   foerderplanTitel[planId].name + "<br>" +
-   foerderplan[0].competences[j].note +
-   "</div>" +
-   "</div>" + "</div>" +
-   "<div class='left'>" +
-   "<div class='right bubbleImgDiv'>" +
-   "<img class='bubbleImg'src=" + "images/educationalPlan-inactive.png" + ">" +
-   "</div>" +
-   "<div class='left'>" +
-   "<p>" + competences[_id].studentText + "</p>" + "" +
-   "<p class='number'>" + competences[_id].number + "</p>" +
-   "</div>" +
-   "</div>" +
-   "</div>");
-
-   $(".bubbleImgDiv").parent().parent().children('#infoDiv').hide();
-   $(".bubbleImg").attr("src", "images/educationalPlan-inactive.png");
-
-   $(".bubbleImgDiv").hover(
-   function () {
-   $(this).parent().parent().children('#infoDiv').show();
-   $(this).children('.bubbleImg').attr("src", "images/educationalPlan-active.png");
-
-   },
-   function () {
-   $(this).parent().parent().children('#infoDiv').hide();
-   $(this).children('.bubbleImg').attr("src", "images/educationalPlan-inactive.png");
-   }
-   );
-
-
-   }
-
-   */
-}
-
-function checkIfFoerderplan(competence, foerderPlaene) {
-
-
-  for (var i = 0; i < foerderPlaene.length; i++) {
-    for (var j = 0; j < foerderPlaene[i].competences.length; j++) {
-      if (foerderPlaene[i].competences[j].competenceId == competence.id) {
-        return true;
-      } else {
-        return false
-      }
+function checkIfFoerderplan(competence) {
+  var settingsEDPlan = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://46.101.204.215:1337/api/V1/educationalPlan",
+    "method": "GET",
+    "headers": {
+      "authorization": token.token,
     }
   }
+  $.ajax(settingsEDPlan).done(function (response) {
+
+    for (var i = 0; i < response.length; i++) {
+
+      var settingsEDPlaene = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://46.101.204.215:1337/api/V1/educationalPlan/:" + i + 1,
+        "method": "GET",
+        "headers": {
+          "authorization": token.token,
+        }
+      }
+      $.ajax(settingsEDPlaene).done(function (comp) {
+
+        for (var j = 0; j < comp[0].competences.length; j++) {
+          // console.log("compFoerderID"+comp[0].competences[j].competenceId+"CompID"+competence.id)
+          if (comp[0].competences[j].competenceId == competence.id) {
+
+            // console.log("Ergebnis: "+{"note": comp[0].competences[j].note, "foerderPlanID": i + 1});
+            var arry = [];
+            arry[0] = comp[0].competences[j].note;
+            arry[1] = response[i].name;
+            return arry;
+          }
+        }
+      });
+    }
+    return null;
+  });
 }
 
-function makeBubble(foerderplanTitel, foerderplanNote, imgActive, imgInActive, studentText, bubbleNumber,bubbleid) {
+
+function makeBubble(foerderplanTitel, foerderplanNote, imgActive, imgInActive, studentText, bubbleNumber, bubbleid) {
+
+  var bubbleID = "bubbleID" + bubbleid;
 
   $("#todo_liste").append(
-    "<div class='bubble'>" +
+    "<div class='bubble' id='bubbleID" + bubbleid + "'>" +
     "<div id='infoDiv' class='right'>" + "<div class='infoBubble'" + ">" +
     "<div class='infoBubbleText'>" +
     foerderplanTitel + "<br>" +
@@ -583,7 +526,7 @@ function makeBubble(foerderplanTitel, foerderplanNote, imgActive, imgInActive, s
     "</div>" +
     "</div>" + "</div>" +
     "<div class='left'>" +
-    "<div class='right bubbleImgDiv"+ bubbleid +"'>" +
+    "<div class='right bubbleImgDiv" + bubbleid + "'>" +
     "<img class='bubbleImg'src=" + imgInActive + ">" +
     "</div>" +
     "<div class='left'>" +
@@ -593,17 +536,13 @@ function makeBubble(foerderplanTitel, foerderplanNote, imgActive, imgInActive, s
     "</div>" +
     "</div>");
 
-  $(".bubbleImgDiv"+bubbleid).parent().parent().children('#infoDiv').hide();
-  $(".bubbleImgDiv"+bubbleid).children('.bubbleImg').attr("src", imgInActive);
-
-  console.log(bubbleNumber)
-  console.log("foerderNote= " + foerderplanNote);
-  console.log("foerderTitel= " + foerderplanTitel);
+  $(".bubbleImgDiv" + bubbleid).parent().parent().children('#infoDiv').hide();
+  $(".bubbleImgDiv" + bubbleid).children('.bubbleImg').attr("src", imgInActive);
 
   if (foerderplanNote != null && foerderplanNote != "null") {
 
 
-    $(".bubbleImgDiv"+bubbleid).hover(
+    $(".bubbleImgDiv" + bubbleid).hover(
       function () {
         $(this).parent().parent().children('#infoDiv').show();
         $(this).children('.bubbleImg').attr("src", imgActive);
@@ -617,3 +556,97 @@ function makeBubble(foerderplanTitel, foerderplanNote, imgActive, imgInActive, s
   }
 }
 
+function passwordChange() {
+  var benutzername = localStorage.getItem('name');
+
+
+  var form = new FormData();
+  form.append("username", benutzername);
+  form.append("password", $("#passwordinputAktuell").val());
+
+  if ($("#passwordinputNeu").val() == $("#passwordinputNeu2").val()) {
+
+    var settings = {
+      "url": "http://46.101.204.215:1337/api/V1/login",
+      "method": "PUT",
+      "processData": false,
+      "contentType": false,
+      "mimeType": "multipart/form-data",
+      "data": form
+    }
+    $.ajax(settings).done(function (token) {
+
+      var token2 = JSON.parse(token);
+
+      var settingsChangePW = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://46.101.204.215:1337/api/V1/requestPasswordRecovery",
+        "method": "PUT",
+        "headers": {
+          "authorization": token2.token,
+        }
+      }
+      $.ajax(settingsChangePW).done(function (response) {
+        $(".hinweismeldung").load("parts.html #confirmation", function () {
+          $("#confirmation").children(".textfeld").html = response;
+        })
+        $(".hinweismeldung").show();
+
+      }).fail(function () {
+        $(".hinweismeldung").load("parts.html #warning", function () {
+          $("#warning").children(".textfeld").html = "Altes Passwort Falsch";
+        })
+        $(".hinweismeldung").show();
+      });
+    });
+  } else {
+    $(".hinweismeldung").load("parts.html #warning", function () {
+      $("#warning").children(".textfeld").html = "Passwort Neu stimmt nicht überein";
+    })
+    $(".hinweismeldung").show();
+  }
+}
+
+$('#scrollUp').click(function () {
+
+});
+
+$('#scrollDown').click(function () {
+  console.log("DOWN")
+
+});
+
+function initScrollButtons() {
+  console.log("UP" + scrollDivID);
+
+
+  $("#scrollUp").click(function () {
+
+    $('#todo_liste').animate({
+      scrollTop: $("#bubbleID" + scrollDivID).offset().top
+    }, 400);
+  });
+
+  $("#scrollDown").click(function () {
+
+    console.log("DOWN" + scrollDivID);
+
+    if (scrollDivID)
+      $('#todo_liste').animate({
+        scrollTop: $("#bubbleID" + scrollDivID).offset().top
+      }, 400);
+  });
+}
+
+function meldungWeg() {
+  $(".hinweismeldung").hide();
+}
+function countDOWN() {
+  scrollDivID--;
+}
+
+function countUP() {
+  scrollDivID++;
+
+}
