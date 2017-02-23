@@ -10,19 +10,20 @@ var benutzername = "";
 var scrollDivID = 0;
 
 $(document).ready(function () {
+  getFoerderPlaene();
+
   setTimeout(function () {
     init()
-  }, 200);
+  }, 500);
 });
 
 function init() {
   console.log()
-
+  meldungWeg();
   load();
   foerderPlaneInit();
   initScrollButtons();
   changeContent("comp");
-  //changeOnChapter(0, true);
   setTimeout(function () {
     dynamischeBilderDropdown();
     makeBubble("blads", "asd", "images/logo.png", "images/logo.png", "asd", "asd", 1);
@@ -174,9 +175,7 @@ function changeOnChapterDelayed(chapterId, achieved) {
     $.ajax(settings).done(function (response) {
       response.sort(function (a, b) {
         return (a.fromDate - b.fromDate);
-      })
-
-      alert("Aufgerufen")
+      });
 
       for (var i = 0; i < response.length; i++) {
 
@@ -224,20 +223,20 @@ function changeOnChapterDelayed(chapterId, achieved) {
         var bubbleText = response[i].fromDate;
         var imgActive = (response[i].checked.valueOf().toLocaleString().localeCompare("true".toLocaleString())) ? "images/" + chapterURL + "/competenceUndone.png" : "images/" + chapterURL + "/competenceDone.png";
         var imgInActive = (response[i].checked.valueOf().toLocaleString().localeCompare("true".toLocaleString())) ? "images/" + chapterURL + "/competenceUndone.png" : "images/" + chapterURL + "/competenceDone.png";
-        /*
-         if (!achieved) {
-         var foerderplanVonCompetence="";
+
+        var compInEDPlan = checkIfFoerderplan(response[i]);
+
+         if (compInEDPlan != null) {
+
+           console.log(compInEDPlan);
+
+           bubbleTitel = compInEDPlan.bubbleInfoTitel;
+           bubbleText = compInEDPlan.bubbleInfoNote;
+           imgActive = "images/educationalPlan-active.png";
+           imgInActive = "images/educationalPlan-inactive.png";
+         }
 
 
-         foerderplanVonCompetence = checkIfFoerderplan(response[i]);
-         console.log(checkIfFoerderplan())
-         dynamischeBilderDropdown();
-         console.log(response[i].studentText);
-
-         waitOnAnswer(foerderplanVonCompetence,bubbleTitel,bubbleText,imgActive,imgInActive, (response[i].studentText), response[i].number,i);
-         }, 0);
-
-         } else {*/
         makeBubble(bubbleTitel, bubbleText, imgActive, imgInActive, response[i].studentText, response[i].number, i)
       }
     });
@@ -321,11 +320,6 @@ function getFoerderplanDelayed(planId) {
 
 function foerderPlaneInit() {
 
-  //document.getElementById("#dropdown-plan").innerHTML="";
-
-
-  //$('#dropdown-plan').load('#foerderplanTemplate');
-
   var settings = {
     "async": true,
     "crossDomain": true,
@@ -344,11 +338,7 @@ function foerderPlaneInit() {
       )
       response[i]
     }
-
-
   });
-
-
 }
 
 function dynamischeBilderDropdown() {
@@ -383,6 +373,10 @@ function changeContent(content) {
     $("#fenster").load("parts.html #passwordChangeContent")
 
   }
+  setTimeout(function () {
+    meldungWeg();
+  }, 100);
+
 }
 
 function logout() {
@@ -413,13 +407,13 @@ function deleteProfile() {
 
   $.ajax(settings).done(function (response) {
     $(".hinweismeldung").load("parts.html #confirmation", function () {
-      $("#confirmation").children(".textfeld").html = response;
+      $("#confirmation").children(".textfeld").append("Profil gelöscht");
     })
     $(".hinweismeldung").show();
 
   }).fail(function () {
     $(".hinweismeldung").load("parts.html #warning", function () {
-        $("#warning").children(".textfeld").html = "Avatar nicht geändert";
+        $("#warning").children(".textfeld").append("Falsches Passwort");
       }
     );
     $(".hinweismeldung").show();
@@ -436,7 +430,11 @@ function selectAvatar(avatarID) {
 function changeAvatar() {
 
   if (avatarSelected == "") {
-    alert("None Selected");
+    $(".hinweismeldung").load("parts.html #warning", function () {
+      $("#warning").children(".textfeld").append("Kein Avatar gewählt");
+    })
+    $(".hinweismeldung").show();
+
   }
 
   var settings = {
@@ -451,28 +449,25 @@ function changeAvatar() {
 
   $.ajax(settings).done(function (response) {
     $(".hinweismeldung").load("parts.html #confirmation", function () {
-      $("#confirmation").children(".textfeld").html = response;
+      $("#confirmation").children(".textfeld").append("Avatar geändert");
     })
     $(".hinweismeldung").show();
 
   }).fail(function () {
     $(".hinweismeldung").load("parts.html #warning", function () {
-      $("#warning").children(".textfeld").html = "Avatar nicht geändert";
+      $("#warning").children(".textfeld").append("Avatar nicht geändert");
     })
     $(".hinweismeldung").show();
   });
 
   avatarSelected = "";
 
-  document.getElementById("avatarImgInactive").src = (avatars[student.avatarId].avatarInactiveUrl).substring(1);
-  document.getElementById("avatarImgBig").src = (avatars[student.avatarId].avatarBigUrl).substring(1);
-
-
+  load();
 }
 
-function checkIfFoerderplan(competence) {
+function getFoerderPlaene() {
   var settingsEDPlan = {
-    "async": true,
+    "async": false,
     "crossDomain": true,
     "url": "http://46.101.204.215:1337/api/V1/educationalPlan",
     "method": "GET",
@@ -481,35 +476,43 @@ function checkIfFoerderplan(competence) {
     }
   }
   $.ajax(settingsEDPlan).done(function (response) {
+    localStorage.setItem("EDPlaene",JSON.stringify(response));
 
-    for (var i = 0; i < response.length; i++) {
+    for (var i = 1; i <= response.length; i++) {
 
       var settingsEDPlaene = {
-        "async": true,
+        "async": false,
         "crossDomain": true,
-        "url": "http://46.101.204.215:1337/api/V1/educationalPlan/:" + i + 1,
+        "url": "http://46.101.204.215:1337/api/V1/educationalPlan/:" + i,
         "method": "GET",
         "headers": {
           "authorization": token.token,
         }
       }
       $.ajax(settingsEDPlaene).done(function (comp) {
-
-        for (var j = 0; j < comp[0].competences.length; j++) {
-          // console.log("compFoerderID"+comp[0].competences[j].competenceId+"CompID"+competence.id)
-          if (comp[0].competences[j].competenceId == competence.id) {
-
-            // console.log("Ergebnis: "+{"note": comp[0].competences[j].note, "foerderPlanID": i + 1});
-            var arry = [];
-            arry[0] = comp[0].competences[j].note;
-            arry[1] = response[i].name;
-            return arry;
-          }
-        }
+        localStorage.setItem("EDplanNr"+i,JSON.stringify(comp));
       });
     }
-    return null;
   });
+}
+
+function checkIfFoerderplan(comp) {
+  var foerderPlaene = JSON.parse(localStorage.getItem("EDPlaene"));
+
+
+  for(var i = 1; i <= foerderPlaene.length; i++){
+
+    var foerderPlanNr = JSON.parse(localStorage.getItem("EDplanNr"+i))
+
+
+    for(var j = 0; j < foerderPlanNr[0].competences.length; j++){
+      if(comp.id == foerderPlanNr[0].competences[j].competenceId){
+       return {"bubbleInfoTitel":foerderPlaene[i].name,
+       "bubbleInfoNote":foerderPlanNr[0].competences[j].note}
+      }
+    }
+  }
+  return null;
 }
 
 
@@ -589,33 +592,24 @@ function passwordChange() {
       }
       $.ajax(settingsChangePW).done(function (response) {
         $(".hinweismeldung").load("parts.html #confirmation", function () {
-          $("#confirmation").children(".textfeld").html = response;
+          $("#confirmation").children(".textfeld").append("PW geändert");
         })
         $(".hinweismeldung").show();
 
       }).fail(function () {
         $(".hinweismeldung").load("parts.html #warning", function () {
-          $("#warning").children(".textfeld").html = "Altes Passwort Falsch";
+          $("#warning").children(".textfeld").append("Altes Passwort Falsch");
         })
         $(".hinweismeldung").show();
       });
     });
   } else {
     $(".hinweismeldung").load("parts.html #warning", function () {
-      $("#warning").children(".textfeld").html = "Passwort Neu stimmt nicht überein";
+      $("#warning").children(".textfeld").append("Passwort Neu stimmt nicht überein")
     })
     $(".hinweismeldung").show();
   }
 }
-
-$('#scrollUp').click(function () {
-
-});
-
-$('#scrollDown').click(function () {
-  console.log("DOWN")
-
-});
 
 function initScrollButtons() {
   console.log("UP" + scrollDivID);
@@ -625,7 +619,7 @@ function initScrollButtons() {
 
     $('#todo_liste').animate({
       scrollTop: $("#bubbleID" + scrollDivID).offset().top
-    }, 400);
+    }, 200);
   });
 
   $("#scrollDown").click(function () {
@@ -635,7 +629,7 @@ function initScrollButtons() {
     if (scrollDivID)
       $('#todo_liste').animate({
         scrollTop: $("#bubbleID" + scrollDivID).offset().top
-      }, 400);
+      }, 200);
   });
 }
 
